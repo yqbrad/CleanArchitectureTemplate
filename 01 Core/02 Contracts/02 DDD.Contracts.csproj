@@ -1,0 +1,21 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>netstandard2.1</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<AssemblyName>DDD.Contracts</AssemblyName>
+		<RootNamespace>DDD.Contracts</RootNamespace>
+		<Configurations>Debug;Release;Production</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="Agg\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
+		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
+		<ProjectReference Include="..\01 DomainModels\01 DDD.DomainModels.csproj" />
+	</ItemGroup>
+
+</Project>
