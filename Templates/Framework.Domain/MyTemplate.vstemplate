@@ -1,0 +1,59 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>Framework.Domain</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>Framework.Domain</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="Framework.Domain.csproj" File="Framework.Domain.csproj" ReplaceParameters="true">
+      <Folder Name="ApplicationServices" TargetFolderName="ApplicationServices">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICommandHandler.cs">ICommandHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEventHandler.cs">IEventHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRequestHandler.cs">IRequestHandler.cs</ProjectItem>
+      </Folder>
+      <Folder Name="BaseModels" TargetFolderName="BaseModels">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseAggregateRoot.cs">BaseAggregateRoot.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseEntity.cs">BaseEntity.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseValueObject.cs">BaseValueObject.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Commands" TargetFolderName="Commands">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ICommand.cs">ICommand.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Data" TargetFolderName="Data">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IAggregateStore.cs">IAggregateStore.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEventSource.cs">IEventSource.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Dtoes" TargetFolderName="Dtoes">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDto.cs">IDto.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Error" TargetFolderName="Error">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Error.cs">Error.cs</ProjectItem>
+      </Folder>
+      <Folder Name="EventBus" TargetFolderName="EventBus">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApiServices.cs">ApiServices.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IApplicant.cs">IApplicant.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEventBus.cs">IEventBus.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Events" TargetFolderName="Events">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IEvent.cs">IEvent.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IInternalEventDispatcher.cs">IInternalEventDispatcher.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Queries" TargetFolderName="Queries">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IQuery.cs">IQuery.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Requests" TargetFolderName="Requests">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRequest.cs">IRequest.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

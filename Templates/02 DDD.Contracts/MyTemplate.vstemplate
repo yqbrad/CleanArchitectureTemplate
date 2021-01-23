@@ -1,0 +1,27 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>02 DDD.Contracts</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>02 DDD.Contracts</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="02 DDD.Contracts.csproj" File="02 DDD.Contracts.csproj" ReplaceParameters="true">
+      <Folder Name="_Base" TargetFolderName="_Base">
+        <ProjectItem ReplaceParameters="true" TargetFileName="InitialData.cs">InitialData.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWork.cs">IUnitOfWork.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWorkConfiguration.cs">IUnitOfWorkConfiguration.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Agg" TargetFolderName="Agg" />
+    </Project>
+  </TemplateContent>
+</VSTemplate>

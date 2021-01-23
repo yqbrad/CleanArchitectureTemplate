@@ -1,0 +1,30 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>04 DDD.ApplicationServices</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>04 DDD.ApplicationServices</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="04 DDD.ApplicationServices.csproj" File="04 DDD.ApplicationServices.csproj" ReplaceParameters="true">
+      <Folder Name="_Base" TargetFolderName="_Base">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseApplicationService.cs">BaseApplicationService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RequestHandler.cs">RequestHandler.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RequestHandlerAsync.cs">RequestHandlerAsync.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Agg" TargetFolderName="Agg">
+        <Folder Name="Event" TargetFolderName="Event" />
+        <Folder Name="Request" TargetFolderName="Request" />
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

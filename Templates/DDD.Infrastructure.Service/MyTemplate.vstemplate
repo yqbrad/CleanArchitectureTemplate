@@ -1,0 +1,68 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>DDD.Infrastructure.Service</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>DDD.Infrastructure.Service</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="DDD.Infrastructure.Service.csproj" File="DDD.Infrastructure.Service.csproj" ReplaceParameters="true">
+      <Folder Name="ApiConfig" TargetFolderName="ApiConfig">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApiConfiguration.cs">ApiConfiguration.cs</ProjectItem>
+      </Folder>
+      <Folder Name="DB" TargetFolderName="DB">
+        <ProjectItem ReplaceParameters="true" TargetFileName="DatabaseInitializer.cs">DatabaseInitializer.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Dispatcher" TargetFolderName="Dispatcher">
+        <ProjectItem ReplaceParameters="true" TargetFileName="InternalEventDispatcher.cs">InternalEventDispatcher.cs</ProjectItem>
+      </Folder>
+      <Folder Name="EventSourcing" TargetFolderName="EventSourcing">
+        <ProjectItem ReplaceParameters="true" TargetFileName="EventMetadata.cs">EventMetadata.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EventSourceInitializer.cs">EventSourceInitializer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="EventSourcingOptions.cs">EventSourcingOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="MediatR" TargetFolderName="MediatR">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Mongo" TargetFolderName="Mongo">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMongoInitializer.cs">IMongoInitializer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IMongoSeeder.cs">IMongoSeeder.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MongoConventions.cs">MongoConventions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MongoInitializer.cs">MongoInitializer.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MongoOptions.cs">MongoOptions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="MongoSeeder.cs">MongoSeeder.cs</ProjectItem>
+      </Folder>
+      <Folder Name="RabbitMq" TargetFolderName="RabbitMq">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RabbitMqOptions.cs">RabbitMqOptions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Redis" TargetFolderName="Redis">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extentions.cs">Extentions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RedisOptions.cs">RedisOptions.cs</ProjectItem>
+      </Folder>
+      <Folder Name="ServiceHost" TargetFolderName="ServiceHost">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BuilderBase.cs">BuilderBase.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BusBuilder.cs">BusBuilder.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="HostBuilder.cs">HostBuilder.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IServiceHost.cs">IServiceHost.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceHost.cs">ServiceHost.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Sql" TargetFolderName="Sql">
+        <ProjectItem ReplaceParameters="true" TargetFileName="Extensions.cs">Extensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SqlOptions.cs">SqlOptions.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="EventBus.cs">EventBus.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>
