@@ -28,12 +28,12 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="AccessLinkAgg\Dtoes\" />
-	  <Folder Include="AccessLinkAgg\Entities\" />
-	  <Folder Include="AccessLinkAgg\Events\" />
-	  <Folder Include="AccessLinkAgg\Exceptions\" />
-	  <Folder Include="AccessLinkAgg\Requests\" />
-	  <Folder Include="AccessLinkAgg\ValueObjects\" />
+	  <Folder Include="Agg\Dtoes\" />
+	  <Folder Include="Agg\Entities\" />
+	  <Folder Include="Agg\Events\" />
+	  <Folder Include="Agg\Exceptions\" />
+	  <Folder Include="Agg\Requests\" />
+	  <Folder Include="Agg\ValueObjects\" />
 	</ItemGroup>
 
 	<ItemGroup>

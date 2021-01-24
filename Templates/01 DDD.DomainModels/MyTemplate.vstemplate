@@ -23,7 +23,7 @@
       <Folder Name="_Exceptions" TargetFolderName="_Exceptions">
         <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionType.cs">ExceptionType.cs</ProjectItem>
       </Folder>
-      <Folder Name="AccessLinkAgg" TargetFolderName="AccessLinkAgg">
+      <Folder Name="Agg" TargetFolderName="Agg">
         <Folder Name="Dtoes" TargetFolderName="Dtoes" />
         <Folder Name="Entities" TargetFolderName="Entities" />
         <Folder Name="Events" TargetFolderName="Events" />
