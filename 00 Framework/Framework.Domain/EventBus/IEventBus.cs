@@ -11,11 +11,11 @@ namespace Framework.Domain.EventBus
         ApiServices GetApiServices();
 
         #region Event
-        Task SubscribeInternalAsync<TClass, TId>(TClass aggregateRoot)
+        Task PublishInternalAsync<TClass, TId>(TClass aggregateRoot)
             where TId : IEquatable<TId>
             where TClass : BaseAggregateRoot<TId>;
 
-        Task SubscribeExternalAsync<TClass, TId>(TClass aggregateRoot)
+        Task PublishExternalAsync<TClass, TId>(TClass aggregateRoot)
             where TId : IEquatable<TId>
             where TClass : BaseAggregateRoot<TId>;
         #endregion

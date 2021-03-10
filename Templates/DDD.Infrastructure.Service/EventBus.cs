@@ -35,7 +35,7 @@ namespace $safeprojectname$
             return new ApiServices();
         }
 
-        public async Task SubscribeInternalAsync<TClass, TId>(TClass aggregateRoot)
+        public async Task PublishInternalAsync<TClass, TId>(TClass aggregateRoot)
             where TClass : BaseAggregateRoot<TId>
             where TId : IEquatable<TId>
         {
@@ -43,7 +43,7 @@ namespace $safeprojectname$
             await Log<TClass, TId>(aggregateRoot);
         }
 
-        public async Task SubscribeExternalAsync<TClass, TId>(TClass aggregateRoot)
+        public async Task PublishExternalAsync<TClass, TId>(TClass aggregateRoot)
             where TClass : BaseAggregateRoot<TId>
             where TId : IEquatable<TId>
         {
