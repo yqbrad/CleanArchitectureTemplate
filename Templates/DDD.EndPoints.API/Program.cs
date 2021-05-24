@@ -18,14 +18,16 @@ namespace $safeprojectname$
                 .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
                 .ConfigureAppConfiguration((_, config) =>
                 {
-                    var buildConfiguration = typeof(Program)
-                        .Assembly
-                        .GetCustomAttribute<AssemblyConfigurationAttribute>()?
-                        .Configuration;
+                    var buildConfiguration = typeof(Program).Assembly
+                        .GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
+
+                    var path = "appsettings.json";
+                    if (buildConfiguration != "Debug")
+                        path = $"appsettings.{buildConfiguration}.json";
 
                     config.Sources.Clear();
-                    config.SetBasePath($"{Directory.GetCurrentDirectory()}\\AppSettings");
-                    config.AddJsonFile($"appsettings.{buildConfiguration}.json", optional: false, reloadOnChange: true);
+                    config.SetBasePath(Directory.GetCurrentDirectory());
+                    config.AddJsonFile(path, false, true);
                 });
     }
 }

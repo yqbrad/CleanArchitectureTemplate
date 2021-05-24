@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using System.Threading.Tasks;
 using Framework.Domain.BaseModels;
 using Framework.Domain.Data;
@@ -9,7 +10,7 @@ using Services.Core.Interfaces;
 
 namespace $safeprojectname$
 {
-    public class EventBus : IEventBus
+    public class EventBus: IEventBus
     {
         public IApplicant Applicant { get; }
 
@@ -39,7 +40,7 @@ namespace $safeprojectname$
             where TClass : BaseAggregateRoot<TId>
             where TId : IEquatable<TId>
         {
-            await _internalEventDispatcher.DispatchEventAsync(aggregateRoot.GetEvents());
+            await _internalEventDispatcher.DispatchEventAsync(aggregateRoot.GetEvents().ToArray());
             await Log<TClass, TId>(aggregateRoot);
         }
 

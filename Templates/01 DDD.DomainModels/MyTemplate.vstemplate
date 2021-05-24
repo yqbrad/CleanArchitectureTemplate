@@ -22,6 +22,7 @@
       </Folder>
       <Folder Name="_Exceptions" TargetFolderName="_Exceptions">
         <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionType.cs">ExceptionType.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InvalidValueObjectStateException.cs">InvalidValueObjectStateException.cs</ProjectItem>
       </Folder>
       <Folder Name="Agg" TargetFolderName="Agg">
         <Folder Name="Dtoes" TargetFolderName="Dtoes" />

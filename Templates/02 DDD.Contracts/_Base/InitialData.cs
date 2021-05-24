@@ -1,4 +1,5 @@
-﻿namespace $safeprojectname$._Base
+﻿
+namespace $safeprojectname$._Base
 {
     public class InitialData
     {

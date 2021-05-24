@@ -1,5 +1,5 @@
-﻿using System;
-using $safeprojectname$.Events;
+﻿using $safeprojectname$.Events;
+using System;
 
 namespace $safeprojectname$.BaseModels
 {
@@ -32,7 +32,7 @@ namespace $safeprojectname$.BaseModels
             if (GetType() != other.GetType())
                 return false;
 
-            if (Id.Equals(default ) || other.Id.Equals(default))
+            if (Id.Equals(default) || other.Id.Equals(default))
                 return false;
 
             return Id.Equals(other.Id);

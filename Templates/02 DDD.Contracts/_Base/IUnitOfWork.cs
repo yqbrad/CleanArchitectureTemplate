@@ -1,20 +1,21 @@
-﻿using System;
-using System.Threading.Tasks;
+﻿using System.Threading.Tasks;
 
 namespace $safeprojectname$._Base
 {
-    public interface IUnitOfWork : IDisposable, ICloneable
+    public interface IUnitOfWork
     {
-        void InitiateDatabase(InitialData data);
-        Task InitiateDatabaseAsync(InitialData data);
+        void InitiateDatabase();
+        Task InitiateDatabaseAsync();
 
         void BeginTransaction();
         Task BeginTransactionAsync();
 
-        void Commit();
-        Task CommitAsync();
+        int Commit();
+        Task<int> CommitAsync();
 
         void Rollback();
         Task RollbackAsync();
+
+        //IAppRepository App { get; }
     }
 }

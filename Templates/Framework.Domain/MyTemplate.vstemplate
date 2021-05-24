@@ -38,6 +38,7 @@
       </Folder>
       <Folder Name="Error" TargetFolderName="Error">
         <ProjectItem ReplaceParameters="true" TargetFileName="Error.cs">Error.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IError.cs">IError.cs</ProjectItem>
       </Folder>
       <Folder Name="EventBus" TargetFolderName="EventBus">
         <ProjectItem ReplaceParameters="true" TargetFileName="ApiServices.cs">ApiServices.cs</ProjectItem>

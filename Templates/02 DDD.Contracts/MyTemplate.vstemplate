@@ -17,11 +17,12 @@
   <TemplateContent>
     <Project TargetFileName="02 DDD.Contracts.csproj" File="02 DDD.Contracts.csproj" ReplaceParameters="true">
       <Folder Name="_Base" TargetFolderName="_Base">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEventStore.cs">IDomainEventStore.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="InitialData.cs">InitialData.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRepository.cs">IRepository.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWork.cs">IUnitOfWork.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWorkConfiguration.cs">IUnitOfWorkConfiguration.cs</ProjectItem>
       </Folder>
-      <Folder Name="Agg" TargetFolderName="Agg" />
     </Project>
   </TemplateContent>
 </VSTemplate>

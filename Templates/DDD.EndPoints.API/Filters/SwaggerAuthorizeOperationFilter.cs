@@ -26,7 +26,7 @@ namespace $safeprojectname$.Filters
             operation.Responses.Add("403", new OpenApiResponse { Description = "Forbidden" });
             operation.Security = new List<OpenApiSecurityRequirement>
             {
-                new OpenApiSecurityRequirement
+                new()
                 {
                     [
                         new OpenApiSecurityScheme {Reference = new OpenApiReference
@@ -34,7 +34,7 @@ namespace $safeprojectname$.Filters
                                 Type = ReferenceType.SecurityScheme,
                                 Id = "oauth2"}
                         }
-                    ] = new[] { "space_api" }
+                    ] = new[] { "service_api" }
                 }
             };
         }

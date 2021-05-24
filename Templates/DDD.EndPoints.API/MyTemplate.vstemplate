@@ -18,16 +18,11 @@
     <Project TargetFileName="DDD.EndPoints.API.csproj" File="DDD.EndPoints.API.csproj" ReplaceParameters="true">
       <Folder Name="Properties" TargetFolderName="Properties">
         <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles">
+          <ProjectItem ReplaceParameters="false" TargetFileName="kav-iis.pubxml">kav-iis.pubxml</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="Kavosh.Release.pubxml">Kavosh.Release.pubxml</ProjectItem>
-          <ProjectItem ReplaceParameters="false" TargetFileName="Kavosh.Stage.pubxml">Kavosh.Stage.pubxml</ProjectItem>
           <ProjectItem ReplaceParameters="false" TargetFileName="Local.pubxml">Local.pubxml</ProjectItem>
         </Folder>
         <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
-      </Folder>
-      <Folder Name="AppSettings" TargetFolderName="AppSettings">
-        <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Debug.json">appsettings.Debug.json</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Production.json">appsettings.Production.json</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Release.json">appsettings.Release.json</ProjectItem>
       </Folder>
       <Folder Name="Configuration" TargetFolderName="Configuration">
         <ProjectItem ReplaceParameters="true" TargetFileName="IdpConfig.cs">IdpConfig.cs</ProjectItem>
@@ -49,8 +44,12 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerAuthorizeOperationFilter.cs">SwaggerAuthorizeOperationFilter.cs</ProjectItem>
       </Folder>
       <Folder Name="Models" TargetFolderName="Models">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApiException.cs">ApiException.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="Applicant.cs">Applicant.cs</ProjectItem>
       </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.json">appsettings.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Production.json">appsettings.Production.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Release.json">appsettings.Release.json</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Injector.cs">Injector.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="Startup.cs">Startup.cs</ProjectItem>

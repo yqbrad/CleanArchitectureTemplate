@@ -3,7 +3,7 @@ using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
 using Framework.Domain.Requests;
 
-namespace $safeprojectname$
+namespace $safeprojectname$._Base
 {
     public abstract class RequestHandler : BaseApplicationService, IRequestHandler
     {

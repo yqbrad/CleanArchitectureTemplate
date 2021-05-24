@@ -17,10 +17,9 @@
   <TemplateContent>
     <Project TargetFileName="DDD.Infrastructure.DataAccess.csproj" File="DDD.Infrastructure.DataAccess.csproj" ReplaceParameters="true">
       <Folder Name="_Base" TargetFolderName="_Base">
-        <ProjectItem ReplaceParameters="true" TargetFileName="BaseDapperRepository.cs">BaseDapperRepository.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="BaseRepoDbRepository.cs">BaseRepoDbRepository.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="DapperExtensions.cs">DapperExtensions.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="RepoDbExtensions.cs">RepoDbExtensions.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseDbContext.cs">BaseDbContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseRepository.cs">BaseRepository.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceDbContext.cs">ServiceDbContext.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="UnitOfWork.cs">UnitOfWork.cs</ProjectItem>
       </Folder>
     </Project>

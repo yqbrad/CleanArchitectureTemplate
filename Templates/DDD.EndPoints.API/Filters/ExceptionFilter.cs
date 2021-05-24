@@ -1,6 +1,5 @@
 ﻿using Framework.Domain.Error;
 using Helper.Exceptions;
-using Helper.Exceptions.Exceptions;
 using Logger.EndPoints.Service.Base;
 using Logger.EndPoints.Service.Logger.Enums;
 using Microsoft.AspNetCore.Http;
@@ -9,7 +8,7 @@ using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace $safeprojectname$.Filters
 {
-    public class ExceptionFilter : IExceptionFilter
+    public class ExceptionFilter: IExceptionFilter
     {
         private readonly ILoggerService _loggerService;
         public ExceptionFilter(ILoggerService loggerService)
@@ -23,16 +22,30 @@ namespace $safeprojectname$.Filters
             var message = "خطای سرور";
             LogType errorType;
 
+#if DEBUG
+            message = ex.ToString();
+#endif
+
             switch (ex)
             {
-                case UnauthorizedException _:
-                    context.Result = new UnauthorizedObjectResult(new Error(ex.Message, ex.HResult));
-                    return;
                 case BaseException _:
-                    statusCode = StatusCodes.Status400BadRequest;
+                    statusCode = 499;
                     errorType = LogType.Warning;
                     message = ex.Message;
                     errorCode = ex.HResult;
+                    break;
+
+                case Models.ApiException apiException:
+                    statusCode = 499;
+                    errorType = LogType.Warning;
+                    message = apiException.Message;
+                    errorCode = apiException.HResult;
+
+                    if (apiException.GetResult() is IError error)
+                    {
+                        errorCode = error.Code;
+                        message = error.Message;
+                    }
                     break;
                 default:
                     errorType = LogType.Error;
