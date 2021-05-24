@@ -7,12 +7,14 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="RepoDb.SqlServer" Version="1.0.13" />
-		<PackageReference Include="RepoDb.SqlServer.BulkOperations" Version="1.0.14" />
-		<PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-		<PackageReference Include="Dapper" Version="2.0.35" />
-		<PackageReference Include="Helper.Exceptions" Version="1.0.5" />
-	</ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="5.0.6" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="5.0.6" />
+    <PackageReference Include="Helper.Exceptions" Version="1.0.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="5.0.6">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
 
 	<ItemGroup>
 	  <ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />

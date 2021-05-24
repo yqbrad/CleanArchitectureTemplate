@@ -8,19 +8,13 @@
 
 	<ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
-    <PackageReference Include="Microsoft.AspNetCore.Hosting" Version="2.2.7" />
-    <PackageReference Include="MongoDB.Driver" Version="2.11.5" />
     <PackageReference Include="RawRabbit" Version="2.0.0-beta8" />
     <PackageReference Include="RawRabbit.DependencyInjection.ServiceCollection" Version="2.0.0-beta8" />
     <PackageReference Include="RawRabbit.Operations.Publish" Version="2.0.0-beta8" />
     <PackageReference Include="RawRabbit.Operations.Subscribe" Version="2.0.0-beta8" />
     <PackageReference Include="Services.Core" Version="0.1.13" />
+    <PackageReference Include="EventStore.Client" Version="21.2.0" />
     <PackageReference Include="Services.WebApiCaller" Version="0.1.18" />
-    <PackageReference Include="StackExchange.Redis" Version="2.2.11" />
-    <PackageReference Include="System.Data.SqlClient" Version="4.8.2" />
-    <PackageReference Include="EventStore.Client" Version="20.10.0" />
-    <PackageReference Include="MediatR" Version="9.0.0" />
-    <PackageReference Include="MediatR.Extensions.Microsoft.DependencyInjection" Version="9.0.0" />
     <PackageReference Include="Logger.EndPoints.Service" Version="0.1.28" />
   </ItemGroup>
 

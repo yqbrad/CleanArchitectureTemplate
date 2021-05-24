@@ -4,7 +4,7 @@ namespace DDD.DomainModels._Exceptions
 {
     public enum ExceptionType
     {
-
+        InvalidValueObjectStateException = 101
     }
 
     public static class ExceptionTypeExtension

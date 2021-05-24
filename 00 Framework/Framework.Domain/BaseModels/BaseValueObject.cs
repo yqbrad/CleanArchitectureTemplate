@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace Framework.Domain.BaseModels
 {
-    public abstract class BaseValueObject<TValueObject> : IEquatable<TValueObject>
+    public abstract class BaseValueObject<TValueObject>: IEquatable<TValueObject>
         where TValueObject : BaseValueObject<TValueObject>
     {
         public abstract bool ObjectIsEqual(TValueObject otherObject);

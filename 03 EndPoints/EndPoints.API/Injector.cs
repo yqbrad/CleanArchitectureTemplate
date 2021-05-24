@@ -1,10 +1,9 @@
 ﻿using DDD.Contracts._Base;
 using DDD.EndPoints.API.Configuration;
-using DDD.EndPoints.API.Extension;
 using DDD.EndPoints.API.Models;
 using DDD.Infrastructure.DataAccess._Base;
 using DDD.Infrastructure.Service;
-using DDD.Infrastructure.Service.DB;
+using DDD.Infrastructure.Service.ApiConfig;
 using DDD.Infrastructure.Service.Dispatcher;
 using DDD.Infrastructure.Service.EventSourcing;
 using DDD.Infrastructure.Service.RabbitMq;
@@ -13,6 +12,8 @@ using Framework.Domain.Events;
 using Logger.EndPoints.Service.Utilities;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Services.Core.Interfaces;
+using Services.WebApiCaller;
 
 namespace DDD.EndPoints.API
 {
@@ -22,16 +23,16 @@ namespace DDD.EndPoints.API
         {
             services.AddHttpContextAccessor();
             services.AddScoped<IApplicant, Applicant>();
-            services.AddLogger();
             services.AddSingleton<IUnitOfWorkConfiguration, UnitOfWorkConfig>();
-            services.AddTransient<IUnitOfWork, UnitOfWork>();
-            services.AddScoped<DatabaseInitializer>();
+            services.AddDbContext<ServiceDbContext>();
+            services.AddTransient<IUnitOfWork, UnitOfWork<ServiceDbContext>>();
             services.AddEventSourcing(configuration);
             services.AddRabbitMq(configuration);
-            services.AddApiConfig();
+            services.AddSingleton<IApiConfiguration, ApiConfiguration>();
+            services.AddSingleton<IApiCaller, ApiCaller>();
+            services.AddLogger();
             services.AddSingleton<IInternalEventDispatcher, InternalEventDispatcher>();
             services.AddScoped<IEventBus, EventBus>();
-
 
         }
     }

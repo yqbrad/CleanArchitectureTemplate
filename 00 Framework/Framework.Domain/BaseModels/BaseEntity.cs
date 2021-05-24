@@ -1,5 +1,5 @@
-﻿using System;
-using Framework.Domain.Events;
+﻿using Framework.Domain.Events;
+using System;
 
 namespace Framework.Domain.BaseModels
 {
@@ -32,7 +32,7 @@ namespace Framework.Domain.BaseModels
             if (GetType() != other.GetType())
                 return false;
 
-            if (Id.Equals(default ) || other.Id.Equals(default))
+            if (Id.Equals(default) || other.Id.Equals(default))
                 return false;
 
             return Id.Equals(other.Id);

@@ -1,4 +1,5 @@
-﻿namespace DDD.Contracts._Base
+﻿
+namespace DDD.Contracts._Base
 {
     public class InitialData
     {

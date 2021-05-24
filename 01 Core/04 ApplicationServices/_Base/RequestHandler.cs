@@ -3,7 +3,7 @@ using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
 using Framework.Domain.Requests;
 
-namespace DDD.ApplicationServices
+namespace DDD.ApplicationServices._Base
 {
     public abstract class RequestHandler : BaseApplicationService, IRequestHandler
     {

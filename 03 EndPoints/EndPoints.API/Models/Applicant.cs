@@ -1,33 +1,36 @@
-﻿using System;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using Framework.Domain.EventBus;
+﻿using Framework.Domain.EventBus;
 using Microsoft.AspNetCore.Http;
+using System;
+using System.IdentityModel.Tokens.Jwt;
 
 namespace DDD.EndPoints.API.Models
 {
-    public class Applicant : IApplicant
+    public class Applicant: IApplicant
     {
+        public Guid UserId { get; }
+        public string Token { get; }
+
         public Applicant(IHttpContextAccessor http)
         {
-            if (http.HttpContext != null)
+            if (http.HttpContext is null)
+                return;
+
+            var isExistToken = http.HttpContext.Request.Headers.TryGetValue("Authorization",
+                out var authorization);
+
+            if (isExistToken && !string.IsNullOrEmpty(authorization))
             {
-                string authorization = http.HttpContext.Request.Headers["Authorization"];
-                if (!string.IsNullOrEmpty(authorization))
-                    if (authorization.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
-                        Token = authorization.Substring("Bearer ".Length).Trim();
+                var strAuth = authorization.ToString();
+                if (strAuth.StartsWith("Bearer ", StringComparison.OrdinalIgnoreCase))
+                    Token = strAuth["Bearer ".Length..].Trim();
             }
 
-            if (Token != null)
-            {
-                var jwt = new JwtSecurityTokenHandler().ReadJwtToken(Token);
-                UserId = int.Parse(jwt.Claims.FirstOrDefault(s => s.Type == "userId")?.Value ?? "0");
-                SessionExpireTime = jwt.ValidTo;
-            }
+            if (Token == null)
+                return;
+
+            var jwt = new JwtSecurityTokenHandler().ReadJwtToken(Token);
+            if (!string.IsNullOrEmpty(jwt.Subject))
+                UserId = Guid.Parse(jwt.Subject);
         }
-
-        public int UserId { get; }
-        public string Token { get; }
-        public DateTime SessionExpireTime { get; }
     }
 }

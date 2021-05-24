@@ -4,8 +4,7 @@ namespace Framework.Domain.EventBus
 {
     public interface IApplicant
     {
-        public int UserId { get; }
+        public Guid UserId { get; }
         public string Token { get; }
-        public DateTime SessionExpireTime { get; }
     }
 }

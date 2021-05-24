@@ -1,7 +1,7 @@
 ﻿using DDD.Contracts._Base;
 using Framework.Domain.EventBus;
 
-namespace DDD.ApplicationServices
+namespace DDD.ApplicationServices._Base
 {
     public abstract class BaseApplicationService
     {

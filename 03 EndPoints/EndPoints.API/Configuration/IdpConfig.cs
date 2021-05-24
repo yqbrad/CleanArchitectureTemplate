@@ -11,6 +11,7 @@ namespace DDD.EndPoints.API.Configuration
         public string ServerUrl { get; set; }
         public string AuthorizationUrl { get; set; }
         public string TokenUrl { get; set; }
+        public bool RequireHttps { get; set; }
         public Dictionary<string, string> Scopes { get; set; }
     }
 }

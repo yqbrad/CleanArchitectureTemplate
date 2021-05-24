@@ -9,10 +9,6 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Agg\" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
 		<ProjectReference Include="..\01 DomainModels\01 DDD.DomainModels.csproj" />
