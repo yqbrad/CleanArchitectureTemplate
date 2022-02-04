@@ -22,7 +22,7 @@ namespace DDD.Infrastructure.Service.RabbitMq
                         => q.WithName(GetQueueName<TCommand>()))));
 
         public static Task WithEventHandlerAsync<TEvent>(this IBusClient bus, IEventHandler<TEvent> handler)
-            where TEvent : IEvent
+            where TEvent : IDomainEvent
             => bus.SubscribeAsync<TEvent>(msg
                 => handler.HandleAsync(msg), ctx
                 => ctx.UseConsumerConfiguration(cfg

@@ -1,5 +1,5 @@
-﻿using DDD.DomainModels._Exceptions;
-using Framework.Domain.Error;
+﻿using Framework.Domain.Error;
+using Framework.Domain.Exceptions;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 

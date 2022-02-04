@@ -1,8 +1,8 @@
-﻿namespace DDD.DomainModels._Exceptions
+﻿namespace Framework.Domain.Exceptions
 {
     public class DomainException : BaseException
     {
-        public override int ExCode => 0;
+        public override int ExCode => 2;
         public override string ExMessage { get; }
 
         public DomainException(string message)

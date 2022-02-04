@@ -1,10 +1,10 @@
 ﻿using DDD.DomainModels.Properties;
 
-namespace DDD.DomainModels._Exceptions
+namespace DDD.DomainModels._Common
 {
     public enum ExceptionType
     {
-        InvalidValueObjectStateException = 101
+        Exception = 101
     }
 
     public static class ExceptionTypeExtension

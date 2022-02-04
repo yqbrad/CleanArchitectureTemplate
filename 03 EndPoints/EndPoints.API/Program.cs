@@ -1,6 +1,6 @@
 using System.Reflection;
 using System.Text.Json.Serialization;
-using DDD.Contracts._Base;
+using DDD.Contracts._Common;
 using DDD.EndPoints.API;
 using DDD.EndPoints.API.Extension;
 using DDD.EndPoints.API.Filters;

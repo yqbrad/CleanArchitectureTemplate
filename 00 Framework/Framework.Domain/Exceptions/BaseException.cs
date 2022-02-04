@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace DDD.DomainModels._Exceptions;
+namespace Framework.Domain.Exceptions;
 
 [Serializable]
 public abstract class BaseException : ApplicationException

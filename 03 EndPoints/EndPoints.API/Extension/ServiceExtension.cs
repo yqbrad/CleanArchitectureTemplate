@@ -34,6 +34,8 @@ namespace DDD.EndPoints.API.Extension
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
                 c.OperationFilter<SwaggerAuthorizeOperationFilter>();
+                c.SchemaFilter<SwaggerEnumSchemaFilter>();
+                c.SchemaFilter<SwaggerDefaultValueFilter>();
                 c.AddSecurityDefinition("oauth2", new OpenApiSecurityScheme
                 {
                     Type = SecuritySchemeType.OAuth2,

@@ -24,7 +24,7 @@ namespace DDD.Infrastructure.Service.EventSourcing
         }
 
         public async Task SaveAsync<TEvent>(string aggregateName, string streamId, IEnumerable<TEvent> events)
-           where TEvent : IEvent
+           where TEvent : IDomainEvent
         {
             if (!events.Any())
                 return;

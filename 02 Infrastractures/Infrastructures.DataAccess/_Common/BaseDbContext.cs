@@ -4,14 +4,14 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using DDD.DomainModels._Exceptions;
 using Framework.Domain.BaseModels;
+using Framework.Domain.Exceptions;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace DDD.Infrastructure.DataAccess._Base
+namespace DDD.Infrastructure.DataAccess._Common
 {
     public abstract class BaseDbContext : DbContext
     {

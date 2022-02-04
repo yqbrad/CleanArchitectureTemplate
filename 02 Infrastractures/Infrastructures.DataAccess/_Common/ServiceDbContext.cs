@@ -1,7 +1,7 @@
-﻿using DDD.Contracts._Base;
+﻿using DDD.Contracts._Common;
 using Microsoft.EntityFrameworkCore;
 
-namespace DDD.Infrastructure.DataAccess._Base
+namespace DDD.Infrastructure.DataAccess._Common
 {
     public class ServiceDbContext: BaseDbContext
     {

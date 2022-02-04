@@ -1,10 +1,10 @@
 ﻿using System.Threading.Tasks;
-using DDD.Contracts._Base;
+using DDD.Contracts._Common;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
 using Framework.Domain.Requests;
 
-namespace DDD.ApplicationServices._Base
+namespace DDD.ApplicationServices._Common
 {
     public abstract class RequestHandlerAsync : BaseApplicationService, IRequestHandler
     {

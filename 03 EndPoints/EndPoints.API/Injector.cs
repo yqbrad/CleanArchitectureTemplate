@@ -1,6 +1,6 @@
-﻿using DDD.Contracts._Base;
+﻿using DDD.Contracts._Common;
 using DDD.EndPoints.API.Models;
-using DDD.Infrastructure.DataAccess._Base;
+using DDD.Infrastructure.DataAccess._Common;
 using DDD.Infrastructure.Service;
 using DDD.Infrastructure.Service.Configuration;
 using DDD.Infrastructure.Service.Dispatcher;

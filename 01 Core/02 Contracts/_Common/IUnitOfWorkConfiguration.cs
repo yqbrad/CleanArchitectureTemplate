@@ -1,5 +1,5 @@
 ﻿
-namespace DDD.Contracts._Base
+namespace DDD.Contracts._Common
 {
     public interface IUnitOfWorkConfiguration
     {

@@ -1,9 +1,9 @@
-﻿using DDD.Contracts._Base;
-using System;
+﻿using System;
 using System.Threading.Tasks;
-using DDD.DomainModels._Exceptions;
+using DDD.Contracts._Common;
+using Framework.Domain.Exceptions;
 
-namespace DDD.Infrastructure.DataAccess._Base
+namespace DDD.Infrastructure.DataAccess._Common
 {
     public sealed class UnitOfWork<TDbContext> : IUnitOfWork
         where TDbContext : BaseDbContext

@@ -17,7 +17,7 @@ namespace DDD.Infrastructure.Service.Dispatcher
         }
 
         public async Task DispatchEventAsync<T>(T @event)
-            where T : IEvent
+            where T : IDomainEvent
         {
             if (@event == null)
                 throw new ArgumentNullException($"{nameof(@event)} Event can not be null.");
@@ -38,7 +38,7 @@ namespace DDD.Infrastructure.Service.Dispatcher
         }
 
         public async Task DispatchEventAsync<T>(params T[] events)
-            where T : IEvent
+            where T : IDomainEvent
         {
             foreach (var @event in events)
             {

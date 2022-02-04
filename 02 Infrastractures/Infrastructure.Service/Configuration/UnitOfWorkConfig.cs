@@ -1,4 +1,4 @@
-﻿using DDD.Contracts._Base;
+﻿using DDD.Contracts._Common;
 using Microsoft.Extensions.Configuration;
 
 namespace DDD.Infrastructure.Service.Configuration

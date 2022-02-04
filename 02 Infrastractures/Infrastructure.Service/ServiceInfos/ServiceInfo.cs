@@ -1,8 +1,8 @@
-﻿using Framework.Domain.Dtoes;
+﻿using Framework.Domain.Results;
 
 namespace DDD.Infrastructure.Service.ServiceInfos
 {
-    public class ServiceInfo : IDto
+    public class ServiceInfo : IResult
     {
         public string Name { get; set; }
         public string Ip { get; set; }
