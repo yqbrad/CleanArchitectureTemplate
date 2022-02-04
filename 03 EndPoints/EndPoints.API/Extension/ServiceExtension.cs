@@ -100,6 +100,7 @@ namespace DDD.EndPoints.API.Extension
             app.UseSwaggerUI(c =>
             {
                 c.SwaggerEndpoint(config.Swagger.Url, config.Swagger.Name);
+                c.InjectStylesheet("/swagger-ui/SwaggerDark.css");
                 c.OAuthClientId(config.Idp.SwaggerClientId);
                 c.OAuthAppName(config.Idp.AppName);
                 c.OAuthClientSecret(config.Idp.SwaggerClientSecret);
