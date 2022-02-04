@@ -3,7 +3,7 @@ using Swashbuckle.AspNetCore.SwaggerGen;
 
 namespace DDD.EndPoints.API.Filters
 {
-    public class DefaultValueFilter : ISchemaFilter
+    public class SwaggerDefaultValueFilter : ISchemaFilter
     {
         public void Apply(OpenApiSchema schema, SchemaFilterContext context)
         {

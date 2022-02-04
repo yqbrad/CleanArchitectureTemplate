@@ -1,7 +1,7 @@
 ﻿using DDD.Contracts._Base;
 using Microsoft.Extensions.Configuration;
 
-namespace DDD.EndPoints.API.Configuration
+namespace DDD.Infrastructure.Service.Configuration
 {
     public class UnitOfWorkConfig : IUnitOfWorkConfiguration
     {

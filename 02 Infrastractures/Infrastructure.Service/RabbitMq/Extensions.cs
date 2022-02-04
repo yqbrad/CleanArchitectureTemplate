@@ -30,13 +30,17 @@ namespace DDD.Infrastructure.Service.RabbitMq
                         => q.WithName(GetQueueName<TEvent>()))));
 
         private static string GetQueueName<T>()
-            => $"{Assembly.GetEntryAssembly().GetName()}/{typeof(T).Name}";
+            => $"{Assembly.GetEntryAssembly()?.GetName()}/{typeof(T).Name}";
 
         public static void AddRabbitMq(this IServiceCollection services, IConfiguration configuration)
         {
             var options = new RabbitMqOptions();
             var section = configuration.GetSection("RabbitMq");
             section.Bind(options);
+
+            if (!options.IsEnable)
+                return;
+
             var client = RawRabbitFactory.CreateSingleton(new RawRabbitOptions
             {
                 ClientConfiguration = options

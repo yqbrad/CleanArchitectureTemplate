@@ -1,9 +1,9 @@
-﻿using DDD.EndPoints.API.Configuration;
-using Framework.Domain.Requests;
+﻿using Framework.Domain.Requests;
 using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Threading.Tasks;
 using DDD.EndPoints.API.Extension;
+using DDD.Infrastructure.Service.Configuration;
 
 namespace DDD.EndPoints.API.Controllers
 {

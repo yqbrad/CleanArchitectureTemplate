@@ -1,6 +1,4 @@
 ﻿using Framework.Domain.EventBus;
-using Microsoft.AspNetCore.Http;
-using System;
 using System.IdentityModel.Tokens.Jwt;
 
 namespace DDD.EndPoints.API.Models

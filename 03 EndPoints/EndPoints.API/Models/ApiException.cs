@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace DDD.EndPoints.API.Models
+﻿namespace DDD.EndPoints.API.Models
 {
     public class ApiException: Exception
     {

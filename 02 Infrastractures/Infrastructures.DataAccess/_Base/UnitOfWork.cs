@@ -1,11 +1,11 @@
 ﻿using DDD.Contracts._Base;
-using Helper.Exceptions.Exceptions;
 using System;
 using System.Threading.Tasks;
+using DDD.DomainModels._Exceptions;
 
 namespace DDD.Infrastructure.DataAccess._Base
 {
-    public sealed class UnitOfWork<TDbContext>: IUnitOfWork
+    public sealed class UnitOfWork<TDbContext> : IUnitOfWork
         where TDbContext : BaseDbContext
     {
         //public IAppRepository App { get; }

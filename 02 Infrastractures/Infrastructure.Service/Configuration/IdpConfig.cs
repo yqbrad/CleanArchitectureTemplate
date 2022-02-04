@@ -1,9 +1,10 @@
 ﻿using System.Collections.Generic;
 
-namespace DDD.EndPoints.API.Configuration
+namespace DDD.Infrastructure.Service.Configuration
 {
     public class IdpConfig
     {
+        public bool IsEnable { get; set; }
         public string AppName { get; set; }
         public string SwaggerClientId { get; set; }
         public string SwaggerClientSecret { get; set; }

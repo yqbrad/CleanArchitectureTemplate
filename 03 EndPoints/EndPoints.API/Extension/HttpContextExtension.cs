@@ -1,5 +1,4 @@
-﻿using DDD.EndPoints.API.Configuration;
-using Microsoft.AspNetCore.Http;
+﻿using DDD.Infrastructure.Service.Configuration;
 
 namespace DDD.EndPoints.API.Extension
 {

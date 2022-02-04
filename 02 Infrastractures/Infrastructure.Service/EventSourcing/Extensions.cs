@@ -11,6 +11,10 @@ namespace DDD.Infrastructure.Service.EventSourcing
             var option = new EventSourcingOptions();
             var section = configuration.GetSection("EventStore");
             section.Bind(option);
+
+            if (!option.IsEnable)
+                return;
+
             services.Configure<EventSourcingOptions>(section);
             services.AddSingleton<IEventSource, EventSourceInitializer>();
         }

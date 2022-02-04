@@ -1,16 +1,10 @@
-﻿using DDD.EndPoints.API.Configuration;
+﻿using System.Reflection;
 using DDD.EndPoints.API.Filters;
+using DDD.Infrastructure.Service.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.AspNetCore.Builder;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Primitives;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Reflection;
 
 namespace DDD.EndPoints.API.Extension
 {
@@ -58,6 +52,9 @@ namespace DDD.EndPoints.API.Extension
 
         public static void AddIdp(this IServiceCollection services, ServiceConfig config)
         {
+            if (!config.Idp.IsEnable)
+                return;
+
             services
                 .AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
                 .AddIdentityServerAuthentication(JwtBearerDefaults.AuthenticationScheme, options =>

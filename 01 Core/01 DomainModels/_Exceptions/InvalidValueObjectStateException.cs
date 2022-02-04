@@ -1,8 +1,6 @@
-﻿using Helper.Exceptions;
-
-namespace DDD.DomainModels._Exceptions
+﻿namespace DDD.DomainModels._Exceptions
 {
-    public class InvalidValueObjectStateException: BaseException
+    public class InvalidValueObjectStateException : BaseException
     {
         public override int ExCode => ExceptionType.InvalidValueObjectStateException.Code();
         public override string ExMessage { get; }

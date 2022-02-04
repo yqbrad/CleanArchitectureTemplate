@@ -1,8 +1,5 @@
-﻿using Framework.Domain.Error;
-using Helper.Exceptions;
-using Logger.EndPoints.Service.Base;
-using Logger.EndPoints.Service.Logger.Enums;
-using Microsoft.AspNetCore.Http;
+﻿using DDD.DomainModels._Exceptions;
+using Framework.Domain.Error;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -10,9 +7,9 @@ namespace DDD.EndPoints.API.Filters
 {
     public class ExceptionFilter: IExceptionFilter
     {
-        private readonly ILoggerService _loggerService;
-        public ExceptionFilter(ILoggerService loggerService)
-            => _loggerService = loggerService;
+        //private readonly ILoggerService _loggerService;
+        //public ExceptionFilter(ILoggerService loggerService)
+        //    => _loggerService = loggerService;
 
         public void OnException(ExceptionContext context)
         {
@@ -20,7 +17,7 @@ namespace DDD.EndPoints.API.Filters
             var statusCode = StatusCodes.Status500InternalServerError;
             var errorCode = 0;
             var message = "خطای سرور";
-            LogType errorType;
+            //LogType errorType;
 
 #if DEBUG
             message = ex.ToString();
@@ -30,14 +27,14 @@ namespace DDD.EndPoints.API.Filters
             {
                 case BaseException _:
                     statusCode = 499;
-                    errorType = LogType.Warning;
+                    //errorType = LogType.Warning;
                     message = ex.Message;
                     errorCode = ex.HResult;
                     break;
 
                 case Models.ApiException apiException:
                     statusCode = 499;
-                    errorType = LogType.Warning;
+                    //errorType = LogType.Warning;
                     message = apiException.Message;
                     errorCode = apiException.HResult;
 
@@ -48,11 +45,11 @@ namespace DDD.EndPoints.API.Filters
                     }
                     break;
                 default:
-                    errorType = LogType.Error;
+                    //errorType = LogType.Error;
                     break;
             }
 
-            _loggerService.LogAsync(ex, errorType);
+            //_loggerService.LogAsync(ex, errorType);
 
             context.Result = new ObjectResult(new Error(message, errorCode))
             {

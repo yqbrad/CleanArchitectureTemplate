@@ -4,7 +4,6 @@ using DDD.EndPoints.API.Extension;
 using DDD.EndPoints.API.Filters;
 using Framework.Domain.Error;
 using HealthChecks.UI.Client;
-using Logger.EndPoints.Service.Utilities;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Hosting;
@@ -25,7 +24,7 @@ namespace DDD.EndPoints.API
         {
             var serviceConfig = services.AddServiceConfig(Configuration);
 
-            services.AddIdp(serviceConfig);
+            //services.AddIdp(serviceConfig);
             services.Inject(Configuration);
             services.AddResponseCaching();
             services.AddHeaderPropagation(serviceConfig);
@@ -46,7 +45,11 @@ namespace DDD.EndPoints.API
               .SetCompatibilityVersion(CompatibilityVersion.Version_3_0);
         }
 
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, ServiceConfig config)
+        public void Configure(
+            IApplicationBuilder app,
+            IWebHostEnvironment env,
+            ServiceConfig config,
+            IUnitOfWork unitOfWork)
         {
             // Look at this to middleware order:
             // https://docs.microsoft.com/en-us/aspnet/core/fundamentals/middleware/?view=aspnetcore-5.0#middleware-order
@@ -67,6 +70,7 @@ namespace DDD.EndPoints.API
             app.UseAuthorization();
             // app.UseSession();
             // app.UseResponseCompression();
+
             app.UseResponseCaching();
             app.UseEndpoints(endpoints => { endpoints.MapControllers(); });
 
@@ -82,14 +86,12 @@ namespace DDD.EndPoints.API
                 ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
             });
 
-            Initialize(app, config);
+            Initialize(app, config,unitOfWork);
         }
 
-        private static void Initialize(IApplicationBuilder app, ServiceConfig config)
+        private static void Initialize(IApplicationBuilder app, ServiceConfig config, IUnitOfWork unitOfWork)
         {
-            using var scope = app.ApplicationServices.CreateScope();
-            scope.ServiceProvider.GetRequiredService<IUnitOfWork>().InitiateDatabase();
-            app.InitializeLogger(config.LoggerToken);
+            unitOfWork.InitiateDatabase();
         }
     }
 }

@@ -6,7 +6,7 @@ using Framework.Domain.Data;
 using Framework.Domain.EventBus;
 using Framework.Domain.Events;
 using RawRabbit;
-using Services.Core.Interfaces;
+//using Services.Core.Interfaces;
 
 namespace DDD.Infrastructure.Service
 {
@@ -14,25 +14,25 @@ namespace DDD.Infrastructure.Service
     {
         public IApplicant Applicant { get; }
 
-        private readonly IApiCaller _apiCaller;
+        //private readonly IApiCaller _apiCaller;
         private readonly IBusClient _rabbitBusClient;
         private readonly IEventSource _eventSource;
         private readonly IInternalEventDispatcher _internalEventDispatcher;
 
         public EventBus(IInternalEventDispatcher internalEventDispatcher, IBusClient busClient,
-            IEventSource eventSource, IApiCaller apiCaller, IApplicant applicant)
+            IEventSource eventSource, /*IApiCaller apiCaller,*/ IApplicant applicant)
         {
             Applicant = applicant;
 
             _internalEventDispatcher = internalEventDispatcher;
             _rabbitBusClient = busClient;
             _eventSource = eventSource;
-            _apiCaller = apiCaller;
+            //_apiCaller = apiCaller;
         }
 
         public ApiServices GetApiServices()
         {
-            _apiCaller.SetAuthorizationToken("bearer", Applicant.Token);
+            //_apiCaller.SetAuthorizationToken("bearer", Applicant.Token);
             return new ApiServices();
         }
 

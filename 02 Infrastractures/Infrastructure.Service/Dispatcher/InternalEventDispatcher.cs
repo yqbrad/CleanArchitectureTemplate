@@ -2,7 +2,6 @@
 using System.Threading.Tasks;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.Events;
-using Logger.EndPoints.Service.Base;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace DDD.Infrastructure.Service.Dispatcher
@@ -10,11 +9,11 @@ namespace DDD.Infrastructure.Service.Dispatcher
     public class InternalEventDispatcher : IInternalEventDispatcher
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly ILoggerService _loggerService;
-        public InternalEventDispatcher(IServiceProvider serviceProvider, ILoggerService loggerService)
+        //private readonly ILoggerService _loggerService;
+        public InternalEventDispatcher(IServiceProvider serviceProvider/*, ILoggerService loggerService*/)
         {
             _serviceProvider = serviceProvider;
-            _loggerService = loggerService;
+            //_loggerService = loggerService;
         }
 
         public async Task DispatchEventAsync<T>(T @event)
@@ -33,7 +32,7 @@ namespace DDD.Infrastructure.Service.Dispatcher
                     }
                     catch (Exception e)
                     {
-                        await _loggerService.LogAsync(e);
+                        //await _loggerService.LogAsync(e);
                     }
                 }
         }
@@ -63,7 +62,7 @@ namespace DDD.Infrastructure.Service.Dispatcher
                     }
                     catch (Exception e)
                     {
-                        await _loggerService.LogAsync(e);
+                        //await _loggerService.LogAsync(e);
                     }
                 }
             }

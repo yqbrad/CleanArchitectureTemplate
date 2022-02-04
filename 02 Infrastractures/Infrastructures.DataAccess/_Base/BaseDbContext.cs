@@ -4,8 +4,8 @@ using System.Globalization;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
+using DDD.DomainModels._Exceptions;
 using Framework.Domain.BaseModels;
-using Helper.Exceptions.Exceptions;
 using Microsoft.Data.SqlClient;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
@@ -13,7 +13,7 @@ using Microsoft.EntityFrameworkCore.Storage;
 
 namespace DDD.Infrastructure.DataAccess._Base
 {
-    public abstract class BaseDbContext: DbContext
+    public abstract class BaseDbContext : DbContext
     {
         private IDbContextTransaction _transaction;
         private const string Schema = "dbo";

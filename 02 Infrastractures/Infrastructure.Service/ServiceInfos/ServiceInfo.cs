@@ -1,6 +1,6 @@
 ﻿using Framework.Domain.Dtoes;
 
-namespace DDD.DomainModels
+namespace DDD.Infrastructure.Service.ServiceInfos
 {
     public class ServiceInfo : IDto
     {
