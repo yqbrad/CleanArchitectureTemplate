@@ -29,8 +29,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Blog\Entities\" />
-	  <Folder Include="Blog\ValueObjects\" />
+	  <Folder Include="People\ValueObjects\" />
 	</ItemGroup>
 
 </Project>

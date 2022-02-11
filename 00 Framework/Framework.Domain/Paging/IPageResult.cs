@@ -1,6 +1,8 @@
-﻿namespace Framework.Domain.Paging
+﻿using Framework.Domain.Results;
+
+namespace Framework.Domain.Paging
 {
-    public interface IPageQuery
+    public interface IPageResult : IResult
     {
         public int PageNumber { get; set; }
         public int PageSize { get; set; }

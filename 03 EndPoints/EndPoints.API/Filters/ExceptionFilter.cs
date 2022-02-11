@@ -1,57 +1,58 @@
 ﻿using Framework.Domain.Error;
 using Framework.Domain.Exceptions;
+using Framework.Domain.Logger;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace DDD.EndPoints.API.Filters
 {
-    public class ExceptionFilter: IExceptionFilter
+    public class ExceptionFilter : IAsyncExceptionFilter
     {
-        //private readonly ILoggerService _loggerService;
-        //public ExceptionFilter(ILoggerService loggerService)
-        //    => _loggerService = loggerService;
+        private readonly ILoggerService _loggerService;
+        public ExceptionFilter(ILoggerService loggerService)
+            => _loggerService = loggerService;
 
-        public void OnException(ExceptionContext context)
+        public async Task OnExceptionAsync(ExceptionContext context)
         {
-            var ex = context.Exception;
-            var statusCode = StatusCodes.Status500InternalServerError;
-            var errorCode = 0;
-            var message = "خطای سرور";
-            //LogType errorType;
+            int statusCode;
+            Error error;
 
-#if DEBUG
-            message = ex.ToString();
-#endif
-
-            switch (ex)
+            switch (context.Exception)
             {
-                case BaseException _:
-                    statusCode = 499;
-                    //errorType = LogType.Warning;
-                    message = ex.Message;
-                    errorCode = ex.HResult;
+                case ValidationRequestException e:
+                    statusCode = StatusCodes.Status400BadRequest;
+                    error = new Error(e.ExMessages, e.ExCode);
+                    break;
+                case BaseException e:
+                    statusCode = StatusCodes.Status400BadRequest;
+                    error = new Error(e.Message, e.ExCode);
                     break;
 
-                case Models.ApiException apiException:
-                    statusCode = 499;
-                    //errorType = LogType.Warning;
-                    message = apiException.Message;
-                    errorCode = apiException.HResult;
+                //case Models.ApiException apiException:
+                //    statusCode = 499;
+                //    //errorType = LogType.Warning;
+                //    message = apiException.Message;
+                //    errorCode = apiException.HResult;
 
-                    if (apiException.GetResult() is IError error)
-                    {
-                        errorCode = error.Code;
-                        message = error.Message;
-                    }
-                    break;
+                //    if (apiException.GetResult() is IError error)
+                //    {
+                //        errorCode = error.Code;
+                //        message = error.Message;
+                //    }
+                //    break;
                 default:
-                    //errorType = LogType.Error;
+                    statusCode = StatusCodes.Status500InternalServerError;
+                    var defaultMessage = "خطای سرور";
+#if DEBUG
+                    defaultMessage = context.Exception.ToString();
+#endif
+                    error = new Error(defaultMessage, 0);
                     break;
             }
 
-            //_loggerService.LogAsync(ex, errorType);
+            await _loggerService.LogAsync(context.Exception);
 
-            context.Result = new ObjectResult(new Error(message, errorCode))
+            context.Result = new ObjectResult(error)
             {
                 StatusCode = statusCode
             };

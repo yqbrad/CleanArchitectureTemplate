@@ -6,12 +6,12 @@ namespace DDD.ApplicationServices._Common
     public abstract class BaseApplicationService
     {
         protected readonly IUnitOfWork UnitOfWork;
-        protected readonly IEventBus EventBus;
+        protected readonly IServiceBus ServiceBus;
 
-        protected BaseApplicationService(IUnitOfWork unitOfWork, IEventBus eventBus)
+        protected BaseApplicationService(IUnitOfWork unitOfWork, IServiceBus serviceBus)
         {
             UnitOfWork = unitOfWork;
-            EventBus = eventBus;
+            ServiceBus = serviceBus;
         }
     }
 }

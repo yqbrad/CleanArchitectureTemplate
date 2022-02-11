@@ -1,43 +1,36 @@
-﻿using DDD.Contracts._Common;
+﻿using System.Threading.Tasks;
+using DDD.Contracts._Common;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
 using Framework.Domain.Requests;
+using Framework.Domain.Results;
 
 namespace DDD.ApplicationServices._Common
 {
     public abstract class RequestHandler : BaseApplicationService, IRequestHandler
     {
-        protected RequestHandler(IUnitOfWork unitOfWork, IEventBus eventBus)
-            : base(unitOfWork, eventBus) { }
+        protected RequestHandler(IUnitOfWork unitOfWork, IServiceBus serviceBus)
+            : base(unitOfWork, serviceBus) { }
 
-        public abstract void Handle();
+        public abstract Task HandleAsync();
     }
 
-    public abstract class RequestHandlerByIn<TRequest> : BaseApplicationService, IRequestHandler
+    public abstract class RequestHandler<TRequest> : BaseApplicationService, IRequestHandler
         where TRequest : IRequest
     {
-        protected RequestHandlerByIn(IUnitOfWork unitOfWork, IEventBus eventBus)
-            : base(unitOfWork, eventBus) { }
+        protected RequestHandler(IUnitOfWork unitOfWork, IServiceBus serviceBus)
+            : base(unitOfWork, serviceBus) { }
 
-        public abstract void Handle(TRequest req);
+        public abstract Task HandleAsync(TRequest req);
     }
 
-    public abstract class RequestHandlerByOut<TResult> : BaseApplicationService, IRequestHandler
-        where TResult : class
+    public abstract class RequestHandler<TRequest, TResult> : BaseApplicationService, IRequestHandler
+        where TRequest : IRequest<TResult>
+        where TResult : IResult
     {
-        protected RequestHandlerByOut(IUnitOfWork unitOfWork, IEventBus eventBus)
-            : base(unitOfWork, eventBus) { }
+        protected RequestHandler(IUnitOfWork unitOfWork, IServiceBus serviceBus)
+            : base(unitOfWork, serviceBus) { }
 
-        public abstract TResult Handle();
-    }
-
-    public abstract class RequestHandler<TIn, TResult> : BaseApplicationService, IRequestHandler
-        where TIn : IRequest
-        where TResult : class
-    {
-        protected RequestHandler(IUnitOfWork unitOfWork, IEventBus eventBus)
-            : base(unitOfWork, eventBus) { }
-
-        public abstract TResult Handle(TIn req);
+        public abstract Task<TResult> HandleAsync(TRequest req);
     }
 }

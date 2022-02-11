@@ -2,51 +2,58 @@
 using Microsoft.AspNetCore.Mvc;
 using DDD.EndPoints.API.Extension;
 using DDD.Infrastructure.Service.Configuration;
+using FluentValidation;
+using FluentValidation.TestHelper;
+using Framework.Domain.Exceptions;
 
 namespace DDD.EndPoints.API.Controllers
 {
     public class BaseController : ControllerBase
     {
         protected ServiceConfig Config => HttpContext.ServiceContext();
-        
-        protected IActionResult Handle(Action handler)
-        {
-            handler();
-            return new OkResult();
-        }
+        protected IServiceProvider ServiceProvider => HttpContext.ServiceProvider();
 
-        protected IActionResult Handle<TRequest>(Action<TRequest> handler, TRequest request)
+        protected async Task<IActionResult> CreateAsync<TRequest, TResult>
+            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
+            where TRequest : IRequest<TResult>
+            where TResult : Framework.Domain.Results.IResult
         {
             if (request == null)
                 return new BadRequestResult();
 
-            handler(request);
-            return new OkResult();
-        }
+            await ValidateRequest<TRequest, TResult>(request);
 
-        protected IActionResult Handle<TResult>(Func<TResult> handler)
-        {
-            var result = handler();
+            var result = await handleAsync(request);
             if (result is null)
                 return new NoContentResult();
 
-            return new OkObjectResult(result);
+            return new OkObjectResult(result)
+            {
+                StatusCode = StatusCodes.Status201Created
+            };
         }
 
-        protected IActionResult Handle<TRequest, TResult>
-            (Func<TRequest, TResult> handler, TRequest request)
-        {
-            if (request == null)
-                return new BadRequestResult();
+        protected Task<IActionResult> CreateAsync<TRequest>
+            (Func<TRequest, Task> handler, TRequest request)
+            where TRequest : IRequest
+            => HandleAsync(handler, request);
 
-            var result = handler(request);
-            if (result is null)
-                return new NoContentResult();
+        protected Task<IActionResult> DeleteAsync<TRequest>
+            (Func<TRequest, Task> handler, TRequest request)
+            where TRequest : IRequest
+            => HandleAsync(handler, request);
 
-            return new OkObjectResult(result);
-        }
+        protected Task<IActionResult> GetAsync<TRequest, TResult>
+            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
+            where TRequest : IRequest<TResult>
+            where TResult : Framework.Domain.Results.IResult
+            => HandleAsync(handleAsync, request);
 
-        //=====================Async=================================
+        protected Task<IActionResult> GetAllAsync<TRequest, TResult>
+            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
+            where TRequest : IRequest<TResult>
+            where TResult : Framework.Domain.Results.IResult
+            => HandleAsync(handleAsync, request);
 
         protected async Task<IActionResult> HandleAsync(Func<Task> handler)
         {
@@ -61,31 +68,52 @@ namespace DDD.EndPoints.API.Controllers
             if (request == null)
                 return new BadRequestResult();
 
+            await ValidateRequest(request);
+
             await handler(request);
             return new OkResult();
         }
 
-        protected async Task<IActionResult> HandleAsync<TResult>(Func<Task<TResult>> handler)
-        {
-            var result = await handler();
-            if (result is null)
-                return new NoContentResult();
-
-            return new OkObjectResult(result);
-        }
-
         protected async Task<IActionResult> HandleAsync<TRequest, TResult>
             (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
-        where TRequest : IRequest
+            where TRequest : IRequest<TResult>
+            where TResult : Framework.Domain.Results.IResult
         {
             if (request == null)
                 return new BadRequestResult();
+
+            await ValidateRequest<TRequest, TResult>(request);
 
             var result = await handleAsync(request);
             if (result is null)
                 return new NoContentResult();
 
             return new OkObjectResult(result);
+        }
+
+        private async Task ValidateRequest<TRequest>(TRequest request)
+        where TRequest : IRequest
+        {
+            var validator = ServiceProvider.GetService<IValidator<TRequest>>();
+            if (validator is not null)
+            {
+                var validationResult = await validator.ValidateAsync(request);
+                if (!validationResult.IsValid)
+                    throw new ValidationRequestException(validationResult.Errors.Select(item => item.ErrorMessage));
+            }
+        }
+
+        private async Task ValidateRequest<TRequest, TResult>(TRequest request)
+            where TRequest : IRequest<TResult>
+            where TResult : Framework.Domain.Results.IResult
+        {
+            var validator = ServiceProvider.GetService<IValidator<TRequest>>();
+            if (validator is not null)
+            {
+                var validationResult = await validator.ValidateAsync(request);
+                if (!validationResult.IsValid)
+                    throw new ValidationRequestException(validationResult.Errors.Select(item => item.ErrorMessage));
+            }
         }
     }
 }

@@ -9,16 +9,19 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="10.3.6" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
 		<ProjectReference Include="..\01 DomainModels\01 DDD.DomainModels.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Folder Include="Blog\Dtos\" />
-	  <Folder Include="Blog\Repositories\" />
-	  <Folder Include="Blog\Results\" />
-	  <Folder Include="Blog\Requests\" />
+	  <Folder Include="People\Dtos\" />
+	  <Folder Include="People\Repositories\" />
+	  <Folder Include="People\Results\" />
 	</ItemGroup>
 
 </Project>

@@ -9,8 +9,7 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="Blog\Event\" />
-		<Folder Include="Blog\Request\" />
+		<Folder Include="People\Event\" />
 	</ItemGroup>
 
 	<ItemGroup>

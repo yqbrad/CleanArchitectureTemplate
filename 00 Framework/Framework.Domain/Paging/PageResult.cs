@@ -2,7 +2,7 @@
 
 namespace Framework.Domain.Paging
 {
-    public class PageQuery<TResult> : IPageQuery
+    public class PageResult<TResult> : IPageResult
     {
         public int PageNumber { get; set; } = 1;
         public int PageSize { get; set; } = 10;

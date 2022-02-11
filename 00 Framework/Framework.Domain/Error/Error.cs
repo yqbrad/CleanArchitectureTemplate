@@ -1,13 +1,23 @@
-﻿namespace Framework.Domain.Error
+﻿using System.Collections.Generic;
+
+namespace Framework.Domain.Error
 {
-    public class Error: IError
+    public class Error : IError
     {
-        public string Message { get; set; }
+        public IEnumerable<string> Messages { get; set; }
         public int Code { get; set; }
+
+        public Error() { }
 
         public Error(string message, int code)
         {
-            Message = message;
+            Messages = new[] { message };
+            Code = code;
+        }
+
+        public Error(IEnumerable<string> messages, int code)
+        {
+            Messages = messages;
             Code = code;
         }
     }
