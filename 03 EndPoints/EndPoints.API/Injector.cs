@@ -8,12 +8,10 @@ using DDD.Infrastructure.Service;
 using DDD.Infrastructure.Service.Configuration;
 using DDD.Infrastructure.Service.Dispatcher;
 using DDD.Infrastructure.Service.EventSourcing;
-using DDD.Infrastructure.Service.Logger;
 using DDD.Infrastructure.Service.RabbitMq;
 using FluentValidation;
 using Framework.Domain.EventBus;
 using Framework.Domain.Events;
-using Framework.Domain.Logger;
 
 namespace DDD.EndPoints.API
 {
@@ -31,10 +29,8 @@ namespace DDD.EndPoints.API
             services.AddRabbitMq(configuration);
             //services.AddSingleton<IApiConfiguration, ApiConfiguration>();
             //services.AddSingleton<IApiCaller, ApiCaller>();
-            //services.AddLogger();
             services.AddSingleton<IInternalEventDispatcher, InternalEventDispatcher>();
             services.AddScoped<IServiceBus, ServiceBus>();
-            services.AddSingleton<ILoggerService, LoggerService>();
 
             services.AddScoped<AddPersonHandler>();
         }

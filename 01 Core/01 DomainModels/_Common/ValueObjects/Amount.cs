@@ -1,4 +1,5 @@
-﻿using Framework.Domain.BaseModels;
+﻿using System.ComponentModel.DataAnnotations;
+using Framework.Domain.BaseModels;
 using Framework.Domain.Exceptions;
 
 namespace DDD.DomainModels._Common.ValueObjects
@@ -14,7 +15,7 @@ namespace DDD.DomainModels._Common.ValueObjects
         public static Amount Create(decimal value)
         {
             if (value < 0)
-                throw new InvalidValueObjectStateException("مبلغ باید بزرگتر از صفر باشد");
+                throw new DomainValidationException("مبلغ باید بزرگتر از صفر باشد");
 
             return new Amount(value);
         }

@@ -99,7 +99,7 @@ namespace DDD.EndPoints.API.Controllers
             {
                 var validationResult = await validator.ValidateAsync(request);
                 if (!validationResult.IsValid)
-                    throw new ValidationRequestException(validationResult.Errors.Select(item => item.ErrorMessage));
+                    throw new DomainValidationException(validationResult.Errors.Select(item => item.ErrorMessage));
             }
         }
 
@@ -112,7 +112,7 @@ namespace DDD.EndPoints.API.Controllers
             {
                 var validationResult = await validator.ValidateAsync(request);
                 if (!validationResult.IsValid)
-                    throw new ValidationRequestException(validationResult.Errors.Select(item => item.ErrorMessage));
+                    throw new DomainValidationException(validationResult.Errors.Select(item => item.ErrorMessage));
             }
         }
     }

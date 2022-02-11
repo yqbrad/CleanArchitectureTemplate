@@ -12,7 +12,7 @@ namespace DDD.DomainModels._Common.ValueObjects
         public Description(string value)
         {
             if (!string.IsNullOrWhiteSpace(value) && value.Trim().Length > 500)
-                throw new InvalidValueObjectStateException("طول توضیحات باید کمتر از 500 کاراکتر باشد");
+                throw new DomainValidationException("طول توضیحات باید کمتر از 500 کاراکتر باشد");
 
             Value = value?.Trim();
         }

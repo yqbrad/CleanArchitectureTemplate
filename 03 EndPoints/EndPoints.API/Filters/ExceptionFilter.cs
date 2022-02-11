@@ -1,31 +1,34 @@
 ﻿using Framework.Domain.Error;
 using Framework.Domain.Exceptions;
-using Framework.Domain.Logger;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
 namespace DDD.EndPoints.API.Filters
 {
-    public class ExceptionFilter : IAsyncExceptionFilter
+    public class ExceptionFilter : IExceptionFilter
     {
-        private readonly ILoggerService _loggerService;
-        public ExceptionFilter(ILoggerService loggerService)
-            => _loggerService = loggerService;
+        private readonly ILogger<ExceptionFilter> _logger;
+        public ExceptionFilter(ILogger<ExceptionFilter> logger)
+            => _logger = logger;
 
-        public async Task OnExceptionAsync(ExceptionContext context)
+        public void OnException(ExceptionContext context)
         {
             int statusCode;
             Error error;
+            LogLevel logType;
 
-            switch (context.Exception)
+            var ex = context.Exception;
+            switch (ex)
             {
-                case ValidationRequestException e:
+                case DomainValidationException e:
                     statusCode = StatusCodes.Status400BadRequest;
                     error = new Error(e.ExMessages, e.ExCode);
+                    logType = LogLevel.Warning;
                     break;
                 case BaseException e:
                     statusCode = StatusCodes.Status400BadRequest;
                     error = new Error(e.Message, e.ExCode);
+                    logType = LogLevel.Warning;
                     break;
 
                 //case Models.ApiException apiException:
@@ -44,18 +47,24 @@ namespace DDD.EndPoints.API.Filters
                     statusCode = StatusCodes.Status500InternalServerError;
                     var defaultMessage = "خطای سرور";
 #if DEBUG
-                    defaultMessage = context.Exception.ToString();
+                    defaultMessage = ex.ToString();
 #endif
                     error = new Error(defaultMessage, 0);
+                    logType = LogLevel.Error;
                     break;
             }
 
-            await _loggerService.LogAsync(context.Exception);
+            _logger.Log(logType, ex, GetInnermostExceptionMessage(ex), error.Messages);
 
             context.Result = new ObjectResult(error)
             {
                 StatusCode = statusCode
             };
         }
+
+        private static string GetInnermostExceptionMessage(Exception exception)
+            => exception.InnerException is not null ?
+                GetInnermostExceptionMessage(exception.InnerException) :
+                exception.Message;
     }
 }

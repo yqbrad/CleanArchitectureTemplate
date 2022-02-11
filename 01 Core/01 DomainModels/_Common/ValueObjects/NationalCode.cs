@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Framework.Domain.BaseModels;
+﻿using Framework.Domain.BaseModels;
 using Framework.Domain.Exceptions;
 using Framework.Tools;
 
@@ -18,7 +13,7 @@ namespace DDD.DomainModels._Common.ValueObjects
         public NationalCode(string value)
         {
             if (!value.IsNationalCode())
-                throw new InvalidValueObjectStateException("کد ملی صحیح نمی باشد");
+                throw new DomainValidationException("کد ملی صحیح نمی باشد");
 
             Value = value;
         }

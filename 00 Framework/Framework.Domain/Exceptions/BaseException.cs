@@ -13,4 +13,6 @@ public abstract class BaseException : ApplicationException
     internal BaseException(Exception ex) : base("", ex) { }
 
     internal BaseException(string message) : base(message) { }
+
+    internal BaseException(string message, Exception ex) : base(message, ex) { }
 }

@@ -1,4 +1,5 @@
 ﻿using System.Reflection;
+using System.Text;
 using DDD.EndPoints.API.Filters;
 using DDD.Infrastructure.Service.Configuration;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -10,6 +11,17 @@ namespace DDD.EndPoints.API.Extension
 {
     public static class ServiceExtension
     {
+        public static void AddAppsettings(this WebApplicationBuilder builder)
+        {
+            builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
+
+            var buildConfiguration = typeof(Program).Assembly.GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
+            var configuration = buildConfiguration == "Debug" ? "Development" : buildConfiguration;
+
+            builder.Configuration.AddJsonFile($"appsettings.{configuration}.json", false, true);
+            builder.Configuration.AddJsonFile($"appsettings.{configuration}.serilog.json", false, true);
+        }
+
         public static void AddHealthCheck(this IServiceCollection services, IConfiguration configuration)
         {
             var uow = new UnitOfWorkConfig(configuration);
@@ -114,6 +126,13 @@ namespace DDD.EndPoints.API.Extension
                 c.ShowExtensions();
                 c.EnableValidator();
             });
+        }
+
+        public static void AddBanner(this IApplicationBuilder app, ServiceConfig config)
+        {
+            //https://manytools.org/hacker-tools/ascii-banner/
+            Console.OutputEncoding = Encoding.UTF8;
+            Console.WriteLine(config.Banner);
         }
     }
 }

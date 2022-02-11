@@ -12,10 +12,10 @@ namespace DDD.DomainModels._Common.ValueObjects
         public Title(string value)
         {
             if (string.IsNullOrWhiteSpace(value))
-                throw new InvalidValueObjectStateException("عنوان خالی است");
+                throw new DomainValidationException("عنوان خالی است");
 
             if (value.Trim().Length is < 2 or > 250)
-                throw new InvalidValueObjectStateException("طول عنوان باید بین 2 تا 250 کاراکتر باشد");
+                throw new DomainValidationException("طول عنوان باید بین 2 تا 250 کاراکتر باشد");
 
             Value = value.Trim();
         }

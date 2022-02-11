@@ -5,7 +5,7 @@
         public override int ExCode => 2;
         public override string ExMessage { get; }
 
-        public DomainException(string message)
+        public DomainException(string message) : base(message)
         {
             ExMessage = message;
         }
