@@ -1,5 +1,4 @@
-﻿using System.Reflection;
-using DDD.ApplicationServices.People.Request;
+﻿using DDD.ApplicationServices.People.Request;
 using DDD.Contracts._Common;
 using DDD.Contracts.People.RequestValidations;
 using DDD.EndPoints.API.Models;
