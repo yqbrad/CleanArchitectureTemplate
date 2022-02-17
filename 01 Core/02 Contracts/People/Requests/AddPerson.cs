@@ -1,8 +1,9 @@
-﻿using Framework.Domain.Requests;
+﻿using DDD.Contracts.People.Results;
+using Framework.Domain.Requests;
 
 namespace DDD.Contracts.People.Requests
 {
-    public class AddPerson : IRequest
+    public class AddPerson : IRequest<AddPersonResult>
     {
         public string FirstName { get; set; }
         public string LastName { get; set; }

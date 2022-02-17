@@ -27,8 +27,8 @@ namespace DDD.Contracts.People.RequestValidations
                 .Cascade(CascadeMode.Stop)
                 .NotNull()
                 .WithMessage("سن ارسال نشده است")
-                .GreaterThan(18)
-                .WithMessage("سن باید بزرگتر از 18 باشد");
+                .GreaterThan(0)
+                .WithMessage("سن باید بزرگتر از 0 باشد");
         }
     }
 }

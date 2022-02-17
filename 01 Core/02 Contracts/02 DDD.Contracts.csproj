@@ -20,8 +20,6 @@
 
 	<ItemGroup>
 	  <Folder Include="People\Dtos\" />
-	  <Folder Include="People\Repositories\" />
-	  <Folder Include="People\Results\" />
 	</ItemGroup>
 
 </Project>

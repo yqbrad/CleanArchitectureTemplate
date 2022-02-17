@@ -1,4 +1,5 @@
 ﻿using System.Threading.Tasks;
+using DDD.Contracts.People.Repositories;
 
 namespace DDD.Contracts._Common
 {
@@ -16,6 +17,6 @@ namespace DDD.Contracts._Common
         void Rollback();
         Task RollbackAsync();
 
-        //IAppRepository App { get; }
+        IPersonRepository PersonRepository { get; }
     }
 }

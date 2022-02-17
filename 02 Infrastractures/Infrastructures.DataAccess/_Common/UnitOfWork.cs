@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using DDD.Contracts._Common;
+using DDD.Contracts.People.Repositories;
 using Framework.Domain.Exceptions;
 
 namespace DDD.Infrastructure.DataAccess._Common
@@ -8,16 +9,19 @@ namespace DDD.Infrastructure.DataAccess._Common
     public sealed class UnitOfWork<TDbContext> : IUnitOfWork
         where TDbContext : BaseDbContext
     {
-        //public IAppRepository App { get; }
-
         private readonly TDbContext _dbContext;
         private readonly IUnitOfWorkConfiguration _config;
-        public UnitOfWork(TDbContext dbContext, IUnitOfWorkConfiguration config)
+
+        public IPersonRepository PersonRepository { get; }
+
+        public UnitOfWork(TDbContext dbContext,
+            IUnitOfWorkConfiguration config, 
+            IPersonRepository personRepository)
         {
             _dbContext = dbContext;
             _config = config;
 
-            //App = app;
+            PersonRepository = personRepository;
         }
 
         public void InitiateDatabase()
