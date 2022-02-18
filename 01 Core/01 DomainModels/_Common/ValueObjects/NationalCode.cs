@@ -13,7 +13,7 @@ namespace DDD.DomainModels._Common.ValueObjects
         public NationalCode(string value)
         {
             if (!value.IsNationalCode())
-                throw new DomainValidationException("کد ملی صحیح نمی باشد");
+                throw new DomainException("کد ملی صحیح نمی باشد");
 
             Value = value;
         }

@@ -70,6 +70,15 @@ namespace DDD.DomainModels.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to خطای دیتابیس.
+        /// </summary>
+        public static string DatabaseError {
+            get {
+                return ResourceManager.GetString("DatabaseError", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to نام.
         /// </summary>
         public static string FirstName {
@@ -84,6 +93,15 @@ namespace DDD.DomainModels.Properties {
         public static string Id {
             get {
                 return ResourceManager.GetString("Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to خطا در آماده سازی اولیه دیتابیس.
+        /// </summary>
+        public static string InitializeDataBaseError {
+            get {
+                return ResourceManager.GetString("InitializeDataBaseError", resourceCulture);
             }
         }
         

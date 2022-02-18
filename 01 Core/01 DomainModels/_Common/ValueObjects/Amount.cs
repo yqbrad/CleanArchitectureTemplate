@@ -15,7 +15,7 @@ namespace DDD.DomainModels._Common.ValueObjects
         public static Amount Create(decimal value)
         {
             if (value < 0)
-                throw new DomainValidationException("مبلغ باید بزرگتر از صفر باشد");
+                throw new DomainException("مبلغ باید بزرگتر از صفر باشد");
 
             return new Amount(value);
         }

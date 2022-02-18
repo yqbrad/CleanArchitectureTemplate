@@ -4,18 +4,24 @@ namespace Framework.Domain.Error
 {
     public class Error : IError
     {
-        public IEnumerable<string> Messages { get; set; }
+        public List<string> Messages { get; set; }
         public int Code { get; set; }
 
         public Error() { }
 
-        public Error(string message, int code)
+        public Error(int code)
         {
-            Messages = new[] { message };
+            Messages = new List<string>();
             Code = code;
         }
 
-        public Error(IEnumerable<string> messages, int code)
+        public Error(string message, int code)
+        {
+            Messages = new List<string> { message };
+            Code = code;
+        }
+
+        public Error(List<string> messages, int code)
         {
             Messages = messages;
             Code = code;

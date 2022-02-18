@@ -2,12 +2,15 @@
 {
     public class DomainException : BaseException
     {
-        public override int ExCode => 2;
+        public override int ExCode => 1;
         public override string ExMessage { get; }
+        public string[] Parameters { get; }
 
-        public DomainException(string message) : base(message)
+        public DomainException(string exMessage, params string[] parameters)
+            : base(exMessage)
         {
-            ExMessage = message;
+            ExMessage = exMessage;
+            Parameters = parameters;
         }
     }
 }

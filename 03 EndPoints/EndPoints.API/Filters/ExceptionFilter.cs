@@ -1,5 +1,6 @@
 ﻿using Framework.Domain.Error;
 using Framework.Domain.Exceptions;
+using Framework.Domain.Translator;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
@@ -7,9 +8,13 @@ namespace DDD.EndPoints.API.Filters
 {
     public class ExceptionFilter : IExceptionFilter
     {
+        private readonly ITranslator _translator;
         private readonly ILogger<ExceptionFilter> _logger;
-        public ExceptionFilter(ILogger<ExceptionFilter> logger)
-            => _logger = logger;
+        public ExceptionFilter(ITranslator translator, ILogger<ExceptionFilter> logger)
+        {
+            _translator = translator;
+            _logger = logger;
+        }
 
         public void OnException(ExceptionContext context)
         {
@@ -20,14 +25,22 @@ namespace DDD.EndPoints.API.Filters
             var ex = context.Exception;
             switch (ex)
             {
-                case DomainValidationException e:
+                case FluentValidationException e:
                     statusCode = StatusCodes.Status400BadRequest;
-                    error = new Error(e.ExMessages, e.ExCode);
+                    error = new Error(e.Messages.ToList(), e.ExCode);
+                    logType = LogLevel.Warning;
+                    break;
+                case DomainException e:
+                    statusCode = StatusCodes.Status400BadRequest;
+                    error = new Error(e.ExCode);
+                    error.Messages.Add(e.Parameters.Any()
+                        ? _translator[e.Message, e.Parameters]
+                        : _translator[e.Message]);
                     logType = LogLevel.Warning;
                     break;
                 case BaseException e:
                     statusCode = StatusCodes.Status400BadRequest;
-                    error = new Error(e.Message, e.ExCode);
+                    error = new Error(_translator[e.Message], e.ExCode);
                     logType = LogLevel.Warning;
                     break;
 
@@ -45,7 +58,7 @@ namespace DDD.EndPoints.API.Filters
                 //    break;
                 default:
                     statusCode = StatusCodes.Status500InternalServerError;
-                    var defaultMessage = "خطای سرور";
+                    var defaultMessage = "ServerError";
 #if DEBUG
                     defaultMessage = ex.ToString();
 #endif
@@ -63,8 +76,8 @@ namespace DDD.EndPoints.API.Filters
         }
 
         private static string GetInnermostExceptionMessage(Exception exception)
-            => exception.InnerException is not null ?
-                GetInnermostExceptionMessage(exception.InnerException) :
-                exception.Message;
+            => exception.InnerException is not null
+                ? GetInnermostExceptionMessage(exception.InnerException)
+                : exception.Message;
     }
 }

@@ -1,30 +1,30 @@
-﻿using Framework.Domain.BaseModels;
+﻿using DDD.DomainModels._Common;
+using Framework.Domain.BaseModels;
 using Framework.Domain.Exceptions;
 
-namespace DDD.DomainModels.People.ValueObjects
+namespace DDD.DomainModels.People.ValueObjects;
+
+public class PersonAge : BaseValueObject<PersonAge>
 {
-    public class PersonAge : BaseValueObject<PersonAge>
+    public int Value { get; private set; }
+
+    private PersonAge() { }
+
+    public PersonAge(int value) => Value = value;
+
+    public static PersonAge Create(int value)
     {
-        public int Value { get; private set; }
+        if (value < 0)
+            throw new DomainException(StringResources.ValidationErrorDateGreaterThan, StringResources.Age, StringResources.Zero);
 
-        private PersonAge() { }
-
-        public PersonAge(int value) => Value = value;
-
-        public static PersonAge Create(int value)
-        {
-            if (value < 0)
-                throw new DomainValidationException("سن باید بزرگتر از صفر باشد");
-
-            return new PersonAge(value);
-        }
-
-        public static PersonAge FromInt(int value) => new(value);
-
-        public override bool ObjectIsEqual(PersonAge otherObject) => Value == otherObject.Value;
-
-        public override int ObjectGetHashCode() => Value.GetHashCode();
-
-        public static explicit operator int(PersonAge money) => money.Value;
+        return new PersonAge(value);
     }
+
+    public static PersonAge FromInt(int value) => new(value);
+
+    public override bool ObjectIsEqual(PersonAge otherObject) => Value == otherObject.Value;
+
+    public override int ObjectGetHashCode() => Value.GetHashCode();
+
+    public static explicit operator int(PersonAge money) => money.Value;
 }

@@ -120,11 +120,17 @@
   <data name="Age" xml:space="preserve">
     <value>سن</value>
   </data>
+  <data name="DatabaseError" xml:space="preserve">
+    <value>خطای دیتابیس</value>
+  </data>
   <data name="FirstName" xml:space="preserve">
     <value>نام</value>
   </data>
   <data name="Id" xml:space="preserve">
     <value>شناسه</value>
+  </data>
+  <data name="InitializeDataBaseError" xml:space="preserve">
+    <value>خطا در آماده سازی اولیه دیتابیس</value>
   </data>
   <data name="LastName" xml:space="preserve">
     <value>نام خانوادگی</value>
