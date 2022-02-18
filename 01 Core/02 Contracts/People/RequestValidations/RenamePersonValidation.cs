@@ -1,12 +1,22 @@
-﻿using DDD.Contracts.People.Requests;
+﻿using DDD.Contracts.People.Repositories;
+using DDD.Contracts.People.Requests;
 using FluentValidation;
 
 namespace DDD.Contracts.People.RequestValidations
 {
-    public class AddPersonValidation : AbstractValidator<AddPerson>
+    public class RenamePersonValidation : AbstractValidator<RenamePerson>
     {
-        public AddPersonValidation()
+        public RenamePersonValidation(IPersonRepository repo)
         {
+            CascadeMode = CascadeMode.Stop;
+
+            RuleFor(s => s.Id)
+                .Cascade(CascadeMode.Stop)
+                .NotEmpty()
+                .WithMessage("ای دی خالی است")
+                .When(s => !repo.Exists(x => x.Id == s.Id))
+                .WithMessage("شخص مورد نظر یافت نشد");
+
             RuleFor(s => s.FirstName)
                 .Cascade(CascadeMode.Stop)
                 .NotNull()
@@ -20,13 +30,6 @@ namespace DDD.Contracts.People.RequestValidations
                 .WithMessage("نام خانوادگی ارسال نشده است")
                 .NotEmpty()
                 .WithMessage("نام خانوادگی خالی است");
-
-            RuleFor(s => s.Age)
-                .Cascade(CascadeMode.Stop)
-                .NotNull()
-                .WithMessage("سن ارسال نشده است")
-                .GreaterThan(0)
-                .WithMessage("سن باید بزرگتر از 0 باشد");
         }
     }
 }

@@ -1,20 +1,19 @@
 ﻿using DDD.Contracts._Common;
+using DDD.DomainModels.People.Entities;
 using Microsoft.EntityFrameworkCore;
 
 namespace DDD.Infrastructure.DataAccess._Common
 {
-    public class ServiceDbContext: BaseDbContext
+    public class ServiceDbContext : BaseDbContext
     {
-        #region DbSets
-        //public virtual DbSet<App> App { get; set; } 
-        #endregion
+        public virtual DbSet<Person> People { get; set; }
 
         private readonly IUnitOfWorkConfiguration _configuration;
 
-        public ServiceDbContext(DbContextOptions<ServiceDbContext> options, 
-            IUnitOfWorkConfiguration configuration) : base(options) 
+        public ServiceDbContext(DbContextOptions<ServiceDbContext> options,
+            IUnitOfWorkConfiguration configuration) : base(options)
             => _configuration = configuration;
-        
+
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
             optionsBuilder.UseSqlServer(_configuration.SqlServerConnectionString);

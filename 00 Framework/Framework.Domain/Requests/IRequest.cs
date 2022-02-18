@@ -4,6 +4,5 @@ namespace Framework.Domain.Requests
 {
     public interface IRequest { }
 
-    public interface IRequest<TResult>
-    where TResult : IResult { }
+    public interface IRequest<TResult> { }
 }

@@ -1,8 +1,10 @@
 ﻿using DDD.ApplicationServices.People.Request;
 using DDD.Contracts._Common;
+using DDD.Contracts.People.Repositories;
 using DDD.Contracts.People.RequestValidations;
 using DDD.EndPoints.API.Models;
 using DDD.Infrastructure.DataAccess._Common;
+using DDD.Infrastructure.DataAccess.People;
 using DDD.Infrastructure.Service;
 using DDD.Infrastructure.Service.Configuration;
 using DDD.Infrastructure.Service.Dispatcher;
@@ -30,6 +32,8 @@ namespace DDD.EndPoints.API
             //services.AddSingleton<IApiCaller, ApiCaller>();
             services.AddSingleton<IInternalEventDispatcher, InternalEventDispatcher>();
             services.AddScoped<IServiceBus, ServiceBus>();
+
+            services.AddTransient<IPersonRepository, PersonRepository>();
 
             services.AddScoped<AddPersonHandler>();
         }

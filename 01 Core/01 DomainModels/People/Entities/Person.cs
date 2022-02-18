@@ -27,5 +27,10 @@ namespace DDD.DomainModels.People.Entities
             FirstName = firstName;
             LastName = lastName;
         }
+
+        public void Delete()
+        {
+
+        }
     }
 }

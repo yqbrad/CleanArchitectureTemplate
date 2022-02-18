@@ -1,16 +1,13 @@
 ﻿using System.Collections.Generic;
+using Framework.Domain.Results;
 
 namespace Framework.Domain.Paging
 {
-    public class PageResult<TResult> : IPageResult
+    public class PageResult<TResult> : IResult
     {
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 10;
-        public int SkipCount => (PageNumber - 1) * PageSize;
-        public bool NeedTotalCount { get; set; }
-        public string SortBy { get; set; }
-        public bool SortAscending { get; set; }
-
         public IEnumerable<TResult> Data { get; set; }
+        public int PageNumber { get; set; }
+        public int PageSize { get; set; }
+        public long? TotalCount { get; set; }
     }
 }

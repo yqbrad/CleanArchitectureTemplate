@@ -16,7 +16,6 @@ namespace DDD.EndPoints.API.Controllers
         protected async Task<IActionResult> CreateAsync<TRequest, TResult>
             (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
             where TRequest : IRequest<TResult>
-            where TResult : Framework.Domain.Results.IResult
         {
             if (request == null)
                 return new BadRequestResult();
@@ -38,6 +37,11 @@ namespace DDD.EndPoints.API.Controllers
             where TRequest : IRequest
             => HandleAsync(handler, request);
 
+        protected Task<IActionResult> UpdateAsync<TRequest>
+            (Func<TRequest, Task> handler, TRequest request)
+            where TRequest : IRequest
+            => HandleAsync(handler, request);
+
         protected Task<IActionResult> DeleteAsync<TRequest>
             (Func<TRequest, Task> handler, TRequest request)
             where TRequest : IRequest
@@ -46,13 +50,11 @@ namespace DDD.EndPoints.API.Controllers
         protected Task<IActionResult> GetAsync<TRequest, TResult>
             (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
             where TRequest : IRequest<TResult>
-            where TResult : Framework.Domain.Results.IResult
             => HandleAsync(handleAsync, request);
 
         protected Task<IActionResult> GetAllAsync<TRequest, TResult>
             (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
             where TRequest : IRequest<TResult>
-            where TResult : Framework.Domain.Results.IResult
             => HandleAsync(handleAsync, request);
 
         protected async Task<IActionResult> HandleAsync(Func<Task> handler)
@@ -77,7 +79,6 @@ namespace DDD.EndPoints.API.Controllers
         protected async Task<IActionResult> HandleAsync<TRequest, TResult>
             (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
             where TRequest : IRequest<TResult>
-            where TResult : Framework.Domain.Results.IResult
         {
             if (request == null)
                 return new BadRequestResult();
@@ -105,7 +106,6 @@ namespace DDD.EndPoints.API.Controllers
 
         private async Task ValidateRequest<TRequest, TResult>(TRequest request)
             where TRequest : IRequest<TResult>
-            where TResult : Framework.Domain.Results.IResult
         {
             var validator = ServiceProvider.GetService<IValidator<TRequest>>();
             if (validator is not null)

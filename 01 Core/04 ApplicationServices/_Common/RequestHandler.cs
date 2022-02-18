@@ -26,7 +26,6 @@ namespace DDD.ApplicationServices._Common
 
     public abstract class RequestHandler<TRequest, TResult> : BaseApplicationService, IRequestHandler
         where TRequest : IRequest<TResult>
-        where TResult : IResult
     {
         protected RequestHandler(IUnitOfWork unitOfWork, IServiceBus serviceBus)
             : base(unitOfWork, serviceBus) { }
