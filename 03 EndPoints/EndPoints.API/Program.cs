@@ -37,6 +37,7 @@ builder.Services.AddControllers(options =>
 
 builder.Services.AddIdp(serviceConfig);
 builder.Services.Inject(configuration);
+builder.Services.AddDependencies(serviceConfig.AssemblyName);
 builder.Services.AddResponseCaching();
 builder.Services.AddHeaderPropagation(serviceConfig);
 builder.Services.AddSwagger(serviceConfig);
@@ -71,6 +72,7 @@ app.UseHealthChecks(serviceConfig.HealthCheckRoute, new HealthCheckOptions
 });
 
 app.AddBanner(serviceConfig);
-app.Services.GetService<IUnitOfWork>()?.InitiateDatabase();
+var scope = app.Services.CreateScope();
+scope.ServiceProvider.GetService<IUnitOfWork>()?.InitiateDatabase();
 
 app.Run();

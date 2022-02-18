@@ -1,10 +1,8 @@
-﻿using DDD.ApplicationServices.People.Request;
-using DDD.Contracts._Common;
-using DDD.Contracts.People.Repositories;
+﻿using DDD.Contracts._Common;
 using DDD.Contracts.People.RequestValidations;
+using DDD.EndPoints.API.Extension;
 using DDD.EndPoints.API.Models;
 using DDD.Infrastructure.DataAccess._Common;
-using DDD.Infrastructure.DataAccess.People;
 using DDD.Infrastructure.Service;
 using DDD.Infrastructure.Service.Configuration;
 using DDD.Infrastructure.Service.Dispatcher;
@@ -21,8 +19,7 @@ namespace DDD.EndPoints.API
         public static void Inject(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHttpContextAccessor();
-            services.AddValidatorsFromAssemblyContaining(typeof(AddPersonValidation));
-            services.AddScoped<IApplicant, Applicant>();
+            services.AddScoped<IUserInfo, UserInfo>();
             services.AddSingleton<IUnitOfWorkConfiguration, UnitOfWorkConfig>();
             services.AddDbContext<ServiceDbContext>();
             services.AddTransient<IUnitOfWork, UnitOfWork<ServiceDbContext>>();
@@ -33,9 +30,7 @@ namespace DDD.EndPoints.API
             services.AddSingleton<IInternalEventDispatcher, InternalEventDispatcher>();
             services.AddScoped<IServiceBus, ServiceBus>();
 
-            services.AddTransient<IPersonRepository, PersonRepository>();
-
-            services.AddScoped<AddPersonHandler>();
+            
         }
     }
 }

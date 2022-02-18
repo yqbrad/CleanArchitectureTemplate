@@ -3,12 +3,12 @@ using System.IdentityModel.Tokens.Jwt;
 
 namespace DDD.EndPoints.API.Models
 {
-    public class Applicant: IApplicant
+    public class UserInfo: IUserInfo
     {
         public Guid UserId { get; }
         public string Token { get; }
 
-        public Applicant(IHttpContextAccessor http)
+        public UserInfo(IHttpContextAccessor http)
         {
             if (http.HttpContext is null)
                 return;

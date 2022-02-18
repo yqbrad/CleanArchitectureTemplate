@@ -6,7 +6,7 @@ namespace Framework.Domain.EventBus
 {
     public interface IServiceBus
     {
-        public IApplicant Applicant { get; }
+        public IUserInfo UserInfo { get; }
 
         //#region Event
         //Task PublishInternalAsync<TClass, TId>(TClass aggregateRoot)

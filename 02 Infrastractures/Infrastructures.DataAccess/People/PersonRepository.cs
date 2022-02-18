@@ -19,10 +19,9 @@ namespace DDD.Infrastructure.DataAccess.People
         {
             var query = DbContext.People
                 .AsNoTracking()
-                .Select(s => new PersonDetails(s))
                 .WhereIf(!string.IsNullOrWhiteSpace(filter.Name),
-                    s => s.FirstName.Contains(filter.Name) ||
-                         s.LastName.Contains(filter.Name));
+                    s => ((string)s.FirstName).Contains(filter.Name) ||
+                         ((string)s.LastName).Contains(filter.Name));
 
             if (!string.IsNullOrWhiteSpace(filter.SortBy))
                 query = query.OrderByField(filter.SortBy, filter.SortAscending);
@@ -34,7 +33,7 @@ namespace DDD.Infrastructure.DataAccess.People
 
             var result = new PageResult<PersonDetails>
             {
-                Data = people,
+                Data = people.Select(s => new PersonDetails(s)),
                 PageNumber = filter.PageNumber,
                 PageSize = filter.PageSize,
                 TotalCount = null

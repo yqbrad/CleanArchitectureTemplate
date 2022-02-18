@@ -1,16 +1,31 @@
 ﻿using System.Reflection;
 using System.Text;
+using DDD.Contracts._Common;
 using DDD.EndPoints.API.Filters;
 using DDD.Infrastructure.Service.Configuration;
+using FluentValidation;
+using Framework.Domain.ApplicationServices;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Primitives;
 using Microsoft.OpenApi.Models;
+using NuGet.Protocol.Plugins;
 using Swashbuckle.AspNetCore.SwaggerUI;
 
 namespace DDD.EndPoints.API.Extension
 {
     public static class ServiceExtension
     {
+        public static IServiceCollection AddDependencies(this IServiceCollection services,
+            params string[] assemblyNamesForSearch)
+        {
+            var assemblies = GetAssemblies(assemblyNamesForSearch).ToList();
+            return services
+                .AddRepositories(assemblies)
+                .AddHandlers(assemblies)
+                .AddValidatorsFromAssemblies(assemblies);
+        }
+
         public static void AddAppsettings(this WebApplicationBuilder builder)
         {
             builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
@@ -134,5 +149,52 @@ namespace DDD.EndPoints.API.Extension
             Console.OutputEncoding = Encoding.UTF8;
             Console.WriteLine(config.Banner);
         }
+
+        public static IServiceCollection AddRepositories(this IServiceCollection services,
+            IEnumerable<Assembly> assemblies)
+            => services.AddWithTransientLifetime(assemblies,
+                typeof(IRepository<,>));
+
+        public static IServiceCollection AddHandlers(this IServiceCollection services,
+            IEnumerable<Assembly> assemblies)
+            => services.AddWithTransientLifetime(assemblies,
+                typeof(IRequestHandler), typeof(IRequestHandler<,>), typeof(IEventHandler<>));
+
+        public static IServiceCollection AddWithTransientLifetime(this IServiceCollection services,
+            IEnumerable<Assembly> assemblies, params Type[] assignableTo)
+            => services.Scan(s => s.FromAssemblies(assemblies)
+                .AddClasses(x => x.AssignableToAny(assignableTo))
+                .AsImplementedInterfaces()
+                .WithTransientLifetime());
+
+        public static IServiceCollection AddWithScopedLifetime(this IServiceCollection services,
+            IEnumerable<Assembly> assemblies, params Type[] assignableTo)
+            => services.Scan(s => s.FromAssemblies(assemblies)
+                .AddClasses(x => x.AssignableToAny(assignableTo))
+                .AsImplementedInterfaces()
+                .WithScopedLifetime());
+
+        public static IServiceCollection AddWithSingletonLifetime(this IServiceCollection services,
+            IEnumerable<Assembly> assemblies, params Type[] assignableTo)
+            => services.Scan(s => s.FromAssemblies(assemblies)
+                .AddClasses(x => x.AssignableToAny(assignableTo))
+                .AsImplementedInterfaces()
+                .WithSingletonLifetime());
+
+        private static IEnumerable<Assembly> GetAssemblies(string[] assembliesName)
+        {
+            var assemblies = new List<Assembly>();
+            var dependencies = DependencyContext.Default.RuntimeLibraries;
+            foreach (var library in dependencies)
+                if (IsCandidateCompilationLibrary(library, assembliesName))
+                    assemblies.Add(Assembly.Load(new AssemblyName(library.Name)));
+
+            return assemblies;
+        }
+
+        private static bool IsCandidateCompilationLibrary(Library library,
+            string[] assemblyName)
+            => assemblyName.Any(s => library.Name.Contains(s)) ||
+               library.Dependencies.Any(dependency => assemblyName.Any(x => dependency.Name.Contains(x)));
     }
 }

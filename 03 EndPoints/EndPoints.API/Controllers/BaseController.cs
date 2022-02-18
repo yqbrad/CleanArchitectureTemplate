@@ -1,10 +1,10 @@
-﻿using Framework.Domain.Requests;
-using Microsoft.AspNetCore.Mvc;
-using DDD.EndPoints.API.Extension;
+﻿using DDD.EndPoints.API.Extension;
 using DDD.Infrastructure.Service.Configuration;
 using FluentValidation;
-using FluentValidation.TestHelper;
+using Framework.Domain.ApplicationServices;
 using Framework.Domain.Exceptions;
+using Framework.Domain.Requests;
+using Microsoft.AspNetCore.Mvc;
 
 namespace DDD.EndPoints.API.Controllers
 {
@@ -13,8 +13,7 @@ namespace DDD.EndPoints.API.Controllers
         protected ServiceConfig Config => HttpContext.ServiceContext();
         protected IServiceProvider ServiceProvider => HttpContext.ServiceProvider();
 
-        protected async Task<IActionResult> CreateAsync<TRequest, TResult>
-            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
+        protected async Task<IActionResult> CreateAsync<TRequest, TResult>(TRequest request)
             where TRequest : IRequest<TResult>
         {
             if (request == null)
@@ -22,7 +21,8 @@ namespace DDD.EndPoints.API.Controllers
 
             await ValidateRequest<TRequest, TResult>(request);
 
-            var result = await handleAsync(request);
+            var handler = ServiceProvider.GetRequiredService<IRequestHandler<TRequest, TResult>>();
+            var result = await handler.HandleAsync(request);
             if (result is null)
                 return new NoContentResult();
 
@@ -32,39 +32,27 @@ namespace DDD.EndPoints.API.Controllers
             };
         }
 
-        protected Task<IActionResult> CreateAsync<TRequest>
-            (Func<TRequest, Task> handler, TRequest request)
+        protected Task<IActionResult> CreateAsync<TRequest>(TRequest request)
             where TRequest : IRequest
-            => HandleAsync(handler, request);
+            => HandleAsync(request);
 
-        protected Task<IActionResult> UpdateAsync<TRequest>
-            (Func<TRequest, Task> handler, TRequest request)
+        protected Task<IActionResult> UpdateAsync<TRequest>(TRequest request)
             where TRequest : IRequest
-            => HandleAsync(handler, request);
+            => HandleAsync(request);
 
-        protected Task<IActionResult> DeleteAsync<TRequest>
-            (Func<TRequest, Task> handler, TRequest request)
+        protected Task<IActionResult> DeleteAsync<TRequest>(TRequest request)
             where TRequest : IRequest
-            => HandleAsync(handler, request);
+            => HandleAsync(request);
 
-        protected Task<IActionResult> GetAsync<TRequest, TResult>
-            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
+        protected Task<IActionResult> GetAsync<TRequest, TResult>(TRequest request)
             where TRequest : IRequest<TResult>
-            => HandleAsync(handleAsync, request);
+            => HandleAsync<TRequest, TResult>(request);
 
-        protected Task<IActionResult> GetAllAsync<TRequest, TResult>
-            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
+        protected Task<IActionResult> GetAllAsync<TRequest, TResult>(TRequest request)
             where TRequest : IRequest<TResult>
-            => HandleAsync(handleAsync, request);
+            => HandleAsync<TRequest, TResult>(request);
 
-        protected async Task<IActionResult> HandleAsync(Func<Task> handler)
-        {
-            await handler();
-            return new OkResult();
-        }
-
-        protected async Task<IActionResult> HandleAsync<TRequest>
-            (Func<TRequest, Task> handler, TRequest request)
+        protected async Task<IActionResult> HandleAsync<TRequest>(TRequest request)
             where TRequest : IRequest
         {
             if (request == null)
@@ -72,12 +60,13 @@ namespace DDD.EndPoints.API.Controllers
 
             await ValidateRequest(request);
 
-            await handler(request);
+            var handler = ServiceProvider.GetRequiredService<IRequestHandler<TRequest>>();
+            await handler.HandleAsync(request);
+
             return new OkResult();
         }
 
-        protected async Task<IActionResult> HandleAsync<TRequest, TResult>
-            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
+        protected async Task<IActionResult> HandleAsync<TRequest, TResult>(TRequest request)
             where TRequest : IRequest<TResult>
         {
             if (request == null)
@@ -85,7 +74,8 @@ namespace DDD.EndPoints.API.Controllers
 
             await ValidateRequest<TRequest, TResult>(request);
 
-            var result = await handleAsync(request);
+            var handler = ServiceProvider.GetRequiredService<IRequestHandler<TRequest, TResult>>();
+            var result = await handler.HandleAsync(request);
             if (result is null)
                 return new NoContentResult();
 

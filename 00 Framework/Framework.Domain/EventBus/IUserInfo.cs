@@ -2,7 +2,7 @@
 
 namespace Framework.Domain.EventBus
 {
-    public interface IApplicant
+    public interface IUserInfo
     {
         public Guid UserId { get; }
         public string Token { get; }

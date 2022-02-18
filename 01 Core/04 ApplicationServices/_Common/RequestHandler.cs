@@ -1,21 +1,13 @@
-﻿using System.Threading.Tasks;
-using DDD.Contracts._Common;
+﻿using DDD.Contracts._Common;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
 using Framework.Domain.Requests;
-using Framework.Domain.Results;
+using System.Threading.Tasks;
 
 namespace DDD.ApplicationServices._Common
 {
-    public abstract class RequestHandler : BaseApplicationService, IRequestHandler
-    {
-        protected RequestHandler(IUnitOfWork unitOfWork, IServiceBus serviceBus)
-            : base(unitOfWork, serviceBus) { }
-
-        public abstract Task HandleAsync();
-    }
-
-    public abstract class RequestHandler<TRequest> : BaseApplicationService, IRequestHandler
+    public abstract class RequestHandler<TRequest> : BaseApplicationService,
+        IRequestHandler<TRequest>
         where TRequest : IRequest
     {
         protected RequestHandler(IUnitOfWork unitOfWork, IServiceBus serviceBus)
@@ -24,7 +16,8 @@ namespace DDD.ApplicationServices._Common
         public abstract Task HandleAsync(TRequest req);
     }
 
-    public abstract class RequestHandler<TRequest, TResult> : BaseApplicationService, IRequestHandler
+    public abstract class RequestHandler<TRequest, TResult> : BaseApplicationService,
+        IRequestHandler<TRequest, TResult>
         where TRequest : IRequest<TResult>
     {
         protected RequestHandler(IUnitOfWork unitOfWork, IServiceBus serviceBus)

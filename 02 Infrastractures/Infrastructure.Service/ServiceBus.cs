@@ -12,13 +12,13 @@ namespace DDD.Infrastructure.Service
 {
     public class ServiceBus: IServiceBus
     {
-        public IApplicant Applicant { get; }
+        public IUserInfo UserInfo { get; }
 
         private readonly IInternalEventDispatcher _internalEventDispatcher;
 
-        public ServiceBus(IInternalEventDispatcher internalEventDispatcher, IApplicant applicant)
+        public ServiceBus(IInternalEventDispatcher internalEventDispatcher, IUserInfo userInfo)
         {
-            Applicant = applicant;
+            UserInfo = userInfo;
             _internalEventDispatcher = internalEventDispatcher;
         }
 

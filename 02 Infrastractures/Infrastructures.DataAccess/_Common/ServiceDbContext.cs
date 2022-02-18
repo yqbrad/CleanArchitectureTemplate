@@ -25,7 +25,7 @@ namespace DDD.Infrastructure.DataAccess._Common
             modelBuilder.ApplyConfigurationsFromAssembly(GetType().Assembly);
             base.OnModelCreating(modelBuilder);
 
-            //CreateSequence(modelBuilder, nameof(App));
+            CreateSequence(modelBuilder, nameof(Person));
         }
 
         private void CreateSequence(ModelBuilder modelBuilder, string name)
