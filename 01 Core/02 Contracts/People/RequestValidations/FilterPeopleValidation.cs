@@ -1,27 +1,28 @@
 ﻿using DDD.Contracts.People.Requests;
+using DDD.DomainModels._Common;
 using FluentValidation;
+using Framework.Domain.Translator;
 
-namespace DDD.Contracts.People.RequestValidations
+namespace DDD.Contracts.People.RequestValidations;
+
+public class FilterPeopleValidation : AbstractValidator<FilterPeople>
 {
-    public class FilterPeopleValidation : AbstractValidator<FilterPeople>
+    public FilterPeopleValidation(ITranslator translator)
     {
-        public FilterPeopleValidation()
-        {
-            CascadeMode = CascadeMode.Stop;
+        CascadeMode = CascadeMode.Stop;
 
-            RuleFor(s => s.PageNumber)
-                .Cascade(CascadeMode.Stop)
-                .NotNull()
-                .WithMessage("شماره صفحه ارسال نشده است")
-                .GreaterThan(0)
-                .WithMessage("شماره صفحه باید بزرگتر از صفر باشد");
+        RuleFor(s => s.PageNumber)
+            .Cascade(CascadeMode.Stop)
+            .NotEmpty()
+            .WithMessage(translator[StringResources.ValidationErrorRequired, StringResources.PageNumber])
+            .GreaterThan(0)
+            .WithMessage(translator[StringResources.ValidationErrorValueGraterThan, StringResources.PageNumber, StringResources.Zero]);
 
-            RuleFor(s => s.PageSize)
-                .Cascade(CascadeMode.Stop)
-                .NotNull()
-                .WithMessage("تعداد رکورد ارسال نشده است")
-                .GreaterThan(0)
-                .WithMessage("تعداد رکورد باید بزرگتر از صفر باشد");
-        }
+        RuleFor(s => s.PageSize)
+            .Cascade(CascadeMode.Stop)
+            .NotEmpty()
+            .WithMessage(translator[StringResources.ValidationErrorRequired, StringResources.PageSize])
+            .GreaterThan(0)
+            .WithMessage(translator[StringResources.ValidationErrorValueGraterThan, StringResources.PageSize, StringResources.Zero]);
     }
 }

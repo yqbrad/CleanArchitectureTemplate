@@ -19,10 +19,10 @@ namespace DDD.DomainModels.Properties {
     // class via a tool like ResGen or Visual Studio.
     // To add or remove a member, edit your .ResX file then rerun ResGen
     // with the /str option, or rebuild your VS project.
-    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "16.0.0.0")]
+    [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Resources.Tools.StronglyTypedResourceBuilder", "17.0.0.0")]
     [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]
-    internal class Resources {
+    public class Resources {
         
         private static global::System.Resources.ResourceManager resourceMan;
         
@@ -36,7 +36,7 @@ namespace DDD.DomainModels.Properties {
         ///   Returns the cached ResourceManager instance used by this class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Resources.ResourceManager ResourceManager {
+        public static global::System.Resources.ResourceManager ResourceManager {
             get {
                 if (object.ReferenceEquals(resourceMan, null)) {
                     global::System.Resources.ResourceManager temp = new global::System.Resources.ResourceManager("DDD.DomainModels.Properties.Resources", typeof(Resources).Assembly);
@@ -51,12 +51,237 @@ namespace DDD.DomainModels.Properties {
         ///   resource lookups using this strongly typed resource class.
         /// </summary>
         [global::System.ComponentModel.EditorBrowsableAttribute(global::System.ComponentModel.EditorBrowsableState.Advanced)]
-        internal static global::System.Globalization.CultureInfo Culture {
+        public static global::System.Globalization.CultureInfo Culture {
             get {
                 return resourceCulture;
             }
             set {
                 resourceCulture = value;
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to سن.
+        /// </summary>
+        public static string Age {
+            get {
+                return ResourceManager.GetString("Age", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام.
+        /// </summary>
+        public static string FirstName {
+            get {
+                return ResourceManager.GetString("FirstName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شناسه.
+        /// </summary>
+        public static string Id {
+            get {
+                return ResourceManager.GetString("Id", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نام خانوادگی.
+        /// </summary>
+        public static string LastName {
+            get {
+                return ResourceManager.GetString("LastName", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شماره صفحه.
+        /// </summary>
+        public static string PageNumber {
+            get {
+                return ResourceManager.GetString("PageNumber", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تعداد رکورد.
+        /// </summary>
+        public static string PageSize {
+            get {
+                return ResourceManager.GetString("PageSize", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to شخص.
+        /// </summary>
+        public static string Person {
+            get {
+                return ResourceManager.GetString("Person", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to انتخاب یک {0} اجباری است.
+        /// </summary>
+        public static string ValidationErrorAtLeastOneIsRequired {
+            get {
+                return ResourceManager.GetString("ValidationErrorAtLeastOneIsRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاریخ باید بزرگتر از امروز باشد.
+        /// </summary>
+        public static string ValidationErrorDateGreaterThan {
+            get {
+                return ResourceManager.GetString("ValidationErrorDateGreaterThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاریخ باید بزرگتر یا مساوی امروز باشد.
+        /// </summary>
+        public static string ValidationErrorDateGreaterThanOrEqualToday {
+            get {
+                return ResourceManager.GetString("ValidationErrorDateGreaterThanOrEqualToday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاریخ باید کوچکتر از امروز باشد.
+        /// </summary>
+        public static string ValidationErrorDateLessThan {
+            get {
+                return ResourceManager.GetString("ValidationErrorDateLessThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to تاریخ باید کمتر یا مساوی امروز باشد.
+        /// </summary>
+        public static string ValidationErrorDateLessThanOrEqualToToday {
+            get {
+                return ResourceManager.GetString("ValidationErrorDateLessThanOrEqualToToday", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} تکراری است.
+        /// </summary>
+        public static string ValidationErrorDuplicate {
+            get {
+                return ResourceManager.GetString("ValidationErrorDuplicate", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} در این سطح تکراری است.
+        /// </summary>
+        public static string ValidationErrorDuplicateInLevel {
+            get {
+                return ResourceManager.GetString("ValidationErrorDuplicateInLevel", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to نوع {0} صحیح نمی باشد.
+        /// </summary>
+        public static string ValidationErrorEnumIsNotValid {
+            get {
+                return ResourceManager.GetString("ValidationErrorEnumIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} یافت نشد.
+        /// </summary>
+        public static string ValidationErrorNotExist {
+            get {
+                return ResourceManager.GetString("ValidationErrorNotExist", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to {0} اجباری است.
+        /// </summary>
+        public static string ValidationErrorRequired {
+            get {
+                return ResourceManager.GetString("ValidationErrorRequired", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to طول {0} باید بین {1} و {2} باشد.
+        /// </summary>
+        public static string ValidationErrorStringLength {
+            get {
+                return ResourceManager.GetString("ValidationErrorStringLength", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to به علت استفاده قابل حذف یا ویرایش نیست.
+        /// </summary>
+        public static string ValidationErrorUnableDeleteOrEditBecauseUsed {
+            get {
+                return ResourceManager.GetString("ValidationErrorUnableDeleteOrEditBecauseUsed", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مقدار {0} باید بین {1} و {2} باشد.
+        /// </summary>
+        public static string ValidationErrorValueBetween {
+            get {
+                return ResourceManager.GetString("ValidationErrorValueBetween", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مقدار {0} باید بزرگتر یا مساوی از {1} باشد.
+        /// </summary>
+        public static string ValidationErrorValueGraterOrEqualThan {
+            get {
+                return ResourceManager.GetString("ValidationErrorValueGraterOrEqualThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مقدار {0} باید بزرگتر از {1} باشد.
+        /// </summary>
+        public static string ValidationErrorValueGraterThan {
+            get {
+                return ResourceManager.GetString("ValidationErrorValueGraterThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مقدار {0} صحیح نیست.
+        /// </summary>
+        public static string ValidationErrorValueIsNotValid {
+            get {
+                return ResourceManager.GetString("ValidationErrorValueIsNotValid", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to مقدار {0} باید کمتر از {1} باشد.
+        /// </summary>
+        public static string ValidationErrorValueLessThan {
+            get {
+                return ResourceManager.GetString("ValidationErrorValueLessThan", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to صفر.
+        /// </summary>
+        public static string Zero {
+            get {
+                return ResourceManager.GetString("Zero", resourceCulture);
             }
         }
     }

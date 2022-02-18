@@ -25,7 +25,7 @@ namespace DDD.EndPoints.API.Controllers
             return UpdateAsync(request);
         }
 
-        [HttpDelete]
+        [HttpDelete("{id:int}")]
         public Task<IActionResult> Delete(
             [FromRoute, Required] int id)
             => DeleteAsync(new DeletePerson(id));

@@ -1,6 +1,4 @@
 ﻿using DDD.Contracts._Common;
-using DDD.Contracts.People.RequestValidations;
-using DDD.EndPoints.API.Extension;
 using DDD.EndPoints.API.Models;
 using DDD.Infrastructure.DataAccess._Common;
 using DDD.Infrastructure.Service;
@@ -8,9 +6,10 @@ using DDD.Infrastructure.Service.Configuration;
 using DDD.Infrastructure.Service.Dispatcher;
 using DDD.Infrastructure.Service.EventSourcing;
 using DDD.Infrastructure.Service.RabbitMq;
-using FluentValidation;
+using DDD.Infrastructure.Service.Translator;
 using Framework.Domain.EventBus;
 using Framework.Domain.Events;
+using Framework.Domain.Translator;
 
 namespace DDD.EndPoints.API
 {
@@ -29,8 +28,8 @@ namespace DDD.EndPoints.API
             //services.AddSingleton<IApiCaller, ApiCaller>();
             services.AddSingleton<IInternalEventDispatcher, InternalEventDispatcher>();
             services.AddScoped<IServiceBus, ServiceBus>();
-
-            
+            services.AddLocalization();
+            services.AddTransient<ITranslator, MicrosoftTranslator>();
         }
     }
 }

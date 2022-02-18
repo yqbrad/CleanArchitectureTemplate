@@ -1,32 +1,29 @@
 ﻿using DDD.Contracts.People.Requests;
+using DDD.DomainModels._Common;
 using FluentValidation;
+using Framework.Domain.Translator;
 
-namespace DDD.Contracts.People.RequestValidations
+namespace DDD.Contracts.People.RequestValidations;
+
+public class AddPersonValidation : AbstractValidator<AddPerson>
 {
-    public class AddPersonValidation : AbstractValidator<AddPerson>
+    public AddPersonValidation(ITranslator translator)
     {
-        public AddPersonValidation()
-        {
-            RuleFor(s => s.FirstName)
-                .Cascade(CascadeMode.Stop)
-                .NotNull()
-                .WithMessage("نام ارسال نشده است")
-                .NotEmpty()
-                .WithMessage("نام خالی است");
+        RuleFor(s => s.FirstName)
+            .Cascade(CascadeMode.Stop)
+            .NotEmpty()
+            .WithMessage(translator[StringResources.ValidationErrorRequired, StringResources.FirstName]);
 
-            RuleFor(s => s.LastName)
-                .Cascade(CascadeMode.Stop)
-                .NotNull()
-                .WithMessage("نام خانوادگی ارسال نشده است")
-                .NotEmpty()
-                .WithMessage("نام خانوادگی خالی است");
+        RuleFor(s => s.LastName)
+            .Cascade(CascadeMode.Stop)
+            .NotEmpty()
+            .WithMessage(translator[StringResources.ValidationErrorRequired, StringResources.LastName]);
 
-            RuleFor(s => s.Age)
-                .Cascade(CascadeMode.Stop)
-                .NotNull()
-                .WithMessage("سن ارسال نشده است")
-                .GreaterThan(0)
-                .WithMessage("سن باید بزرگتر از 0 باشد");
-        }
+        RuleFor(s => s.Age)
+            .Cascade(CascadeMode.Stop)
+            .NotEmpty()
+            .WithMessage(translator[StringResources.ValidationErrorRequired, StringResources.Age])
+            .GreaterThan(0)
+            .WithMessage(translator[StringResources.ValidationErrorValueGraterThan, StringResources.Age, StringResources.Zero]);
     }
 }

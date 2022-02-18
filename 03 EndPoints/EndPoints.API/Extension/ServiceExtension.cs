@@ -1,6 +1,4 @@
-﻿using System.Reflection;
-using System.Text;
-using DDD.Contracts._Common;
+﻿using DDD.Contracts._Common;
 using DDD.EndPoints.API.Filters;
 using DDD.Infrastructure.Service.Configuration;
 using FluentValidation;
@@ -9,8 +7,9 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Primitives;
 using Microsoft.OpenApi.Models;
-using NuGet.Protocol.Plugins;
 using Swashbuckle.AspNetCore.SwaggerUI;
+using System.Reflection;
+using System.Text;
 
 namespace DDD.EndPoints.API.Extension
 {
@@ -158,7 +157,7 @@ namespace DDD.EndPoints.API.Extension
         public static IServiceCollection AddHandlers(this IServiceCollection services,
             IEnumerable<Assembly> assemblies)
             => services.AddWithTransientLifetime(assemblies,
-                typeof(IRequestHandler), typeof(IRequestHandler<,>), typeof(IEventHandler<>));
+                typeof(IRequestHandler<>), typeof(IRequestHandler<,>), typeof(IEventHandler<>));
 
         public static IServiceCollection AddWithTransientLifetime(this IServiceCollection services,
             IEnumerable<Assembly> assemblies, params Type[] assignableTo)
