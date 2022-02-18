@@ -1,6 +1,4 @@
-﻿using System.Text.Json.Serialization;
-using DDD.Contracts._Common;
-using DDD.EndPoints.API;
+﻿using DDD.Contracts._Common;
 using DDD.EndPoints.API.Extension;
 using DDD.EndPoints.API.Filters;
 using Framework.Domain.Error;
@@ -8,6 +6,7 @@ using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;
 using Microsoft.AspNetCore.Mvc;
 using Serilog;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.AddAppsettings();
@@ -22,26 +21,20 @@ builder.Host.UseSerilog((hbc, lc)
     => lc.ReadFrom.Configuration(hbc.Configuration));
 
 var serviceConfig = builder.Services.AddServiceConfig(configuration);
-builder.Services.AddControllers(options =>
-{
-    options.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status200OK));
-    options.Filters.Add(new ProducesResponseTypeAttribute(typeof(Error), 499));
-    options.Filters.Add<ExceptionFilter>();
-    options.EnableEndpointRouting = false;
-    options.CacheProfiles.Add("Default", new CacheProfile
+builder.Services
+    .AddDependencies(configuration, serviceConfig)
+    .AddControllers(options =>
     {
-        Duration = serviceConfig.CacheDuration
-    });
-})
+        options.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status200OK));
+        options.Filters.Add(new ProducesResponseTypeAttribute(typeof(Error), 499));
+        options.Filters.Add<ExceptionFilter>();
+        options.EnableEndpointRouting = false;
+        options.CacheProfiles.Add("Default", new CacheProfile
+        {
+            Duration = serviceConfig.CacheDuration
+        });
+    })
     .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
-
-builder.Services.AddIdp(serviceConfig);
-builder.Services.Inject(configuration);
-builder.Services.AddDependencies(serviceConfig.AssemblyName);
-builder.Services.AddResponseCaching();
-builder.Services.AddHeaderPropagation(serviceConfig);
-builder.Services.AddSwagger(serviceConfig);
-builder.Services.AddHealthCheck(configuration);
 
 var app = builder.Build();
 if (app.Environment.IsDevelopment())
