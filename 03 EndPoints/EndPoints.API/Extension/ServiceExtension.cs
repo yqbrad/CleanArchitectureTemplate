@@ -78,14 +78,19 @@ public static class ServiceExtension
     {
         if (!config.Swagger.IsEnable)
             return services;
-
+        
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc(config.Swagger.Version,
                 new OpenApiInfo
                 {
                     Title = config.Swagger.Title,
-                    Version = config.Swagger.Version
+                    Version = config.Swagger.Version,
+                    Contact = new OpenApiContact
+                    {
+                        Name = "Health Check",
+                        Url = new Uri($"http://localhost:3070{config.HealthCheckRoute}")
+                    }
                 });
             var xmlFile = $"{Assembly.GetExecutingAssembly().GetName().Name}.xml";
             var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
