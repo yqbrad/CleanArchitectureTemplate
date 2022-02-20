@@ -2,7 +2,7 @@
 using Framework.Domain.BaseModels;
 using Framework.Domain.Exceptions;
 
-namespace DDD.DomainModels._Common.ValueObjects
+namespace YQB.DomainModels._Common.ValueObjects
 {
     public class Amount : BaseValueObject<Amount>
     {

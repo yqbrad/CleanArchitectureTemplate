@@ -1,8 +1,8 @@
-﻿using DDD.DomainModels.Properties;
+﻿using YQB.DomainModels.Properties;
 using Framework.Domain.Translator;
 using Microsoft.Extensions.Localization;
 
-namespace DDD.Infrastructure.Service.Translator
+namespace YQB.Infrastructure.Service.Translator
 {
     public class MicrosoftTranslator : ITranslator
     {

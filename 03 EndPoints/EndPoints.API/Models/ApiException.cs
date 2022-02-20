@@ -1,4 +1,4 @@
-﻿namespace DDD.EndPoints.API.Models
+﻿namespace YQB.EndPoints.API.Models
 {
     public class ApiException: Exception
     {

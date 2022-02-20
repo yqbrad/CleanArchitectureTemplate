@@ -1,11 +1,11 @@
-﻿using DDD.ApplicationServices._Common;
-using DDD.Contracts._Common;
-using DDD.Contracts.People.Requests;
-using DDD.DomainModels.People.ValueObjects;
+﻿using YQB.ApplicationServices._Common;
+using YQB.Contracts._Common;
+using YQB.Contracts.People.Requests;
+using YQB.DomainModels.People.ValueObjects;
 using Framework.Domain.EventBus;
 using System.Threading.Tasks;
 
-namespace DDD.ApplicationServices.People.Request
+namespace YQB.ApplicationServices.People.Request
 {
     public class RenamePersonHandler : RequestHandler<RenamePerson>
     {

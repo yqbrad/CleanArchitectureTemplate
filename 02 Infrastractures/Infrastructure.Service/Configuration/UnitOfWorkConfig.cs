@@ -1,7 +1,7 @@
-﻿using DDD.Contracts._Common;
+﻿using YQB.Contracts._Common;
 using Microsoft.Extensions.Configuration;
 
-namespace DDD.Infrastructure.Service.Configuration
+namespace YQB.Infrastructure.Service.Configuration
 {
     public class UnitOfWorkConfig : IUnitOfWorkConfiguration
     {

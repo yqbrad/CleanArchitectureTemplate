@@ -1,8 +1,8 @@
-﻿using DDD.DomainModels._Common;
+﻿using YQB.DomainModels._Common;
 using Framework.Domain.BaseModels;
 using Framework.Domain.Exceptions;
 
-namespace DDD.DomainModels.People.ValueObjects;
+namespace YQB.DomainModels.People.ValueObjects;
 
 public class PersonFirstName : BaseValueObject<PersonFirstName>
 {

@@ -8,7 +8,7 @@
 		<LangVersion>Latest</LangVersion>
 		<Version>1.0.0</Version>
 		<Configurations>Debug;Release;Production</Configurations>
-		<PackageTags>DDD</PackageTags>
+		<PackageTags>CleanArchitecture</PackageTags>
 		<NeutralLanguage>fa-IR</NeutralLanguage>
 		<Authors>Yqb.Rad</Authors>
 	</PropertyGroup>
@@ -39,12 +39,12 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
-		<ProjectReference Include="..\..\01 Core\01 DomainModels\01 DDD.DomainModels.csproj" />
-		<ProjectReference Include="..\..\01 Core\02 Contracts\02 DDD.Contracts.csproj" />
-		<ProjectReference Include="..\..\01 Core\03 DomainServices\03 DDD.DomainServices.csproj" />
-		<ProjectReference Include="..\..\01 Core\04 ApplicationServices\04 DDD.ApplicationServices.csproj" />
-		<ProjectReference Include="..\..\02 Infrastractures\Infrastructure.Service\DDD.Infrastructure.Service.csproj" />
-		<ProjectReference Include="..\..\02 Infrastractures\Infrastructures.DataAccess\DDD.Infrastructure.DataAccess.csproj" />
+		<ProjectReference Include="..\..\01 Core\01 DomainModels\01 YQB.DomainModels.csproj" />
+		<ProjectReference Include="..\..\01 Core\02 Contracts\02 YQB.Contracts.csproj" />
+		<ProjectReference Include="..\..\01 Core\03 DomainServices\03 YQB.DomainServices.csproj" />
+		<ProjectReference Include="..\..\01 Core\04 ApplicationServices\04 YQB.ApplicationServices.csproj" />
+		<ProjectReference Include="..\..\02 Infrastractures\Infrastructure.Service\YQB.Infrastructure.Service.csproj" />
+		<ProjectReference Include="..\..\02 Infrastractures\Infrastructures.DataAccess\YQB.Infrastructure.DataAccess.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

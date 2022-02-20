@@ -1,10 +1,10 @@
 ﻿using System;
 using System.Threading.Tasks;
-using DDD.Contracts._Common;
-using DDD.Contracts.People.Repositories;
+using YQB.Contracts._Common;
+using YQB.Contracts.People.Repositories;
 using Framework.Domain.Exceptions;
 
-namespace DDD.Infrastructure.DataAccess._Common
+namespace YQB.Infrastructure.DataAccess._Common
 {
     public sealed class UnitOfWork<TDbContext> : IUnitOfWork
         where TDbContext : BaseDbContext

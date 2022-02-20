@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<LangVersion>Latest</LangVersion>
-		<AssemblyName>DDD.DomainModels</AssemblyName>
-		<RootNamespace>DDD.DomainModels</RootNamespace>
+		<AssemblyName>YQB.DomainModels</AssemblyName>
+		<RootNamespace>YQB.DomainModels</RootNamespace>
 		<Configurations>Debug;Release;Production</Configurations>
 	</PropertyGroup>
 

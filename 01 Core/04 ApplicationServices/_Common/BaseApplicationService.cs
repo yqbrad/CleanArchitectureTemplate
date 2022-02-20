@@ -1,7 +1,7 @@
-﻿using DDD.Contracts._Common;
+﻿using YQB.Contracts._Common;
 using Framework.Domain.EventBus;
 
-namespace DDD.ApplicationServices._Common
+namespace YQB.ApplicationServices._Common
 {
     public abstract class BaseApplicationService
     {

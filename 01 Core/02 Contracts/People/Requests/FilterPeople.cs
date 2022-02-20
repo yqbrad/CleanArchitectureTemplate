@@ -1,7 +1,7 @@
-﻿using DDD.Contracts.People.Results;
+﻿using YQB.Contracts.People.Results;
 using Framework.Domain.Paging;
 
-namespace DDD.Contracts.People.Requests
+namespace YQB.Contracts.People.Requests
 {
     public class FilterPeople : PageRequest<PersonDetails>
     {

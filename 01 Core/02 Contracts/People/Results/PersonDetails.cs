@@ -1,7 +1,7 @@
-﻿using DDD.DomainModels.People.Entities;
+﻿using YQB.DomainModels.People.Entities;
 using Framework.Domain.Results;
 
-namespace DDD.Contracts.People.Results
+namespace YQB.Contracts.People.Results
 {
     public class PersonDetails : IResult
     {

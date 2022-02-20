@@ -1,10 +1,10 @@
-﻿using DDD.Contracts.People.Requests;
-using DDD.Contracts.People.Results;
+﻿using YQB.Contracts.People.Requests;
+using YQB.Contracts.People.Results;
 using Framework.Domain.Paging;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
-namespace DDD.EndPoints.API.Controllers
+namespace YQB.EndPoints.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -2,7 +2,7 @@
 using Framework.Domain.Exceptions;
 using Framework.Tools;
 
-namespace DDD.DomainModels._Common.ValueObjects
+namespace YQB.DomainModels._Common.ValueObjects
 {
     public class NationalCode : BaseValueObject<NationalCode>
     {

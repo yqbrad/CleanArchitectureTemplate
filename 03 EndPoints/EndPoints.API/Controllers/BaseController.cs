@@ -1,12 +1,12 @@
-﻿using DDD.EndPoints.API.Extension;
-using DDD.Infrastructure.Service.Configuration;
+﻿using YQB.EndPoints.API.Extension;
+using YQB.Infrastructure.Service.Configuration;
 using FluentValidation;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.Exceptions;
 using Framework.Domain.Requests;
 using Microsoft.AspNetCore.Mvc;
 
-namespace DDD.EndPoints.API.Controllers
+namespace YQB.EndPoints.API.Controllers
 {
     public class BaseController : ControllerBase
     {

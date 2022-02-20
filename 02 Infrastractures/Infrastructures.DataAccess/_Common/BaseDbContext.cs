@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage;
 
-namespace DDD.Infrastructure.DataAccess._Common
+namespace YQB.Infrastructure.DataAccess._Common
 {
     public abstract class BaseDbContext : DbContext
     {

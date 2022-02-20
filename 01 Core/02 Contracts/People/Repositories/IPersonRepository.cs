@@ -1,11 +1,11 @@
-﻿using DDD.Contracts._Common;
-using DDD.Contracts.People.Requests;
-using DDD.Contracts.People.Results;
-using DDD.DomainModels.People.Entities;
+﻿using YQB.Contracts._Common;
+using YQB.Contracts.People.Requests;
+using YQB.Contracts.People.Results;
+using YQB.DomainModels.People.Entities;
 using Framework.Domain.Paging;
 using System.Threading.Tasks;
 
-namespace DDD.Contracts.People.Repositories
+namespace YQB.Contracts.People.Repositories
 {
     public interface IPersonRepository : IRepository<Person, int>
     {

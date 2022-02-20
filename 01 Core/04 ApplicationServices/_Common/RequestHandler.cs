@@ -1,10 +1,10 @@
-﻿using DDD.Contracts._Common;
+﻿using YQB.Contracts._Common;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
 using Framework.Domain.Requests;
 using System.Threading.Tasks;
 
-namespace DDD.ApplicationServices._Common
+namespace YQB.ApplicationServices._Common
 {
     public abstract class RequestHandler<TRequest> : BaseApplicationService,
         IRequestHandler<TRequest>

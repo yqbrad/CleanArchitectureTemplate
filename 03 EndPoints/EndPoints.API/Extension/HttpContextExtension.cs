@@ -1,6 +1,6 @@
-﻿using DDD.Infrastructure.Service.Configuration;
+﻿using YQB.Infrastructure.Service.Configuration;
 
-namespace DDD.EndPoints.API.Extension
+namespace YQB.EndPoints.API.Extension
 {
     public static class HttpContextExtension
     {

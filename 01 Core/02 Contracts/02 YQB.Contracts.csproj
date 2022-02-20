@@ -3,8 +3,8 @@
 	<PropertyGroup>
 		<TargetFramework>net6.0</TargetFramework>
 		<LangVersion>Latest</LangVersion>
-		<AssemblyName>DDD.Contracts</AssemblyName>
-		<RootNamespace>DDD.Contracts</RootNamespace>
+		<AssemblyName>YQB.Contracts</AssemblyName>
+		<RootNamespace>YQB.Contracts</RootNamespace>
 		<Configurations>Debug;Release;Production</Configurations>
 	</PropertyGroup>
 
@@ -15,7 +15,7 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
-		<ProjectReference Include="..\01 DomainModels\01 DDD.DomainModels.csproj" />
+		<ProjectReference Include="..\01 DomainModels\01 YQB.DomainModels.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

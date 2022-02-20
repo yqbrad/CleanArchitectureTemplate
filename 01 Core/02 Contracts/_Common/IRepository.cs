@@ -4,7 +4,7 @@ using System.Linq.Expressions;
 using System.Threading.Tasks;
 using Framework.Domain.BaseModels;
 
-namespace DDD.Contracts._Common
+namespace YQB.Contracts._Common
 {
     public interface IRepository<TEntity, TId>
         where TEntity : BaseAggregateRoot<TId>

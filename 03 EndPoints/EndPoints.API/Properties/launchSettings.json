@@ -1,15 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/launchsettings.json",
-  "iisSettings": {
-    "windowsAuthentication": false,
-    "anonymousAuthentication": true,
-    "iisExpress": {
-      "applicationUrl": "http://localhost:3070/",
-      "sslPort": 0
-    }
-  },
   "profiles": {
-    "DDD.Endpoints.API": {
+    "CleanArchitecture": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
@@ -17,11 +9,6 @@
       },
       "applicationUrl": "http://localhost:3070/",
       "dotnetRunMessage": true
-    },
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "nativeDebugging": false
     }
   }
 }

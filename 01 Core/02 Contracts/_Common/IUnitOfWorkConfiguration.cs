@@ -1,5 +1,5 @@
 ﻿
-namespace DDD.Contracts._Common
+namespace YQB.Contracts._Common
 {
     public interface IUnitOfWorkConfiguration
     {

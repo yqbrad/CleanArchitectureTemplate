@@ -1,13 +1,13 @@
-﻿using DDD.ApplicationServices._Common;
-using DDD.Contracts._Common;
-using DDD.Contracts.People.Requests;
-using DDD.Contracts.People.Results;
+﻿using YQB.ApplicationServices._Common;
+using YQB.Contracts._Common;
+using YQB.Contracts.People.Requests;
+using YQB.Contracts.People.Results;
 using Framework.Domain.EventBus;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace DDD.ApplicationServices.People.Request
+namespace YQB.ApplicationServices.People.Request
 {
     public class GetAllPeopleHandler : RequestHandler<GetAllPeople, IEnumerable<PersonDetails>>
     {

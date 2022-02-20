@@ -1,7 +1,7 @@
-﻿using DDD.DomainModels.People.ValueObjects;
+﻿using YQB.DomainModels.People.ValueObjects;
 using Framework.Domain.BaseModels;
 
-namespace DDD.DomainModels.People.Entities
+namespace YQB.DomainModels.People.Entities
 {
     public class Person : BaseAggregateRoot<int>
     {

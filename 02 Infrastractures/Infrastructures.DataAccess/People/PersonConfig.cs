@@ -1,9 +1,9 @@
-﻿using DDD.DomainModels.People.Entities;
-using DDD.DomainModels.People.ValueObjects;
+﻿using YQB.DomainModels.People.Entities;
+using YQB.DomainModels.People.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DDD.Infrastructure.DataAccess.People
+namespace YQB.Infrastructure.DataAccess.People
 {
     public class PersonConfig : IEntityTypeConfiguration<Person>
     {

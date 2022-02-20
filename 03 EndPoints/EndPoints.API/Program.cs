@@ -1,6 +1,6 @@
-﻿using DDD.Contracts._Common;
-using DDD.EndPoints.API.Extension;
-using DDD.EndPoints.API.Filters;
+﻿using YQB.Contracts._Common;
+using YQB.EndPoints.API.Extension;
+using YQB.EndPoints.API.Filters;
 using Framework.Domain.Error;
 using HealthChecks.UI.Client;
 using Microsoft.AspNetCore.Diagnostics.HealthChecks;

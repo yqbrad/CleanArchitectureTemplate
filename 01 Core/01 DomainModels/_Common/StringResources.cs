@@ -1,4 +1,4 @@
-﻿namespace DDD.DomainModels._Common
+﻿namespace YQB.DomainModels._Common
 {
     public class StringResources
     {

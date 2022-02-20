@@ -1,9 +1,9 @@
-﻿using DDD.Infrastructure.Service.ServiceInfos;
+﻿using YQB.Infrastructure.Service.ServiceInfos;
 using Framework.Tools;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
 
-namespace DDD.EndPoints.API.Controllers
+namespace YQB.EndPoints.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

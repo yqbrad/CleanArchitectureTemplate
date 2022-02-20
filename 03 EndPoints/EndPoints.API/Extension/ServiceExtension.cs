@@ -1,13 +1,13 @@
-﻿using DDD.Contracts._Common;
-using DDD.EndPoints.API.Filters;
-using DDD.EndPoints.API.Models;
-using DDD.Infrastructure.DataAccess._Common;
-using DDD.Infrastructure.Service;
-using DDD.Infrastructure.Service.Configuration;
-using DDD.Infrastructure.Service.Dispatcher;
-using DDD.Infrastructure.Service.EventSourcing;
-using DDD.Infrastructure.Service.RabbitMq;
-using DDD.Infrastructure.Service.Translator;
+﻿using YQB.Contracts._Common;
+using YQB.EndPoints.API.Filters;
+using YQB.EndPoints.API.Models;
+using YQB.Infrastructure.DataAccess._Common;
+using YQB.Infrastructure.Service;
+using YQB.Infrastructure.Service.Configuration;
+using YQB.Infrastructure.Service.Dispatcher;
+using YQB.Infrastructure.Service.EventSourcing;
+using YQB.Infrastructure.Service.RabbitMq;
+using YQB.Infrastructure.Service.Translator;
 using FluentValidation;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
@@ -21,7 +21,7 @@ using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
 using System.Text;
 
-namespace DDD.EndPoints.API.Extension;
+namespace YQB.EndPoints.API.Extension;
 
 public static class ServiceExtension
 {

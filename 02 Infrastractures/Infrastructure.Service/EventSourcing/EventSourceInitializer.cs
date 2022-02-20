@@ -9,7 +9,7 @@ using Framework.Domain.Events;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace DDD.Infrastructure.Service.EventSourcing
+namespace YQB.Infrastructure.Service.EventSourcing
 {
     public class EventSourceInitializer : IEventSource
     {

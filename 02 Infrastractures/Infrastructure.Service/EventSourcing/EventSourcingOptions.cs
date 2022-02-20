@@ -1,4 +1,4 @@
-﻿namespace DDD.Infrastructure.Service.EventSourcing
+﻿namespace YQB.Infrastructure.Service.EventSourcing
 {
     public class EventSourcingOptions
     {

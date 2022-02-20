@@ -4,7 +4,7 @@ using Framework.Domain.Translator;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Filters;
 
-namespace DDD.EndPoints.API.Filters
+namespace YQB.EndPoints.API.Filters
 {
     public class ExceptionFilter : IExceptionFilter
     {

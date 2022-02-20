@@ -1,7 +1,7 @@
 ﻿using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
 
-namespace DDD.EndPoints.API.Filters
+namespace YQB.EndPoints.API.Filters
 {
     public class SwaggerDefaultValueFilter : ISchemaFilter
     {

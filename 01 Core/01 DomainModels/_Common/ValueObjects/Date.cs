@@ -1,7 +1,7 @@
 ﻿using System;
 using Framework.Domain.BaseModels;
 
-namespace DDD.DomainModels._Common.ValueObjects
+namespace YQB.DomainModels._Common.ValueObjects
 {
     public class Date : BaseValueObject<Date>
     {

@@ -1,7 +1,7 @@
 ﻿using Framework.Domain.EventBus;
 using System.IdentityModel.Tokens.Jwt;
 
-namespace DDD.EndPoints.API.Models
+namespace YQB.EndPoints.API.Models
 {
     public class UserInfo: IUserInfo
     {

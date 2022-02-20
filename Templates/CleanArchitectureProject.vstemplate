@@ -1,13 +1,13 @@
 ﻿<VSTemplate Version="3.0.0" Type="ProjectGroup" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005">
 	<TemplateData>
-		<Name>DDDProject</Name>
-		<Description>For create new project with ddd structure.</Description>
+		<Name>CleanArchitectureProject</Name>
+		<Description>For create new project with clean architecture structure.</Description>
 		<ProjectType>CSharp</ProjectType>
 		<CreateNewFolder>true</CreateNewFolder>
 		<DefaultName>NewProject</DefaultName>
 		<ProvideDefaultName>true</ProvideDefaultName>
 		<LocationField>Enabled</LocationField>
-		<Icon>ddd.png</Icon>
+		<Icon>icon-layer.png</Icon>
 		<SortOrder>1</SortOrder>
 		<EnableLocationBrowseButton>true</EnableLocationBrowseButton>
 	</TemplateData>
@@ -26,35 +26,35 @@
 
 			<SolutionFolder Name="01 Core">
 				<ProjectTemplateLink ProjectName="01 $projectname$.DomainModels">
-					01 DDD.DomainModels\MyTemplate.vstemplate
+					01 YQB.DomainModels\MyTemplate.vstemplate
 				</ProjectTemplateLink>
 
 				<ProjectTemplateLink ProjectName="02 $projectname$.Contracts">
-					02 DDD.Contracts\MyTemplate.vstemplate
+					02 YQB.Contracts\MyTemplate.vstemplate
 				</ProjectTemplateLink>
 
 				<ProjectTemplateLink ProjectName="03 $projectname$.DomainServices">
-					03 DDD.DomainServices\MyTemplate.vstemplate
+					03 YQB.DomainServices\MyTemplate.vstemplate
 				</ProjectTemplateLink>
 
 				<ProjectTemplateLink ProjectName="04 $projectname$.ApplicationServices">
-					04 DDD.ApplicationServices\MyTemplate.vstemplate
+					04 YQB.ApplicationServices\MyTemplate.vstemplate
 				</ProjectTemplateLink>
 			</SolutionFolder>
 
 			<SolutionFolder Name="02 Infrastructure">
 				<ProjectTemplateLink ProjectName="$projectname$.Infrastructure.DataAccess">
-					DDD.Infrastructure.DataAccess\MyTemplate.vstemplate
+					YQB.Infrastructure.DataAccess\MyTemplate.vstemplate
 				</ProjectTemplateLink>
 
 				<ProjectTemplateLink ProjectName="$projectname$.Infrastructure.Service">
-					DDD.Infrastructure.Service\MyTemplate.vstemplate
+					YQB.Infrastructure.Service\MyTemplate.vstemplate
 				</ProjectTemplateLink>
 			</SolutionFolder>
 
 			<SolutionFolder Name="03 EndPoints">
 				<ProjectTemplateLink ProjectName="$projectname$.EndPoints.API">
-					DDD.EndPoints.API\MyTemplate.vstemplate
+					YQB.EndPoints.API\MyTemplate.vstemplate
 				</ProjectTemplateLink>
 			</SolutionFolder>
 

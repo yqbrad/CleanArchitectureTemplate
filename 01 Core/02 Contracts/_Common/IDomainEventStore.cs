@@ -2,7 +2,7 @@
 using System.Threading.Tasks;
 using Framework.Domain.Events;
 
-namespace DDD.Contracts._Common
+namespace YQB.Contracts._Common
 {
     public interface IDomainEventStore
     {

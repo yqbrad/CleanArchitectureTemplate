@@ -1,6 +1,6 @@
 ﻿using Framework.Domain.Requests;
 
-namespace DDD.Contracts.People.Requests
+namespace YQB.Contracts.People.Requests
 {
     public class RenamePerson : IRequest
     {

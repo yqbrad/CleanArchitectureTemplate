@@ -1,7 +1,7 @@
 ﻿using System.Threading.Tasks;
-using DDD.Contracts.People.Repositories;
+using YQB.Contracts.People.Repositories;
 
-namespace DDD.Contracts._Common
+namespace YQB.Contracts._Common
 {
     public interface IUnitOfWork
     {

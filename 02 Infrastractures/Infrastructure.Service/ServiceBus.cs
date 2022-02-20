@@ -1,14 +1,9 @@
-﻿using System;
-using System.Linq;
-using System.Threading.Tasks;
-using Framework.Domain.BaseModels;
-using Framework.Domain.Data;
-using Framework.Domain.EventBus;
+﻿using Framework.Domain.EventBus;
 using Framework.Domain.Events;
-using RawRabbit;
+
 //using Services.Core.Interfaces;
 
-namespace DDD.Infrastructure.Service
+namespace YQB.Infrastructure.Service
 {
     public class ServiceBus: IServiceBus
     {

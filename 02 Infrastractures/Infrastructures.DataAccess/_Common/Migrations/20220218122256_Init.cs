@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace DDD.Infrastructure.DataAccess.Migrations
+namespace YQB.Infrastructure.DataAccess.Migrations
 {
     public partial class Init : Migration
     {

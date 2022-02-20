@@ -1,9 +1,9 @@
-﻿using DDD.Contracts.People.Requests;
-using DDD.DomainModels._Common;
+﻿using YQB.Contracts.People.Requests;
+using YQB.DomainModels._Common;
 using FluentValidation;
 using Framework.Domain.Translator;
 
-namespace DDD.Contracts.People.RequestValidations;
+namespace YQB.Contracts.People.RequestValidations;
 
 public class FilterPeopleValidation : AbstractValidator<FilterPeople>
 {

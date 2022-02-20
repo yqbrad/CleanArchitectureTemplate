@@ -24,8 +24,8 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
-		<ProjectReference Include="..\..\01 Core\01 DomainModels\01 DDD.DomainModels.csproj" />
-		<ProjectReference Include="..\..\01 Core\02 Contracts\02 DDD.Contracts.csproj" />
+		<ProjectReference Include="..\..\01 Core\01 DomainModels\01 YQB.DomainModels.csproj" />
+		<ProjectReference Include="..\..\01 Core\02 Contracts\02 YQB.Contracts.csproj" />
 	</ItemGroup>
 
 </Project>
