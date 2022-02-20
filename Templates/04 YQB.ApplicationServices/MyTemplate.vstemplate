@@ -1,0 +1,35 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>04 YQB.ApplicationServices</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>04 YQB.ApplicationServices</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="04 YQB.ApplicationServices.csproj" File="04 YQB.ApplicationServices.csproj" ReplaceParameters="true">
+      <Folder Name="_Common" TargetFolderName="_Common">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseApplicationService.cs">BaseApplicationService.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="RequestHandler.cs">RequestHandler.cs</ProjectItem>
+      </Folder>
+      <Folder Name="People" TargetFolderName="People">
+        <Folder Name="Requests" TargetFolderName="Requests">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AddPersonHandler.cs">AddPersonHandler.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="DeletePersonHandler.cs">DeletePersonHandler.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="FilterPeopleHandler.cs">FilterPeopleHandler.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="GetAllPeopleHandler.cs">GetAllPeopleHandler.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="GetPersonHandler.cs">GetPersonHandler.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="RenamePersonHandler.cs">RenamePersonHandler.cs</ProjectItem>
+        </Folder>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

@@ -1,0 +1,57 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>YQB.EndPoints.API</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>YQB.EndPoints.API</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="YQB.EndPoints.API.csproj" File="YQB.EndPoints.API.csproj" ReplaceParameters="true">
+      <Folder Name="Properties" TargetFolderName="Properties">
+        <Folder Name="PublishProfiles" TargetFolderName="PublishProfiles">
+          <ProjectItem ReplaceParameters="false" TargetFileName="Local.pubxml">Local.pubxml</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Production.pubxml">Production.pubxml</ProjectItem>
+          <ProjectItem ReplaceParameters="false" TargetFileName="Release.pubxml">Release.pubxml</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="launchSettings.json">launchSettings.json</ProjectItem>
+      </Folder>
+      <Folder Name="wwwroot" TargetFolderName="wwwroot">
+        <Folder Name="swagger-ui" TargetFolderName="swagger-ui">
+          <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerDark.css">SwaggerDark.css</ProjectItem>
+        </Folder>
+      </Folder>
+      <Folder Name="Controllers" TargetFolderName="Controllers">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseController.cs">BaseController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PeopleController.cs">PeopleController.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SettingController.cs">SettingController.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Extension" TargetFolderName="Extension">
+        <ProjectItem ReplaceParameters="true" TargetFileName="HttpContextExtension.cs">HttpContextExtension.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceExtension.cs">ServiceExtension.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Filters" TargetFolderName="Filters">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ExceptionFilter.cs">ExceptionFilter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerAuthorizeOperationFilter.cs">SwaggerAuthorizeOperationFilter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerDefaultValueFilter.cs">SwaggerDefaultValueFilter.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="SwaggerEnumSchemaFilter.cs">SwaggerEnumSchemaFilter.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Logs" TargetFolderName="Logs" />
+      <Folder Name="Models" TargetFolderName="Models">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ApiException.cs">ApiException.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UserInfo.cs">UserInfo.cs</ProjectItem>
+      </Folder>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.json">appsettings.Development.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="appsettings.Development.serilog.json">appsettings.Development.serilog.json</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="Program.cs">Program.cs</ProjectItem>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

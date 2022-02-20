@@ -33,27 +33,43 @@
         <ProjectItem ReplaceParameters="true" TargetFileName="IAggregateStore.cs">IAggregateStore.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IEventSource.cs">IEventSource.cs</ProjectItem>
       </Folder>
-      <Folder Name="Dtoes" TargetFolderName="Dtoes">
-        <ProjectItem ReplaceParameters="true" TargetFileName="IDto.cs">IDto.cs</ProjectItem>
+      <Folder Name="DependencyInjection" TargetFolderName="DependencyInjection">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ISingletonLifetime.cs">ISingletonLifetime.cs</ProjectItem>
       </Folder>
       <Folder Name="Error" TargetFolderName="Error">
         <ProjectItem ReplaceParameters="true" TargetFileName="Error.cs">Error.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IError.cs">IError.cs</ProjectItem>
       </Folder>
       <Folder Name="EventBus" TargetFolderName="EventBus">
-        <ProjectItem ReplaceParameters="true" TargetFileName="ApiServices.cs">ApiServices.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="IApplicant.cs">IApplicant.cs</ProjectItem>
-        <ProjectItem ReplaceParameters="true" TargetFileName="IEventBus.cs">IEventBus.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IServiceBus.cs">IServiceBus.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IUserInfo.cs">IUserInfo.cs</ProjectItem>
       </Folder>
       <Folder Name="Events" TargetFolderName="Events">
-        <ProjectItem ReplaceParameters="true" TargetFileName="IEvent.cs">IEvent.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEvent.cs">IDomainEvent.cs</ProjectItem>
         <ProjectItem ReplaceParameters="true" TargetFileName="IInternalEventDispatcher.cs">IInternalEventDispatcher.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Exceptions" TargetFolderName="Exceptions">
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseException.cs">BaseException.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DataAccessException.cs">DataAccessException.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="DomainException.cs">DomainException.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="FluentValidationException.cs">FluentValidationException.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InitializeDataBaseException.cs">InitializeDataBaseException.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Paging" TargetFolderName="Paging">
+        <ProjectItem ReplaceParameters="true" TargetFileName="PageRequest.cs">PageRequest.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PageResult.cs">PageResult.cs</ProjectItem>
       </Folder>
       <Folder Name="Queries" TargetFolderName="Queries">
         <ProjectItem ReplaceParameters="true" TargetFileName="IQuery.cs">IQuery.cs</ProjectItem>
       </Folder>
       <Folder Name="Requests" TargetFolderName="Requests">
         <ProjectItem ReplaceParameters="true" TargetFileName="IRequest.cs">IRequest.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Results" TargetFolderName="Results">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IResult.cs">IResult.cs</ProjectItem>
+      </Folder>
+      <Folder Name="Translator" TargetFolderName="Translator">
+        <ProjectItem ReplaceParameters="true" TargetFileName="ITranslator.cs">ITranslator.cs</ProjectItem>
       </Folder>
     </Project>
   </TemplateContent>

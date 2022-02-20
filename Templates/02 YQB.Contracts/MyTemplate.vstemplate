@@ -1,0 +1,50 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>02 YQB.Contracts</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>02 YQB.Contracts</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="02 YQB.Contracts.csproj" File="02 YQB.Contracts.csproj" ReplaceParameters="true">
+      <Folder Name="_Common" TargetFolderName="_Common">
+        <ProjectItem ReplaceParameters="true" TargetFileName="IDomainEventStore.cs">IDomainEventStore.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="InitialData.cs">InitialData.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IRepository.cs">IRepository.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWork.cs">IUnitOfWork.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="IUnitOfWorkConfiguration.cs">IUnitOfWorkConfiguration.cs</ProjectItem>
+      </Folder>
+      <Folder Name="People" TargetFolderName="People">
+        <Folder Name="Repositories" TargetFolderName="Repositories">
+          <ProjectItem ReplaceParameters="true" TargetFileName="IPersonRepository.cs">IPersonRepository.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Requests" TargetFolderName="Requests">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AddPerson.cs">AddPerson.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="DeletePerson.cs">DeletePerson.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="FilterPeople.cs">FilterPeople.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="GetAllPeople.cs">GetAllPeople.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="GetPerson.cs">GetPerson.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="RenamePerson.cs">RenamePerson.cs</ProjectItem>
+        </Folder>
+        <Folder Name="RequestValidations" TargetFolderName="RequestValidations">
+          <ProjectItem ReplaceParameters="true" TargetFileName="AddPersonValidation.cs">AddPersonValidation.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="DeletePersonValidation.cs">DeletePersonValidation.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="FilterPeopleValidation.cs">FilterPeopleValidation.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="RenamePersonValidation.cs">RenamePersonValidation.cs</ProjectItem>
+        </Folder>
+        <Folder Name="Results" TargetFolderName="Results">
+          <ProjectItem ReplaceParameters="true" TargetFileName="PersonDetails.cs">PersonDetails.cs</ProjectItem>
+        </Folder>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

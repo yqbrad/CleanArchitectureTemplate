@@ -9,6 +9,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="People\Events\**" />
+	  <EmbeddedResource Remove="People\Events\**" />
+	  <None Remove="People\Events\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<Compile Update="Properties\Resources.Designer.cs">
 			<DesignTime>True</DesignTime>
 			<AutoGen>True</AutoGen>
@@ -26,10 +32,6 @@
 	<ItemGroup>
 		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="People\Events\" />
 	</ItemGroup>
 
 </Project>

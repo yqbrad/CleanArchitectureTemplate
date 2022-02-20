@@ -1,0 +1,37 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<AssemblyName>$safeprojectname$</AssemblyName>
+		<RootNamespace>$safeprojectname$</RootNamespace>
+		<Configurations>Debug;Release;Production</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="People\Events\**" />
+	  <EmbeddedResource Remove="People\Events\**" />
+	  <None Remove="People\Events\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Compile Update="Properties\Resources.Designer.cs">
+			<DesignTime>True</DesignTime>
+			<AutoGen>True</AutoGen>
+			<DependentUpon>Resources.resx</DependentUpon>
+		</Compile>
+	</ItemGroup>
+
+	<ItemGroup>
+		<EmbeddedResource Update="Properties\Resources.resx">
+			<Generator>PublicResXFileCodeGenerator</Generator>
+			<LastGenOutput>Resources.Designer.cs</LastGenOutput>
+		</EmbeddedResource>
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
+		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
+	</ItemGroup>
+
+</Project>

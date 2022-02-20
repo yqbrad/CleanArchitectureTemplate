@@ -18,7 +18,9 @@
     <Project TargetFileName="Framework.Tools.csproj" File="Framework.Tools.csproj" ReplaceParameters="true">
       <ProjectItem ReplaceParameters="true" TargetFileName="EnumExtension.cs">EnumExtension.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="FileSizeFormatter.cs">FileSizeFormatter.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="LinqExtensions.cs">LinqExtensions.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="StreamExtensions.cs">StreamExtensions.cs</ProjectItem>
+      <ProjectItem ReplaceParameters="true" TargetFileName="StringValidator.cs">StringValidator.cs</ProjectItem>
       <ProjectItem ReplaceParameters="true" TargetFileName="SystemManager.cs">SystemManager.cs</ProjectItem>
     </Project>
   </TemplateContent>
