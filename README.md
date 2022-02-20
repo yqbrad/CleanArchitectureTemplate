@@ -1,4 +1,4 @@
-## Welcome to DDD template Page
+## Welcome to Clean Architecture template Page
 
 You can download [DDD.zip](https://github.com/yqbrad/DDDTemplate/blob/master/Templates/DDD.zip) and copy to "C:\Users\YourUser\Documents\Visual Studio <version>\Templates\ProjectTemplates."
 
