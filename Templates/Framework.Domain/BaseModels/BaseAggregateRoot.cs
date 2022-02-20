@@ -10,12 +10,12 @@ namespace $safeprojectname$.BaseModels
     {
         public TId Id { get; protected set; }
 
-        private readonly List<IEvent> _events;
+        private readonly List<IDomainEvent> _events;
 
         protected BaseAggregateRoot()
-            => _events = new List<IEvent>();
+            => _events = new List<IDomainEvent>();
 
-        public BaseAggregateRoot(IEnumerable<IEvent> events)
+        public BaseAggregateRoot(IEnumerable<IDomainEvent> events)
         {
             if (events is null)
                 return;
@@ -24,10 +24,10 @@ namespace $safeprojectname$.BaseModels
                 ((dynamic)this).On((dynamic)@event);
         }
 
-        protected void AddEvent(IEvent @event)
+        protected void AddEvent(IDomainEvent @event)
             => _events.Add(@event);
 
-        public IEnumerable<IEvent> GetEvents()
+        public IEnumerable<IDomainEvent> GetEvents()
             => _events.AsEnumerable();
 
         public void ClearEvents()

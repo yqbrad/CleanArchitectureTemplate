@@ -1,0 +1,36 @@
+<VSTemplate Version="3.0.0" xmlns="http://schemas.microsoft.com/developer/vstemplate/2005" Type="Project">
+  <TemplateData>
+    <Name>YQB.Infrastructure.DataAccess</Name>
+    <Description>&lt;No description available&gt;</Description>
+    <ProjectType>CSharp</ProjectType>
+    <ProjectSubType>
+    </ProjectSubType>
+    <SortOrder>1000</SortOrder>
+    <CreateNewFolder>true</CreateNewFolder>
+    <DefaultName>YQB.Infrastructure.DataAccess</DefaultName>
+    <ProvideDefaultName>true</ProvideDefaultName>
+    <LocationField>Enabled</LocationField>
+    <EnableLocationBrowseButton>true</EnableLocationBrowseButton>
+    <CreateInPlace>true</CreateInPlace>
+    <Icon>__TemplateIcon.ico</Icon>
+  </TemplateData>
+  <TemplateContent>
+    <Project TargetFileName="YQB.Infrastructure.DataAccess.csproj" File="YQB.Infrastructure.DataAccess.csproj" ReplaceParameters="true">
+      <Folder Name="_Common" TargetFolderName="_Common">
+        <Folder Name="Migrations" TargetFolderName="Migrations">
+          <ProjectItem ReplaceParameters="true" TargetFileName="20220218122256_Init.cs">20220218122256_Init.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="20220218122256_Init.Designer.cs">20220218122256_Init.Designer.cs</ProjectItem>
+          <ProjectItem ReplaceParameters="true" TargetFileName="ServiceDbContextModelSnapshot.cs">ServiceDbContextModelSnapshot.cs</ProjectItem>
+        </Folder>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseDbContext.cs">BaseDbContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="BaseRepository.cs">BaseRepository.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="ServiceDbContext.cs">ServiceDbContext.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="UnitOfWork.cs">UnitOfWork.cs</ProjectItem>
+      </Folder>
+      <Folder Name="People" TargetFolderName="People">
+        <ProjectItem ReplaceParameters="true" TargetFileName="PersonConfig.cs">PersonConfig.cs</ProjectItem>
+        <ProjectItem ReplaceParameters="true" TargetFileName="PersonRepository.cs">PersonRepository.cs</ProjectItem>
+      </Folder>
+    </Project>
+  </TemplateContent>
+</VSTemplate>

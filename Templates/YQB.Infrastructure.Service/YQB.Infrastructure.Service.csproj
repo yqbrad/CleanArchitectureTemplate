@@ -1,0 +1,31 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<Configurations>Debug;Release;Production</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+	  <Compile Remove="ApiConfig\**" />
+	  <EmbeddedResource Remove="ApiConfig\**" />
+	  <None Remove="ApiConfig\**" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<PackageReference Include="Microsoft.AspNetCore" Version="2.2.0" />
+		<PackageReference Include="RawRabbit" Version="2.0.0-beta8" />
+		<PackageReference Include="RawRabbit.DependencyInjection.ServiceCollection" Version="2.0.0-beta8" />
+		<PackageReference Include="RawRabbit.Operations.Publish" Version="2.0.0-beta8" />
+		<PackageReference Include="RawRabbit.Operations.Subscribe" Version="2.0.0-beta8" />
+		<PackageReference Include="EventStore.Client" Version="21.2.2" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
+		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
+		<ProjectReference Include="..\..\01 Core\01 DomainModels\01 YQB.DomainModels.csproj" />
+		<ProjectReference Include="..\..\01 Core\02 Contracts\02 YQB.Contracts.csproj" />
+	</ItemGroup>
+
+</Project>

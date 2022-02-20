@@ -6,14 +6,14 @@ namespace $safeprojectname$.BaseModels
     public abstract class BaseEntity<TId> where TId : IEquatable<TId>
     {
         public TId Id { get; protected set; }
-        private Action<IEvent> _applier;
-        protected abstract void SetStateByEvent(IEvent @event);
+        private Action<IDomainEvent> _applier;
+        protected abstract void SetStateByEvent(IDomainEvent @event);
 
         protected BaseEntity() { }
 
-        public BaseEntity(Action<IEvent> applier) => _applier = applier;
+        public BaseEntity(Action<IDomainEvent> applier) => _applier = applier;
 
-        public void HandleEvent(IEvent @event)
+        public void HandleEvent(IDomainEvent @event)
         {
             SetStateByEvent(@event);
             _applier?.Invoke(@event);

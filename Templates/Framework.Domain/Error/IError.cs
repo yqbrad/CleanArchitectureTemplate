@@ -1,8 +1,10 @@
-﻿namespace $safeprojectname$.Error
+﻿using System.Collections.Generic;
+
+namespace $safeprojectname$.Error
 {
     public interface IError
     {
-        string Message { get; set; }
+        public List<string> Messages { get; set; }
         int Code { get; set; }
     }
 }

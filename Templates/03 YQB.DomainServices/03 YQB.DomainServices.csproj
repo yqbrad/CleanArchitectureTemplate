@@ -1,0 +1,18 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<AssemblyName>$safeprojectname$</AssemblyName>
+		<RootNamespace>$safeprojectname$</RootNamespace>
+		<Configurations>Debug;Release;Production</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
+		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
+		<ProjectReference Include="..\01 DomainModels\01 YQB.DomainModels.csproj" />
+		<ProjectReference Include="..\02 Contracts\02 YQB.Contracts.csproj" />
+	</ItemGroup>
+
+</Project>

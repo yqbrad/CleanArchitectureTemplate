@@ -9,6 +9,12 @@
 	</PropertyGroup>
 
 	<ItemGroup>
+	  <Compile Remove="People\Dtos\**" />
+	  <EmbeddedResource Remove="People\Dtos\**" />
+	  <None Remove="People\Dtos\**" />
+	</ItemGroup>
+
+	<ItemGroup>
 		<PackageReference Include="FluentValidation" Version="10.3.6" />
 	</ItemGroup>
 
@@ -16,10 +22,6 @@
 		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
 		<ProjectReference Include="..\01 DomainModels\01 YQB.DomainModels.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="People\Dtos\" />
 	</ItemGroup>
 
 </Project>

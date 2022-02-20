@@ -9,7 +9,9 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<Folder Include="People\Event\" />
+	  <Compile Remove="People\Event\**" />
+	  <EmbeddedResource Remove="People\Event\**" />
+	  <None Remove="People\Event\**" />
 	</ItemGroup>
 
 	<ItemGroup>
