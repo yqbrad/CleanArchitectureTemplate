@@ -1,10 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.OpenApi.Models;
 using Swashbuckle.AspNetCore.SwaggerGen;
-using System.Collections.Generic;
-using System.Linq;
 
-namespace DDD.EndPoints.API.Filters
+namespace YQB.EndPoints.API.Filters
 {
     public class SwaggerAuthorizeOperationFilter : IOperationFilter
     {
@@ -32,7 +30,8 @@ namespace DDD.EndPoints.API.Filters
                         new OpenApiSecurityScheme {Reference = new OpenApiReference
                             {
                                 Type = ReferenceType.SecurityScheme,
-                                Id = "oauth2"}
+                                Id = "oauth2"
+                            }
                         }
                     ] = new[] { "service_api" }
                 }

@@ -9,7 +9,7 @@ using RawRabbit;
 using RawRabbit.Instantiation;
 using RawRabbit.Pipe;
 
-namespace DDD.Infrastructure.Service.RabbitMq
+namespace YQB.Infrastructure.Service.RabbitMq
 {
     public static class Extensions
     {
@@ -22,7 +22,7 @@ namespace DDD.Infrastructure.Service.RabbitMq
                         => q.WithName(GetQueueName<TCommand>()))));
 
         public static Task WithEventHandlerAsync<TEvent>(this IBusClient bus, IEventHandler<TEvent> handler)
-            where TEvent : IEvent
+            where TEvent : IDomainEvent
             => bus.SubscribeAsync<TEvent>(msg
                 => handler.HandleAsync(msg), ctx
                 => ctx.UseConsumerConfiguration(cfg
@@ -30,18 +30,21 @@ namespace DDD.Infrastructure.Service.RabbitMq
                         => q.WithName(GetQueueName<TEvent>()))));
 
         private static string GetQueueName<T>()
-            => $"{Assembly.GetEntryAssembly().GetName()}/{typeof(T).Name}";
+            => $"{Assembly.GetEntryAssembly()?.GetName()}/{typeof(T).Name}";
 
-        public static void AddRabbitMq(this IServiceCollection services, IConfiguration configuration)
+        public static IServiceCollection AddRabbitMq(this IServiceCollection services, IConfiguration configuration)
         {
             var options = new RabbitMqOptions();
             var section = configuration.GetSection("RabbitMq");
             section.Bind(options);
+
             var client = RawRabbitFactory.CreateSingleton(new RawRabbitOptions
             {
                 ClientConfiguration = options
             });
             services.AddSingleton<IBusClient>(client);
+
+            return services;
         }
     }
 }

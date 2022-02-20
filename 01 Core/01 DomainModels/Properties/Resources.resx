@@ -117,4 +117,85 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Age" xml:space="preserve">
+    <value>سن</value>
+  </data>
+  <data name="DatabaseError" xml:space="preserve">
+    <value>خطای دیتابیس</value>
+  </data>
+  <data name="FirstName" xml:space="preserve">
+    <value>نام</value>
+  </data>
+  <data name="Id" xml:space="preserve">
+    <value>شناسه</value>
+  </data>
+  <data name="InitializeDataBaseError" xml:space="preserve">
+    <value>خطا در آماده سازی اولیه دیتابیس</value>
+  </data>
+  <data name="LastName" xml:space="preserve">
+    <value>نام خانوادگی</value>
+  </data>
+  <data name="PageNumber" xml:space="preserve">
+    <value>شماره صفحه</value>
+  </data>
+  <data name="PageSize" xml:space="preserve">
+    <value>تعداد رکورد</value>
+  </data>
+  <data name="Person" xml:space="preserve">
+    <value>شخص</value>
+  </data>
+  <data name="ValidationErrorAtLeastOneIsRequired" xml:space="preserve">
+    <value>انتخاب یک {0} اجباری است</value>
+  </data>
+  <data name="ValidationErrorDateGreaterThan" xml:space="preserve">
+    <value>تاریخ باید بزرگتر از امروز باشد</value>
+  </data>
+  <data name="ValidationErrorDateGreaterThanOrEqualToday" xml:space="preserve">
+    <value>تاریخ باید بزرگتر یا مساوی امروز باشد</value>
+  </data>
+  <data name="ValidationErrorDateLessThan" xml:space="preserve">
+    <value>تاریخ باید کوچکتر از امروز باشد</value>
+  </data>
+  <data name="ValidationErrorDateLessThanOrEqualToToday" xml:space="preserve">
+    <value>تاریخ باید کمتر یا مساوی امروز باشد</value>
+  </data>
+  <data name="ValidationErrorDuplicate" xml:space="preserve">
+    <value>{0} تکراری است</value>
+  </data>
+  <data name="ValidationErrorDuplicateInLevel" xml:space="preserve">
+    <value>{0} در این سطح تکراری است</value>
+  </data>
+  <data name="ValidationErrorEnumIsNotValid" xml:space="preserve">
+    <value>نوع {0} صحیح نمی باشد</value>
+  </data>
+  <data name="ValidationErrorNotExist" xml:space="preserve">
+    <value>{0} یافت نشد</value>
+  </data>
+  <data name="ValidationErrorRequired" xml:space="preserve">
+    <value>{0} اجباری است</value>
+  </data>
+  <data name="ValidationErrorStringLength" xml:space="preserve">
+    <value>طول {0} باید بین {1} و {2} باشد</value>
+  </data>
+  <data name="ValidationErrorUnableDeleteOrEditBecauseUsed" xml:space="preserve">
+    <value>به علت استفاده قابل حذف یا ویرایش نیست</value>
+  </data>
+  <data name="ValidationErrorValueBetween" xml:space="preserve">
+    <value>مقدار {0} باید بین {1} و {2} باشد</value>
+  </data>
+  <data name="ValidationErrorValueGraterOrEqualThan" xml:space="preserve">
+    <value>مقدار {0} باید بزرگتر یا مساوی از {1} باشد</value>
+  </data>
+  <data name="ValidationErrorValueGraterThan" xml:space="preserve">
+    <value>مقدار {0} باید بزرگتر از {1} باشد</value>
+  </data>
+  <data name="ValidationErrorValueIsNotValid" xml:space="preserve">
+    <value>مقدار {0} صحیح نیست</value>
+  </data>
+  <data name="ValidationErrorValueLessThan" xml:space="preserve">
+    <value>مقدار {0} باید کمتر از {1} باشد</value>
+  </data>
+  <data name="Zero" xml:space="preserve">
+    <value>صفر</value>
+  </data>
 </root>

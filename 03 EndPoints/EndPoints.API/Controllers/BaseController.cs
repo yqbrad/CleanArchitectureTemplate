@@ -1,93 +1,109 @@
-﻿using DDD.EndPoints.API.Configuration;
+﻿using YQB.EndPoints.API.Extension;
+using YQB.Infrastructure.Service.Configuration;
+using FluentValidation;
+using Framework.Domain.ApplicationServices;
+using Framework.Domain.Exceptions;
 using Framework.Domain.Requests;
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Threading.Tasks;
-using DDD.EndPoints.API.Extension;
 
-namespace DDD.EndPoints.API.Controllers
+namespace YQB.EndPoints.API.Controllers
 {
     public class BaseController : ControllerBase
     {
         protected ServiceConfig Config => HttpContext.ServiceContext();
-        
-        protected IActionResult Handle(Action handler)
-        {
-            handler();
-            return new OkResult();
-        }
+        protected IServiceProvider ServiceProvider => HttpContext.ServiceProvider();
 
-        protected IActionResult Handle<TRequest>(Action<TRequest> handler, TRequest request)
+        protected async Task<IActionResult> CreateAsync<TRequest, TResult>(TRequest request)
+            where TRequest : IRequest<TResult>
         {
             if (request == null)
                 return new BadRequestResult();
 
-            handler(request);
-            return new OkResult();
-        }
+            await ValidateRequest<TRequest, TResult>(request);
 
-        protected IActionResult Handle<TResult>(Func<TResult> handler)
-        {
-            var result = handler();
+            var handler = ServiceProvider.GetRequiredService<IRequestHandler<TRequest, TResult>>();
+            var result = await handler.HandleAsync(request);
             if (result is null)
                 return new NoContentResult();
 
-            return new OkObjectResult(result);
+            return new OkObjectResult(result)
+            {
+                StatusCode = StatusCodes.Status201Created
+            };
         }
 
-        protected IActionResult Handle<TRequest, TResult>
-            (Func<TRequest, TResult> handler, TRequest request)
-        {
-            if (request == null)
-                return new BadRequestResult();
+        protected Task<IActionResult> CreateAsync<TRequest>(TRequest request)
+            where TRequest : IRequest
+            => HandleAsync(request);
 
-            var result = handler(request);
-            if (result is null)
-                return new NoContentResult();
+        protected Task<IActionResult> UpdateAsync<TRequest>(TRequest request)
+            where TRequest : IRequest
+            => HandleAsync(request);
 
-            return new OkObjectResult(result);
-        }
+        protected Task<IActionResult> DeleteAsync<TRequest>(TRequest request)
+            where TRequest : IRequest
+            => HandleAsync(request);
 
-        //=====================Async=================================
+        protected Task<IActionResult> GetAsync<TRequest, TResult>(TRequest request)
+            where TRequest : IRequest<TResult>
+            => HandleAsync<TRequest, TResult>(request);
 
-        protected async Task<IActionResult> HandleAsync(Func<Task> handler)
-        {
-            await handler();
-            return new OkResult();
-        }
+        protected Task<IActionResult> GetAllAsync<TRequest, TResult>(TRequest request)
+            where TRequest : IRequest<TResult>
+            => HandleAsync<TRequest, TResult>(request);
 
-        protected async Task<IActionResult> HandleAsync<TRequest>
-            (Func<TRequest, Task> handler, TRequest request)
+        protected async Task<IActionResult> HandleAsync<TRequest>(TRequest request)
             where TRequest : IRequest
         {
             if (request == null)
                 return new BadRequestResult();
 
-            await handler(request);
+            await ValidateRequest(request);
+
+            var handler = ServiceProvider.GetRequiredService<IRequestHandler<TRequest>>();
+            await handler.HandleAsync(request);
+
             return new OkResult();
         }
 
-        protected async Task<IActionResult> HandleAsync<TResult>(Func<Task<TResult>> handler)
-        {
-            var result = await handler();
-            if (result is null)
-                return new NoContentResult();
-
-            return new OkObjectResult(result);
-        }
-
-        protected async Task<IActionResult> HandleAsync<TRequest, TResult>
-            (Func<TRequest, Task<TResult>> handleAsync, TRequest request)
-        where TRequest : IRequest
+        protected async Task<IActionResult> HandleAsync<TRequest, TResult>(TRequest request)
+            where TRequest : IRequest<TResult>
         {
             if (request == null)
                 return new BadRequestResult();
 
-            var result = await handleAsync(request);
+            await ValidateRequest<TRequest, TResult>(request);
+
+            var handler = ServiceProvider.GetRequiredService<IRequestHandler<TRequest, TResult>>();
+            var result = await handler.HandleAsync(request);
             if (result is null)
                 return new NoContentResult();
 
             return new OkObjectResult(result);
+        }
+
+        private async Task ValidateRequest<TRequest>(TRequest request)
+        where TRequest : IRequest
+        {
+            var validator = ServiceProvider.GetService<IValidator<TRequest>>();
+            if (validator is not null)
+            {
+                var validationResult = await validator.ValidateAsync(request);
+                if (!validationResult.IsValid)
+                    throw new FluentValidationException(validationResult.Errors.Select(item => item.ErrorMessage));
+            }
+        }
+
+        private async Task ValidateRequest<TRequest, TResult>(TRequest request)
+            where TRequest : IRequest<TResult>
+        {
+            var validator = ServiceProvider.GetService<IValidator<TRequest>>();
+            if (validator is not null)
+            {
+                var validationResult = await validator.ValidateAsync(request);
+                if (!validationResult.IsValid)
+                    throw new FluentValidationException(validationResult.Errors.Select(item => item.ErrorMessage));
+            }
         }
     }
 }

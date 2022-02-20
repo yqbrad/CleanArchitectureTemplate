@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<AssemblyName>YQB.Contracts</AssemblyName>
+		<RootNamespace>YQB.Contracts</RootNamespace>
+		<Configurations>Debug;Release;Production</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<PackageReference Include="FluentValidation" Version="10.3.6" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
+		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
+		<ProjectReference Include="..\01 DomainModels\01 YQB.DomainModels.csproj" />
+	</ItemGroup>
+
+	<ItemGroup>
+	  <Folder Include="People\Dtos\" />
+	</ItemGroup>
+
+</Project>

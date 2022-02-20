@@ -1,0 +1,23 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<TargetFramework>net6.0</TargetFramework>
+		<LangVersion>Latest</LangVersion>
+		<AssemblyName>YQB.ApplicationServices</AssemblyName>
+		<RootNamespace>YQB.ApplicationServices</RootNamespace>
+		<Configurations>Debug;Release;Production</Configurations>
+	</PropertyGroup>
+
+	<ItemGroup>
+		<Folder Include="People\Event\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<ProjectReference Include="..\..\00 Framework\Framework.Domain\Framework.Domain.csproj" />
+		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
+		<ProjectReference Include="..\01 DomainModels\01 YQB.DomainModels.csproj" />
+		<ProjectReference Include="..\02 Contracts\02 YQB.Contracts.csproj" />
+		<ProjectReference Include="..\03 DomainServices\03 YQB.DomainServices.csproj" />
+	</ItemGroup>
+
+</Project>

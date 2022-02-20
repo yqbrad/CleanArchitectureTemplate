@@ -9,7 +9,7 @@ using Framework.Domain.Events;
 using Microsoft.Extensions.Options;
 using Newtonsoft.Json;
 
-namespace DDD.Infrastructure.Service.EventSourcing
+namespace YQB.Infrastructure.Service.EventSourcing
 {
     public class EventSourceInitializer : IEventSource
     {
@@ -24,7 +24,7 @@ namespace DDD.Infrastructure.Service.EventSourcing
         }
 
         public async Task SaveAsync<TEvent>(string aggregateName, string streamId, IEnumerable<TEvent> events)
-           where TEvent : IEvent
+           where TEvent : IDomainEvent
         {
             if (!events.Any())
                 return;

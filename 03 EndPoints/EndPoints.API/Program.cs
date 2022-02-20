@@ -1,33 +1,71 @@
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.Extensions.Configuration;
-using Microsoft.Extensions.Hosting;
-using System.IO;
-using System.Reflection;
+﻿using YQB.Contracts._Common;
+using YQB.EndPoints.API.Extension;
+using YQB.EndPoints.API.Filters;
+using Framework.Domain.Error;
+using HealthChecks.UI.Client;
+using Microsoft.AspNetCore.Diagnostics.HealthChecks;
+using Microsoft.AspNetCore.Mvc;
+using Serilog;
+using System.Text.Json.Serialization;
 
-namespace DDD.EndPoints.API
-{
-    public class Program
+var builder = WebApplication.CreateBuilder(args);
+builder.AddAppsettings();
+
+var configuration = builder.Configuration;
+
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(configuration)
+    .CreateLogger();
+
+builder.Host.UseSerilog((hbc, lc)
+    => lc.ReadFrom.Configuration(hbc.Configuration));
+
+var serviceConfig = builder.Services.AddServiceConfig(configuration);
+builder.Services
+    .AddDependencies(configuration, serviceConfig)
+    .AddControllers(options =>
     {
-        public static void Main(string[] args)
-            => CreateHostBuilder(args)
-            .Build()
-            .Run();
+        options.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status200OK));
+        options.Filters.Add(new ProducesResponseTypeAttribute(typeof(Error), 499));
+        options.Filters.Add<ExceptionFilter>();
+        options.EnableEndpointRouting = false;
+        options.CacheProfiles.Add("Default", new CacheProfile
+        {
+            Duration = serviceConfig.CacheDuration
+        });
+    })
+    .AddJsonOptions(options => options.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter()));
 
-        public static IHostBuilder CreateHostBuilder(string[] args)
-            => Host.CreateDefaultBuilder(args)
-                .ConfigureWebHostDefaults(webBuilder => { webBuilder.UseStartup<Startup>(); })
-                .ConfigureAppConfiguration((_, config) =>
-                {
-                    var buildConfiguration = typeof(Program).Assembly
-                        .GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
+var app = builder.Build();
+if (app.Environment.IsDevelopment())
+    app.UseDeveloperExceptionPage();
+else
+    app.UseHsts();
 
-                    var path = "appsettings.json";
-                    if (buildConfiguration != "Debug")
-                        path = $"appsettings.{buildConfiguration}.json";
+app.UseSerilogRequestLogging();
+app.UseHttpsRedirection();
+app.UseHeaderPropagation();
+app.UseStaticFiles();
+// app.UseCookiePolicy();
+app.UseRouting();
+//app.UseRequestLocalization();
+//app.UseCors();
+//app.UseAuthentication();
+app.UseAuthorization();
+// app.UseSession();
+// app.UseResponseCompression();
+app.UseResponseCaching();
+app.MapControllers();
 
-                    config.Sources.Clear();
-                    config.SetBasePath(Directory.GetCurrentDirectory());
-                    config.AddJsonFile(path, false, true);
-                });
-    }
-}
+app.ConfigSwagger(serviceConfig);
+app.UseHealthChecks(serviceConfig.HealthCheckRoute, new HealthCheckOptions
+{
+    Predicate = _ => true,
+    ResponseWriter = UIResponseWriter.WriteHealthCheckUIResponse
+});
+
+app.AddBanner(serviceConfig);
+var scope = app.Services.CreateScope();
+scope.ServiceProvider.GetService<IUnitOfWork>()?.InitiateDatabase();
+
+app.Run();

@@ -2,23 +2,22 @@
 using System.Threading.Tasks;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.Events;
-using Logger.EndPoints.Service.Base;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace DDD.Infrastructure.Service.Dispatcher
+namespace YQB.Infrastructure.Service.Dispatcher
 {
     public class InternalEventDispatcher : IInternalEventDispatcher
     {
         private readonly IServiceProvider _serviceProvider;
-        private readonly ILoggerService _loggerService;
-        public InternalEventDispatcher(IServiceProvider serviceProvider, ILoggerService loggerService)
+        //private readonly ILoggerService _loggerService;
+        public InternalEventDispatcher(IServiceProvider serviceProvider/*, ILoggerService loggerService*/)
         {
             _serviceProvider = serviceProvider;
-            _loggerService = loggerService;
+            //_loggerService = loggerService;
         }
 
         public async Task DispatchEventAsync<T>(T @event)
-            where T : IEvent
+            where T : IDomainEvent
         {
             if (@event == null)
                 throw new ArgumentNullException($"{nameof(@event)} Event can not be null.");
@@ -33,13 +32,13 @@ namespace DDD.Infrastructure.Service.Dispatcher
                     }
                     catch (Exception e)
                     {
-                        await _loggerService.LogAsync(e);
+                        //await _loggerService.LogAsync(e);
                     }
                 }
         }
 
         public async Task DispatchEventAsync<T>(params T[] events)
-            where T : IEvent
+            where T : IDomainEvent
         {
             foreach (var @event in events)
             {
@@ -63,7 +62,7 @@ namespace DDD.Infrastructure.Service.Dispatcher
                     }
                     catch (Exception e)
                     {
-                        await _loggerService.LogAsync(e);
+                        //await _loggerService.LogAsync(e);
                     }
                 }
             }
