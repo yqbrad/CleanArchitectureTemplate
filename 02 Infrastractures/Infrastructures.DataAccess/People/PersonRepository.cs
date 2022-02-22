@@ -21,7 +21,8 @@ namespace YQB.Infrastructure.DataAccess.People
                 .AsNoTracking()
                 .WhereIf(!string.IsNullOrWhiteSpace(filter.Name),
                     s => ((string)s.FirstName).Contains(filter.Name) ||
-                         ((string)s.LastName).Contains(filter.Name));
+                         ((string)s.LastName).Contains(filter.Name))
+                .WhereIf(filter.Gender is not null, s => s.Gender == filter.Gender);
 
             if (!string.IsNullOrWhiteSpace(filter.SortBy))
                 query = query.OrderByField(filter.SortBy, filter.SortAscending);

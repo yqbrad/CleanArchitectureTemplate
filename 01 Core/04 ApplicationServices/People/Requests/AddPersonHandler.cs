@@ -19,7 +19,8 @@ namespace YQB.ApplicationServices.People.Requests
             var person = Person.Create(id,
                 PersonFirstName.FromString(req.FirstName),
                 PersonLastName.FromString(req.LastName),
-                PersonAge.FromInt(req.Age));
+                PersonAge.FromInt(req.Age),
+                req.Gender);
 
             await UnitOfWork.PersonRepository.InsertAsync(person);
             await UnitOfWork.CommitAsync();

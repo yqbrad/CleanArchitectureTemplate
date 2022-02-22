@@ -25,5 +25,9 @@ public class AddPersonValidation : AbstractValidator<AddPerson>
             .WithMessage(translator[StringResources.ValidationErrorRequired, StringResources.Age])
             .GreaterThan(0)
             .WithMessage(translator[StringResources.ValidationErrorValueGraterThan, StringResources.Age, StringResources.Zero]);
+
+        RuleFor(s => s.Gender)
+            .IsInEnum()
+            .WithMessage(translator[StringResources.ValidationErrorEnumIsNotValid, StringResources.Gender]);
     }
 }

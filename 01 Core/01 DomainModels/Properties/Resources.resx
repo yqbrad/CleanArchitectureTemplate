@@ -126,6 +126,9 @@
   <data name="FirstName" xml:space="preserve">
     <value>نام</value>
   </data>
+  <data name="Gender" xml:space="preserve">
+    <value>جنسیت</value>
+  </data>
   <data name="Id" xml:space="preserve">
     <value>شناسه</value>
   </data>
