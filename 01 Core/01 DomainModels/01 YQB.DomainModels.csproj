@@ -34,4 +34,8 @@
 		<ProjectReference Include="..\..\00 Framework\Framework.Tools\Framework.Tools.csproj" />
 	</ItemGroup>
 
+	<ItemGroup>
+	  <Folder Include="People\Enums\" />
+	</ItemGroup>
+
 </Project>

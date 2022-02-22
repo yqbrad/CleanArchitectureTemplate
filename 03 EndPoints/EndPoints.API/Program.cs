@@ -49,7 +49,7 @@ app.UseStaticFiles();
 // app.UseCookiePolicy();
 app.UseRouting();
 //app.UseRequestLocalization();
-//app.UseCors();
+app.ConfigCors(serviceConfig.AllowedOrigins);
 //app.UseAuthentication();
 app.UseAuthorization();
 // app.UseSession();
