@@ -25,7 +25,7 @@ builder.Services
     .AddDependencies(configuration, serviceConfig)
     .AddControllers(options =>
     {
-        options.Filters.Add(new ProducesResponseTypeAttribute(typeof(Error), StatusCodes.Status400BadRequest));
+        options.Filters.Add(new ProducesResponseTypeAttribute(typeof(Error), 499));
         options.Filters.Add<ExceptionFilter>();
         options.EnableEndpointRouting = false;
         options.CacheProfiles.Add("Default", new CacheProfile

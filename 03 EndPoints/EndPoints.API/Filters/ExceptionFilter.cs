@@ -18,30 +18,24 @@ namespace YQB.EndPoints.API.Filters
 
         public void OnException(ExceptionContext context)
         {
-            int statusCode;
             Error error;
-            LogLevel logType;
+            var statusCode = 499;
+            var logType = LogLevel.Warning;
 
             var ex = context.Exception;
             switch (ex)
             {
                 case FluentValidationException e:
-                    statusCode = StatusCodes.Status400BadRequest;
                     error = new Error(e.Messages.ToList(), e.ExCode);
-                    logType = LogLevel.Warning;
                     break;
                 case DomainException e:
-                    statusCode = StatusCodes.Status400BadRequest;
                     error = new Error(e.ExCode);
                     error.Messages.Add(e.Parameters.Any()
                         ? _translator[e.Message, e.Parameters]
                         : _translator[e.Message]);
-                    logType = LogLevel.Warning;
                     break;
                 case BaseException e:
-                    statusCode = StatusCodes.Status400BadRequest;
                     error = new Error(_translator[e.Message], e.ExCode);
-                    logType = LogLevel.Warning;
                     break;
 
                 //case Models.ApiException apiException:
