@@ -1,14 +1,4 @@
-﻿using YQB.Contracts._Common;
-using YQB.EndPoints.API.Filters;
-using YQB.EndPoints.API.Models;
-using YQB.Infrastructure.DataAccess._Common;
-using YQB.Infrastructure.Service;
-using YQB.Infrastructure.Service.Configuration;
-using YQB.Infrastructure.Service.Dispatcher;
-using YQB.Infrastructure.Service.EventSourcing;
-using YQB.Infrastructure.Service.RabbitMq;
-using YQB.Infrastructure.Service.Translator;
-using FluentValidation;
+﻿using FluentValidation;
 using Framework.Domain.ApplicationServices;
 using Framework.Domain.EventBus;
 using Framework.Domain.Events;
@@ -17,19 +7,46 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.Extensions.DependencyModel;
 using Microsoft.Extensions.Primitives;
 using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.SwaggerUI;
 using System.Reflection;
-using System.Text;
+using YQB.Contracts._Common;
+using YQB.EndPoints.API.Filters;
+using YQB.EndPoints.API.Models;
+using YQB.Infra.Data._Common;
+using YQB.Infra.Service;
+using YQB.Infra.Service.Configuration;
+using YQB.Infra.Service.Dispatcher;
+using YQB.Infra.Service.EventSourcing;
+using YQB.Infra.Service.RabbitMq;
+using YQB.Infra.Service.Translator;
 
 namespace YQB.EndPoints.API.Extension;
 
-public static class ServiceExtension
+public static class ServiceExtensions
 {
+    public static void AddAppsettings(this WebApplicationBuilder builder)
+    {
+        builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
+
+        var buildConfiguration = typeof(Program).Assembly.GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
+        var configuration = buildConfiguration == "Debug" ? "Development" : buildConfiguration;
+
+        builder.Configuration.AddJsonFile($"appsettings.{configuration}.json", false, true);
+        builder.Configuration.AddJsonFile($"appsettings.{configuration}.serilog.json", false, true);
+    }
+
     public static IServiceCollection AddDependencies(this IServiceCollection services,
         IConfiguration configuration, ServiceConfig serviceConfig)
     {
-        var assemblies = GetAssemblies(new[] { serviceConfig.AssemblyName }).ToList();
-        return services
+        var assemblies = GetAssemblies(serviceConfig.AssemblyNames).ToList();
+        return services.InjectDependencies(configuration, serviceConfig, assemblies);
+    }
+
+    private static IServiceCollection InjectDependencies(
+        this IServiceCollection services,
+        IConfiguration configuration,
+        ServiceConfig serviceConfig,
+        IReadOnlyCollection<Assembly> assemblies)
+        => services
             .AddIdp(serviceConfig)
             .AddRepositories(assemblies)
             .AddHandlers(assemblies)
@@ -50,21 +67,6 @@ public static class ServiceExtension
             .AddSwagger(serviceConfig)
             .AddHealthCheck(configuration);
 
-        //services.AddSingleton<IApiConfiguration, ApiConfiguration>();
-        //services.AddSingleton<IApiCaller, ApiCaller>();
-    }
-
-    public static void AddAppsettings(this WebApplicationBuilder builder)
-    {
-        builder.Configuration.SetBasePath(Directory.GetCurrentDirectory());
-
-        var buildConfiguration = typeof(Program).Assembly.GetCustomAttribute<AssemblyConfigurationAttribute>()?.Configuration;
-        var configuration = buildConfiguration == "Debug" ? "Development" : buildConfiguration;
-
-        builder.Configuration.AddJsonFile($"appsettings.{configuration}.json", false, true);
-        builder.Configuration.AddJsonFile($"appsettings.{configuration}.serilog.json", false, true);
-    }
-
     public static IServiceCollection AddHealthCheck(this IServiceCollection services, IConfiguration configuration)
     {
         var uow = new UnitOfWorkConfig(configuration);
@@ -78,7 +80,7 @@ public static class ServiceExtension
     {
         if (!config.Swagger.IsEnable)
             return services;
-        
+
         services.AddSwaggerGen(c =>
         {
             c.SwaggerDoc(config.Swagger.Version,
@@ -157,38 +159,6 @@ public static class ServiceExtension
         services.AddSingleton(serviceConfig);
 
         return serviceConfig;
-    }
-
-    public static void ConfigSwagger(this IApplicationBuilder app, ServiceConfig config)
-    {
-        if (!config.Swagger.IsEnable)
-            return;
-
-        app.UseSwagger();
-        app.UseSwaggerUI(c =>
-        {
-            c.SwaggerEndpoint(config.Swagger.Url, config.Swagger.Name);
-            c.InjectStylesheet("/swagger-ui/SwaggerDark.css");
-            c.OAuthClientId(config.Idp.SwaggerClientId);
-            c.OAuthAppName(config.Idp.AppName);
-            c.OAuthClientSecret(config.Idp.SwaggerClientSecret);
-            c.RoutePrefix = config.Swagger.RoutePrefix;
-            c.DocExpansion(DocExpansion.None);
-            c.DefaultModelsExpandDepth(-1);
-            c.DisplayRequestDuration();
-            c.EnableDeepLinking();
-            c.DefaultModelRendering(ModelRendering.Example);
-            c.EnableFilter();
-            c.ShowExtensions();
-            c.EnableValidator();
-        });
-    }
-
-    public static void AddBanner(this IApplicationBuilder app, ServiceConfig config)
-    {
-        //https://manytools.org/hacker-tools/ascii-banner/
-        Console.OutputEncoding = Encoding.UTF8;
-        Console.WriteLine(config.Banner);
     }
 
     public static IServiceCollection AddRepositories(this IServiceCollection services,

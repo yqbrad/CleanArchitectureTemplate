@@ -11,7 +11,7 @@ namespace YQB.EndPoints.API.Controllers
     public class PeopleController : BaseController
     {
         [HttpPost]
-        [ProducesResponseType(typeof(int), 200)]
+        [ProducesResponseType(typeof(int), StatusCodes.Status201Created)]
         public Task<IActionResult> Add(
             [FromBody, Required] AddPerson request)
             => CreateAsync<AddPerson, int>(request);
@@ -31,18 +31,18 @@ namespace YQB.EndPoints.API.Controllers
             => DeleteAsync(new DeletePerson(id));
 
         [HttpGet("{id:int}")]
-        [ProducesResponseType(typeof(PersonDetails), 200)]
+        [ProducesResponseType(typeof(PersonDetails), StatusCodes.Status200OK)]
         public Task<IActionResult> Get(
             [FromRoute, Required] int id)
             => GetAllAsync<GetPerson, PersonDetails>(new(id));
 
         [HttpGet]
-        [ProducesResponseType(typeof(IEnumerable<PersonDetails>), 200)]
+        [ProducesResponseType(typeof(IEnumerable<PersonDetails>), StatusCodes.Status200OK)]
         public Task<IActionResult> GetAll()
             => GetAllAsync<GetAllPeople, IEnumerable<PersonDetails>>(new());
 
         [HttpGet("Filter")]
-        [ProducesResponseType(typeof(PageResult<PersonDetails>), 200)]
+        [ProducesResponseType(typeof(PageResult<PersonDetails>), StatusCodes.Status200OK)]
         public Task<IActionResult> Filter(
             [FromQuery, Required] FilterPeople filter)
             => GetAllAsync<FilterPeople, PageResult<PersonDetails>>(filter);

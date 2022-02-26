@@ -1,4 +1,4 @@
-﻿namespace YQB.Infrastructure.Service.Configuration
+﻿namespace YQB.Infra.Service.Configuration
 {
     public class ServiceConfig
     {
@@ -8,6 +8,7 @@
         public IdpConfig Idp { get; set; }
         public SwaggerConfig Swagger { get; set; }
         public string Banner { get; set; }
-        public string AssemblyName { get; set; }
+        public string[] AssemblyNames { get; set; }
+        public string[] AllowedOrigins { get; set; }
     }
 }

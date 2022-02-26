@@ -1,4 +1,4 @@
-﻿namespace YQB.Infrastructure.Service.Configuration
+﻿namespace YQB.Infra.Service.Configuration
 {
     public class SwaggerConfig
     {

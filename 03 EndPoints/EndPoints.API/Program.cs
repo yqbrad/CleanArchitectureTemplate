@@ -25,7 +25,6 @@ builder.Services
     .AddDependencies(configuration, serviceConfig)
     .AddControllers(options =>
     {
-        options.Filters.Add(new ProducesResponseTypeAttribute(StatusCodes.Status200OK));
         options.Filters.Add(new ProducesResponseTypeAttribute(typeof(Error), 499));
         options.Filters.Add<ExceptionFilter>();
         options.EnableEndpointRouting = false;
@@ -49,7 +48,7 @@ app.UseStaticFiles();
 // app.UseCookiePolicy();
 app.UseRouting();
 //app.UseRequestLocalization();
-//app.UseCors();
+app.ConfigCors(serviceConfig.AllowedOrigins);
 //app.UseAuthentication();
 app.UseAuthorization();
 // app.UseSession();

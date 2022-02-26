@@ -26,7 +26,7 @@
 		<PackageReference Include="Serilog.Sinks.MSSqlServer" Version="5.7.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="6.2.3" />
 		<PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="6.0.1" />
-		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.2" />
+		<PackageReference Include="AspNetCore.HealthChecks.UI.Client" Version="6.0.3" />
 		<PackageReference Include="Microsoft.AspNetCore.HeaderPropagation" Version="6.0.2" />
 		<PackageReference Include="Microsoft.AspNetCore.StaticFiles" Version="2.2.0" />
 		<PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="6.0.2" />
@@ -43,8 +43,8 @@
 		<ProjectReference Include="..\..\01 Core\02 Contracts\02 YQB.Contracts.csproj" />
 		<ProjectReference Include="..\..\01 Core\03 DomainServices\03 YQB.DomainServices.csproj" />
 		<ProjectReference Include="..\..\01 Core\04 ApplicationServices\04 YQB.ApplicationServices.csproj" />
-		<ProjectReference Include="..\..\02 Infrastractures\Infrastructure.Service\YQB.Infrastructure.Service.csproj" />
-		<ProjectReference Include="..\..\02 Infrastractures\Infrastructures.DataAccess\YQB.Infrastructure.DataAccess.csproj" />
+		<ProjectReference Include="..\..\02 Infrastractures\Infrastructure.Service\YQB.Infra.Service.csproj" />
+		<ProjectReference Include="..\..\02 Infrastractures\Infrastructures.DataAccess\YQB.Infra.Data.SqlServer.csproj" />
 	</ItemGroup>
 
 	<ItemGroup>

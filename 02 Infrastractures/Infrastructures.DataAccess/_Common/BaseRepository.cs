@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Threading.Tasks;
-using YQB.Contracts._Common;
 using Framework.Domain.BaseModels;
 using Microsoft.EntityFrameworkCore;
+using YQB.Contracts._Common;
 
-namespace YQB.Infrastructure.DataAccess._Common
+namespace YQB.Infra.Data._Common
 {
     public class BaseRepository<TEntity, TId, TDbContext> : IRepository<TEntity, TId>
         where TEntity : BaseAggregateRoot<TId>

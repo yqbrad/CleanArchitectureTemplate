@@ -3,7 +3,7 @@ using Framework.Domain.Events;
 
 //using Services.Core.Interfaces;
 
-namespace YQB.Infrastructure.Service
+namespace YQB.Infra.Service
 {
     public class ServiceBus: IServiceBus
     {

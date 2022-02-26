@@ -1,6 +1,6 @@
 ﻿using RawRabbit.Configuration;
 
-namespace YQB.Infrastructure.Service.RabbitMq
+namespace YQB.Infra.Service.RabbitMq
 {
     //https://rawrabbit.readthedocs.io/en/master/configuration.html
     public class RabbitMqOptions : RawRabbitConfiguration

@@ -1,5 +1,6 @@
 ﻿using YQB.DomainModels.People.Entities;
 using Framework.Domain.Results;
+using YQB.DomainModels.People.Enums;
 
 namespace YQB.Contracts.People.Results
 {
@@ -9,6 +10,7 @@ namespace YQB.Contracts.People.Results
         public string FirstName { get; set; }
         public string LastName { get; set; }
         public int Age { get; set; }
+        public Gender Gender { get; set; }
 
         public PersonDetails() { }
 
@@ -18,6 +20,7 @@ namespace YQB.Contracts.People.Results
             FirstName = person.FirstName.Value;
             LastName = person.LastName.Value;
             Age = person.Age.Value;
+            Gender = person.Gender;
         }
     }
 }

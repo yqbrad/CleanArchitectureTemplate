@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace YQB.Infrastructure.DataAccess.Migrations
+namespace YQB.Infra.Data.SqlServer.Migrations
 {
     public partial class Init : Migration
     {
@@ -23,7 +23,8 @@ namespace YQB.Infrastructure.DataAccess.Migrations
                     Id = table.Column<int>(type: "int", nullable: false),
                     FirstName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
                     LastName = table.Column<string>(type: "nvarchar(250)", maxLength: 250, nullable: false),
-                    Age = table.Column<int>(type: "int", nullable: false)
+                    Age = table.Column<int>(type: "int", nullable: false),
+                    Gender = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false)
                 },
                 constraints: table =>
                 {

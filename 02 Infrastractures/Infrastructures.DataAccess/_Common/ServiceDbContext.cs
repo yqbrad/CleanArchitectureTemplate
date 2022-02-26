@@ -1,8 +1,8 @@
-﻿using YQB.Contracts._Common;
+﻿using Microsoft.EntityFrameworkCore;
+using YQB.Contracts._Common;
 using YQB.DomainModels.People.Entities;
-using Microsoft.EntityFrameworkCore;
 
-namespace YQB.Infrastructure.DataAccess._Common
+namespace YQB.Infra.Data._Common
 {
     public class ServiceDbContext : BaseDbContext
     {

@@ -27,6 +27,7 @@
         public const string Person = nameof(Person);
         public const string FirstName = nameof(FirstName);
         public const string LastName = nameof(LastName);
+        public const string Gender = nameof(Gender);
         public const string Age = nameof(Age);
         public const string Zero = nameof(Zero);
     }

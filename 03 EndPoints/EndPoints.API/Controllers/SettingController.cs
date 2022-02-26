@@ -1,7 +1,7 @@
-﻿using YQB.Infrastructure.Service.ServiceInfos;
-using Framework.Tools;
+﻿using Framework.Tools;
 using Microsoft.AspNetCore.Mvc;
 using System.Reflection;
+using YQB.Infra.Service.ServiceInfos;
 
 namespace YQB.EndPoints.API.Controllers
 {
