@@ -11,13 +11,13 @@ using System.Reflection;
 using YQB.Contracts._Common;
 using YQB.EndPoints.API.Filters;
 using YQB.EndPoints.API.Models;
-using YQB.Infrastructure.DataAccess._Common;
-using YQB.Infrastructure.Service;
-using YQB.Infrastructure.Service.Configuration;
-using YQB.Infrastructure.Service.Dispatcher;
-using YQB.Infrastructure.Service.EventSourcing;
-using YQB.Infrastructure.Service.RabbitMq;
-using YQB.Infrastructure.Service.Translator;
+using YQB.Infra.Data._Common;
+using YQB.Infra.Service;
+using YQB.Infra.Service.Configuration;
+using YQB.Infra.Service.Dispatcher;
+using YQB.Infra.Service.EventSourcing;
+using YQB.Infra.Service.RabbitMq;
+using YQB.Infra.Service.Translator;
 
 namespace YQB.EndPoints.API.Extension;
 

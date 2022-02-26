@@ -4,7 +4,7 @@ using Framework.Domain.ApplicationServices;
 using Framework.Domain.Events;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace YQB.Infrastructure.Service.Dispatcher
+namespace YQB.Infra.Service.Dispatcher
 {
     public class InternalEventDispatcher : IInternalEventDispatcher
     {

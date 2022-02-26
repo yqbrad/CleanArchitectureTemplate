@@ -1,15 +1,15 @@
-﻿using YQB.Contracts.People.Repositories;
-using YQB.Contracts.People.Requests;
-using YQB.Contracts.People.Results;
-using YQB.DomainModels.People.Entities;
-using YQB.Infrastructure.DataAccess._Common;
+﻿using System.Linq;
+using System.Threading.Tasks;
 using Framework.Domain.Paging;
 using Framework.Tools;
 using Microsoft.EntityFrameworkCore;
-using System.Linq;
-using System.Threading.Tasks;
+using YQB.Contracts.People.Repositories;
+using YQB.Contracts.People.Requests;
+using YQB.Contracts.People.Results;
+using YQB.DomainModels.People.Entities;
+using YQB.Infra.Data._Common;
 
-namespace YQB.Infrastructure.DataAccess.People
+namespace YQB.Infra.Data.People
 {
     public class PersonRepository : BaseRepository<Person, int, ServiceDbContext>, IPersonRepository
     {

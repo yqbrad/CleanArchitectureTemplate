@@ -1,6 +1,6 @@
 ﻿using Framework.Domain.Results;
 
-namespace YQB.Infrastructure.Service.ServiceInfos
+namespace YQB.Infra.Service.ServiceInfos
 {
     public class ServiceInfo : IResult
     {

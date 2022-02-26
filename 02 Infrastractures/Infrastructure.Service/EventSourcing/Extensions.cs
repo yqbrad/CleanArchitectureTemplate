@@ -2,7 +2,7 @@
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
-namespace YQB.Infrastructure.Service.EventSourcing
+namespace YQB.Infra.Service.EventSourcing
 {
     public static class Extensions
     {

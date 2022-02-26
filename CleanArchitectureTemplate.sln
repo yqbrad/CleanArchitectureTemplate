@@ -5,7 +5,7 @@ VisualStudioVersion = 17.0.32112.339
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "01 Core", "01 Core", "{33D15553-CDFC-4DCC-B124-089EB3FF5194}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Infrastractures", "02 Infrastractures", "{B54175D9-051A-4EDB-85C4-399E8D815B77}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "02 Infra", "02 Infra", "{B54175D9-051A-4EDB-85C4-399E8D815B77}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "03 EndPoints", "03 EndPoints", "{A02E1CDE-BA8C-44EE-90F2-805F2BEA1151}"
 EndProject
@@ -23,9 +23,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "03 YQB.DomainServices", "01
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "04 YQB.ApplicationServices", "01 Core\04 ApplicationServices\04 YQB.ApplicationServices.csproj", "{59608B61-DF3E-45B0-925C-96A58471B9AA}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YQB.Infrastructure.Service", "02 Infrastractures\Infrastructure.Service\YQB.Infrastructure.Service.csproj", "{659A519E-383B-47CD-A169-2B9873D99D4E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YQB.Infra.Service", "02 Infrastractures\Infrastructure.Service\YQB.Infra.Service.csproj", "{659A519E-383B-47CD-A169-2B9873D99D4E}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YQB.Infrastructure.DataAccess", "02 Infrastractures\Infrastructures.DataAccess\YQB.Infrastructure.DataAccess.csproj", "{B8D8F374-7088-4684-8710-E11EEC2DF346}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YQB.Infra.Data.SqlServer", "02 Infrastractures\Infrastructures.DataAccess\YQB.Infra.Data.SqlServer.csproj", "{B8D8F374-7088-4684-8710-E11EEC2DF346}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "YQB.EndPoints.API", "03 EndPoints\EndPoints.API\YQB.EndPoints.API.csproj", "{AC50CE55-F510-4E06-AD70-72E5E422A737}"
 EndProject

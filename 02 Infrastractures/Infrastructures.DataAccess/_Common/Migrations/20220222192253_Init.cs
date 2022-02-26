@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace YQB.Infrastructure.DataAccess.Migrations
+namespace YQB.Infra.Data.SqlServer.Migrations
 {
     public partial class Init : Migration
     {

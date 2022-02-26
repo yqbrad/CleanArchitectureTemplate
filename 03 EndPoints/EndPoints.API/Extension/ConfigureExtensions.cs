@@ -1,6 +1,6 @@
 ﻿using System.Text;
 using Swashbuckle.AspNetCore.SwaggerUI;
-using YQB.Infrastructure.Service.Configuration;
+using YQB.Infra.Service.Configuration;
 
 namespace YQB.EndPoints.API.Extension
 {

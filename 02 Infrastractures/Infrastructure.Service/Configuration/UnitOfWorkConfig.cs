@@ -1,7 +1,7 @@
-﻿using YQB.Contracts._Common;
-using Microsoft.Extensions.Configuration;
+﻿using Microsoft.Extensions.Configuration;
+using YQB.Contracts._Common;
 
-namespace YQB.Infrastructure.Service.Configuration
+namespace YQB.Infra.Service.Configuration
 {
     public class UnitOfWorkConfig : IUnitOfWorkConfiguration
     {

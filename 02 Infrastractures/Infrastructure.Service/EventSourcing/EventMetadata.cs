@@ -1,4 +1,4 @@
-﻿namespace YQB.Infrastructure.Service.EventSourcing
+﻿namespace YQB.Infra.Service.EventSourcing
 {
     public class EventMetadata
     {

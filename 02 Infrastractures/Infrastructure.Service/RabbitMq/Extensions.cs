@@ -9,7 +9,7 @@ using RawRabbit;
 using RawRabbit.Instantiation;
 using RawRabbit.Pipe;
 
-namespace YQB.Infrastructure.Service.RabbitMq
+namespace YQB.Infra.Service.RabbitMq
 {
     public static class Extensions
     {

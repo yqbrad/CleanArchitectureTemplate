@@ -3,11 +3,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using YQB.Infrastructure.DataAccess._Common;
+using YQB.Infra.Data._Common;
 
 #nullable disable
 
-namespace YQB.Infrastructure.DataAccess.Migrations
+namespace YQB.Infra.Data.SqlServer.Migrations
 {
     [DbContext(typeof(ServiceDbContext))]
     partial class ServiceDbContextModelSnapshot : ModelSnapshot

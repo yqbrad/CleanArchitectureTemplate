@@ -1,11 +1,11 @@
-﻿using YQB.DomainModels.People.Entities;
-using YQB.DomainModels.People.ValueObjects;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+using YQB.DomainModels.People.Entities;
 using YQB.DomainModels.People.Enums;
+using YQB.DomainModels.People.ValueObjects;
 
-namespace YQB.Infrastructure.DataAccess.People;
+namespace YQB.Infra.Data.People;
 
 public class PersonConfig : IEntityTypeConfiguration<Person>
 {
